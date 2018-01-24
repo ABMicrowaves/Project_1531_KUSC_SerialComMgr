@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace KUSC
 {
-    class KuscCommon
+    static class KuscCommon
     {
+        #region Technician mode  
+
+        public static string TECH_USER = "AB";
+        public static string TECH_PASS = "1234";
+        public static string TECH_LOGIN_OK_MSG = "Enter to technician mode";
+        public static string TECH_LOGIN_FAIL_MSG = "Incorrect login parameters";
+        #endregion
+
+        #region Serial configuration
+
+        public static int SERIAL_BAUD_RATE = 115200; 
+        public static int SERIAL_READ_TIMEOUT_MSEC = 500;
+        public static int SERIAL_WRITE_TIMEOUT_MSEC = 500;
+        public static int RX_BUF_SIZE_BYTES = 20;
+        public static int MIN_RX_MSG_SIZE = 3;
+        #endregion
     }
 }

@@ -46,14 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AKuscAbout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AKuscAbout.Designer.cs">
-      <DependentUpon>AKuscAbout.cs</DependentUpon>
-    </Compile>
     <Compile Include="KuscCommon.cs" />
     <Compile Include="KuscLogs.cs" />
+    <Compile Include="KuscMessage.cs" />
     <Compile Include="KuscSerial.cs" />
     <Compile Include="KuscForm.cs">
       <SubType>Form</SubType>
@@ -63,9 +58,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AKuscAbout.resx">
-      <DependentUpon>AKuscAbout.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="KuscForm.resx">
       <DependentUpon>KuscForm.cs</DependentUpon>
     </EmbeddedResource>

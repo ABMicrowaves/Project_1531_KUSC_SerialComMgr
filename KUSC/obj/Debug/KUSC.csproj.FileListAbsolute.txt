@@ -8,3 +8,12 @@ C:\Software_projects\ABmicrowaves\Projects\PC\KUSC\KUSC\obj\Debug\KUSC.exe
 C:\Software_projects\ABmicrowaves\Projects\PC\KUSC\KUSC\obj\Debug\KUSC.pdb
 C:\Software_projects\ABmicrowaves\Projects\PC\KUSC\KUSC\obj\Debug\KUSC.KuscForm.resources
 C:\Software_projects\ABmicrowaves\Projects\PC\KUSC\KUSC\obj\Debug\KUSC.AKuscAbout.resources
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Debug\KUSC.exe.config
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Debug\KUSC.exe
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Debug\KUSC.pdb
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.csprojResolveAssemblyReference.cache
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.KuscForm.resources
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.Properties.Resources.resources
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.csproj.GenerateResource.Cache
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.exe
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Debug\KUSC.pdb

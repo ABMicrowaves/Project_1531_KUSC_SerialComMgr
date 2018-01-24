@@ -17,11 +17,34 @@ namespace KUSC
         {
             InitializeComponent();
             _kuscSerial = new KuscSerial();
+            
+            
         }
 
-        #region Set Local serial paramaters
+        #region Technician mode
+
+        private void btnTechLogin_Click(object sender, EventArgs e)
+        {
+            if ((tbxTechUser.Text == KuscCommon.TECH_USER) && (tbxTechPass.Text == KuscCommon.TECH_PASS))
+            {
+                WriteStatusOk(KuscCommon.TECH_LOGIN_OK_MSG);
+                gbxTechMode.Visible = true;
+            }
+            else
+            {
+                WriteStatusFail(KuscCommon.TECH_LOGIN_FAIL_MSG);
+            }
+
+        }
+        #endregion
+
+        #region Serial port
+
+        #region Serial port init
+
         private void btnCheckLocalPortsNames_Click(object sender, EventArgs e)
         {
+
             cbxLocalPortsNames.Items.Clear();
             foreach (var port in _kuscSerial.GetComPorts())
             {
@@ -29,22 +52,68 @@ namespace KUSC
             }
         }
 
-        private void btnLocalBaudSelect_Click(object sender, EventArgs e)
+        private void btninitCom(object sender, EventArgs e)
         {
-            if (cbxLocalBaud.SelectedItem == null || cbxLocalPortsNames.SelectedItem == null)
+            string err = string.Empty;
+            if (cbxLocalPortsNames.SelectedItem == null)
             {
-                lblStatus.Text = "Please select both baud-rate speed and COM port name";
+                WriteStatusFail("Please select port of COM");
+
             }
             else
             {
-                lblStatus.Text = "Local serial paramters saved (" +
-                                cbxLocalPortsNames.SelectedItem.ToString() + "," +
-                                cbxLocalBaud.SelectedItem.ToString() + ")";
-                _kuscSerial.LocalComPort = cbxLocalPortsNames.SelectedItem.ToString();
-                _kuscSerial.LocalBaudRate = int.Parse(cbxLocalBaud.SelectedItem.ToString());
-                _kuscSerial.SetLocalComConfig();
+                err = _kuscSerial.InitSerialPort(cbxLocalPortsNames.SelectedItem.ToString());
+                if (err != string.Empty)
+                {
+                    WriteStatusFail(err);
+                }
+                else
+                {
+                    WriteStatusOk("Comport open OK");
+
+                    err = _kuscSerial.OpenUartReadMessage();
+                    if(err != string.Empty)
+                    {
+                        WriteStatusFail(err);
+                    }
+                }
             }
         }
         #endregion
+
+        private void btnUartTestSend_Click(object sender, EventArgs e)
+        {
+            _kuscSerial.SerialWriteString(tbxWriteSerial.Text);
+        }
+
+
+
+        #endregion
+
+
+
+        #region Application logs
+
+        #region Application interface
+
+        void WriteStatusOk(string statMessage)
+        {
+            lblStatus.ForeColor = Color.Black;
+            lblStatus.Text = statMessage;
+        }
+
+        void WriteStatusFail(string statMessage)
+        {
+            lblStatus.ForeColor = Color.Red;
+            lblStatus.Text = statMessage;
+        }
+        #endregion
+
+        #endregion
+
+        private void btnControlLedTest_Click(object sender, EventArgs e)
+        {
+            _kuscSerial.SerialWriteMessage(KuscMessage.MESSAGE_GROUP.CONTROL_MSG, KuscMessage.MESSAGE_REQUEST.CONTROL_TEST_LEDS, string.Empty);
+        }
     }
 }
