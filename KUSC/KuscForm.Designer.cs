@@ -50,20 +50,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.btnReadMcuRunTime = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnReadCpldFwVer = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button20 = new System.Windows.Forms.Button();
+            this.btnReadMcuFwVer = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.btnControlLedTest = new System.Windows.Forms.Button();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnResetMcu = new System.Windows.Forms.Button();
+            this.btnResetCPLD = new System.Windows.Forms.Button();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
             this.button15 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -148,7 +148,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.btnUartTestSend = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbxTestUart = new System.Windows.Forms.TextBox();
             this.btnInitComport = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -417,15 +417,15 @@
             // 
             // groupBox35
             // 
-            this.groupBox35.Controls.Add(this.textBox5);
+            this.groupBox35.Controls.Add(this.btnReadMcuRunTime);
             this.groupBox35.Controls.Add(this.button7);
-            this.groupBox35.Controls.Add(this.textBox6);
+            this.groupBox35.Controls.Add(this.btnReadCpldFwVer);
             this.groupBox35.Controls.Add(this.button8);
             this.groupBox35.Controls.Add(this.label12);
             this.groupBox35.Controls.Add(this.label23);
             this.groupBox35.Controls.Add(this.textBox11);
             this.groupBox35.Controls.Add(this.label24);
-            this.groupBox35.Controls.Add(this.button20);
+            this.groupBox35.Controls.Add(this.btnReadMcuFwVer);
             this.groupBox35.Location = new System.Drawing.Point(10, 23);
             this.groupBox35.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox35.Name = "groupBox35";
@@ -435,14 +435,14 @@
             this.groupBox35.TabStop = false;
             this.groupBox35.Text = "MCU and CPLD F.W version";
             // 
-            // textBox5
+            // btnReadMcuRunTime
             // 
-            this.textBox5.Location = new System.Drawing.Point(11, 141);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(108, 20);
-            this.textBox5.TabIndex = 16;
+            this.btnReadMcuRunTime.Location = new System.Drawing.Point(11, 141);
+            this.btnReadMcuRunTime.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReadMcuRunTime.Name = "btnReadMcuRunTime";
+            this.btnReadMcuRunTime.ReadOnly = true;
+            this.btnReadMcuRunTime.Size = new System.Drawing.Size(108, 20);
+            this.btnReadMcuRunTime.TabIndex = 16;
             // 
             // button7
             // 
@@ -456,14 +456,14 @@
             this.button7.Text = "Read";
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // textBox6
+            // btnReadCpldFwVer
             // 
-            this.textBox6.Location = new System.Drawing.Point(12, 94);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(108, 20);
-            this.textBox6.TabIndex = 14;
+            this.btnReadCpldFwVer.Location = new System.Drawing.Point(12, 94);
+            this.btnReadCpldFwVer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReadCpldFwVer.Name = "btnReadCpldFwVer";
+            this.btnReadCpldFwVer.ReadOnly = true;
+            this.btnReadCpldFwVer.Size = new System.Drawing.Size(108, 20);
+            this.btnReadCpldFwVer.TabIndex = 14;
             // 
             // button8
             // 
@@ -516,17 +516,18 @@
             this.label24.TabIndex = 5;
             this.label24.Text = "MCU F.W version number";
             // 
-            // button20
+            // btnReadMcuFwVer
             // 
-            this.button20.BackColor = System.Drawing.SystemColors.Control;
-            this.button20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button20.Location = new System.Drawing.Point(123, 39);
-            this.button20.Margin = new System.Windows.Forms.Padding(2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(44, 19);
-            this.button20.TabIndex = 3;
-            this.button20.Text = "Read";
-            this.button20.UseVisualStyleBackColor = false;
+            this.btnReadMcuFwVer.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadMcuFwVer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnReadMcuFwVer.Location = new System.Drawing.Point(123, 39);
+            this.btnReadMcuFwVer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReadMcuFwVer.Name = "btnReadMcuFwVer";
+            this.btnReadMcuFwVer.Size = new System.Drawing.Size(44, 19);
+            this.btnReadMcuFwVer.TabIndex = 3;
+            this.btnReadMcuFwVer.Text = "Read";
+            this.btnReadMcuFwVer.UseVisualStyleBackColor = false;
+            this.btnReadMcuFwVer.Click += new System.EventHandler(this.btnReadMcuFwVer_Click);
             // 
             // groupBox13
             // 
@@ -555,8 +556,8 @@
             // 
             // groupBox27
             // 
-            this.groupBox27.Controls.Add(this.button13);
-            this.groupBox27.Controls.Add(this.button14);
+            this.groupBox27.Controls.Add(this.btnResetMcu);
+            this.groupBox27.Controls.Add(this.btnResetCPLD);
             this.groupBox27.Location = new System.Drawing.Point(10, 214);
             this.groupBox27.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox27.Name = "groupBox27";
@@ -566,29 +567,29 @@
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "system operation";
             // 
-            // button13
+            // btnResetMcu
             // 
-            this.button13.BackColor = System.Drawing.SystemColors.Control;
-            this.button13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button13.Location = new System.Drawing.Point(11, 25);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(87, 19);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Reset MCU unit";
-            this.button13.UseVisualStyleBackColor = false;
+            this.btnResetMcu.BackColor = System.Drawing.SystemColors.Control;
+            this.btnResetMcu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnResetMcu.Location = new System.Drawing.Point(11, 25);
+            this.btnResetMcu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetMcu.Name = "btnResetMcu";
+            this.btnResetMcu.Size = new System.Drawing.Size(87, 19);
+            this.btnResetMcu.TabIndex = 2;
+            this.btnResetMcu.Text = "Reset MCU unit";
+            this.btnResetMcu.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // btnResetCPLD
             // 
-            this.button14.BackColor = System.Drawing.SystemColors.Control;
-            this.button14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button14.Location = new System.Drawing.Point(12, 48);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(87, 19);
-            this.button14.TabIndex = 3;
-            this.button14.Text = "Reset CPLD unit";
-            this.button14.UseVisualStyleBackColor = false;
+            this.btnResetCPLD.BackColor = System.Drawing.SystemColors.Control;
+            this.btnResetCPLD.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnResetCPLD.Location = new System.Drawing.Point(12, 48);
+            this.btnResetCPLD.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetCPLD.Name = "btnResetCPLD";
+            this.btnResetCPLD.Size = new System.Drawing.Size(87, 19);
+            this.btnResetCPLD.TabIndex = 3;
+            this.btnResetCPLD.Text = "Reset CPLD unit";
+            this.btnResetCPLD.UseVisualStyleBackColor = false;
             // 
             // groupBox29
             // 
@@ -897,7 +898,6 @@
             this.gbxTechMode.Size = new System.Drawing.Size(738, 332);
             this.gbxTechMode.TabIndex = 11;
             this.gbxTechMode.TabStop = false;
-            this.gbxTechMode.Visible = false;
             // 
             // groupBox11
             // 
@@ -1514,7 +1514,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label33);
-            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.tbxTestUart);
             this.groupBox4.Controls.Add(this.btnUartTestSend);
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.tbxWriteSerial);
@@ -1562,13 +1562,13 @@
             this.label33.TabIndex = 8;
             this.label33.Text = "Read";
             // 
-            // textBox4
+            // tbxTestUart
             // 
-            this.textBox4.Location = new System.Drawing.Point(59, 46);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
+            this.tbxTestUart.Location = new System.Drawing.Point(59, 46);
+            this.tbxTestUart.Name = "tbxTestUart";
+            this.tbxTestUart.ReadOnly = true;
+            this.tbxTestUart.Size = new System.Drawing.Size(100, 20);
+            this.tbxTestUart.TabIndex = 7;
             // 
             // btnInitComport
             // 
@@ -1678,12 +1678,12 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btnReadMcuFwVer;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button btnControlLedTest;
         private System.Windows.Forms.GroupBox groupBox27;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnResetMcu;
+        private System.Windows.Forms.Button btnResetCPLD;
         private System.Windows.Forms.GroupBox groupBox29;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.RichTextBox richTextBox3;
@@ -1710,9 +1710,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox btnReadMcuRunTime;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox btnReadCpldFwVer;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox14;
@@ -1765,7 +1765,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbxTestUart;
         private System.Windows.Forms.Button btnUartTestSend;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox tbxWriteSerial;

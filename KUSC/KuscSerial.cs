@@ -15,11 +15,15 @@ namespace KUSC
         private static SerialPort _serialPort = new SerialPort();
         private static bool _readMessageMutex;
         private static List<char> _rxBuffer;
+        private static int _rxReadCount = 0;
         private static List<char> _txMessageBuffer;
 
         // define functions of delegates:
         delegate double MessagesGroups(string data);
         private KuscMessageFunctions _messageGroups;
+
+        // System utils:
+        KuscUtil _KuscUtil;
         #endregion
 
         #region Local com settings and C`tor
@@ -28,6 +32,7 @@ namespace KUSC
         {
             _rxBuffer = new List<char>();
             _txMessageBuffer = new List<char>();
+            _KuscUtil = new KuscUtil();
             _messageGroups = new KuscMessageFunctions();
             //MessagesGroups[] groups = new MessagesGroups
         }
@@ -90,7 +95,8 @@ namespace KUSC
         private static void UartRxInterrupt(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
-            _rxBuffer.Add(Convert.ToChar(sp.ReadByte()));
+            char rxRec = Convert.ToChar(sp.ReadChar());
+            _rxBuffer.Add(rxRec);
         }
 
         public string OpenUartReadMessage()
@@ -115,14 +121,28 @@ namespace KUSC
             while (true == _readMessageMutex)
             {
                 // Try to find start of normal frame by 2 magic bytes: 
-                if (_rxBuffer.Count > KuscCommon.MIN_RX_MSG_SIZE)
+                if (_rxBuffer.Count > KuscMessageParams.MIN_RX_MSG_SIZE)
                 {
-                    if (_rxBuffer[0] == KuscMessageParams.MSG_MAGIC_A)
+                    if (_rxBuffer[KuscMessageParams.MSG_MAGIC_LOCATION] == KuscMessageParams.MSG_MAGIC_A)
                     {
                         
+                        // Store CRC-8 Rx input:
+                        char crcIn = _rxBuffer[_rxBuffer.Count - 1];
+
+                        // Remove CRC char:
+                        _rxBuffer.RemoveAt(_rxBuffer.Count - 1);
+                        char crcCalc = _KuscUtil.CalcCrc8(_rxBuffer.ToArray());
+                        if (crcIn == crcCalc) // It is valid frame and recieve ok.
+                        {
+                            KuscMessageParams.MESSAGE_GROUP group = (KuscMessageParams.MESSAGE_GROUP)_rxBuffer[KuscMessageParams.MSG_GROUP_LOCATION];
+                            KuscMessageParams.MESSAGE_REQUEST request = (KuscMessageParams.MESSAGE_REQUEST)_rxBuffer[KuscMessageParams.MSG_REQUEST_LOCATION];
+                        }
+                        _rxReadCount = _rxBuffer.Count;
+
+                        //_rxBuffer.RemoveRange(0, _rxReadCount);
                     }
                 }
-                Task.Delay(1000);
+                Thread.Sleep(500);
             }
         }
 
@@ -133,7 +153,15 @@ namespace KUSC
 
         public void SerialWriteChar(char charData)
         {
-            _serialPort.Write(charData.ToString());
+            if(true == _serialPort.IsOpen)
+            {
+                _serialPort.Write(charData.ToString());
+            }
+            else
+            {
+                _KuscUtil.UpdateStatusFail("Port is not open, please open it");
+            }
+            
         }
 
         public void SerialWriteString(string stringData)
@@ -163,8 +191,11 @@ namespace KUSC
                 _txMessageBuffer.Add(Convert.ToChar(data.Length));
             }
 
-            // Now send the frame
+            // Calc CRC-8:
+            char crc = _KuscUtil.CalcCrc8(_txMessageBuffer.ToArray());
+            _txMessageBuffer.Add(crc);
 
+            // Now send the frame
             foreach (var item in _txMessageBuffer)
             {
                 SerialWriteChar(item);

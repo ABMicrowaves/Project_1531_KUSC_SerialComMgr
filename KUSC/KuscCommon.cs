@@ -22,7 +22,6 @@ namespace KUSC
         public static int SERIAL_READ_TIMEOUT_MSEC = 500;
         public static int SERIAL_WRITE_TIMEOUT_MSEC = 500;
         public static int RX_BUF_SIZE_BYTES = 20;
-        public static int MIN_RX_MSG_SIZE = 3;
         #endregion
     }
 }

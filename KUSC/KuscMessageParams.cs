@@ -13,6 +13,10 @@ namespace KUSC
         #region Uart messages
 
         public static char MSG_MAGIC_A = '$';
+        public static int MIN_RX_MSG_SIZE = 4;
+        public static int MSG_MAGIC_LOCATION = 0;
+        public static int MSG_GROUP_LOCATION = 1;
+        public static int MSG_REQUEST_LOCATION = 2;
 
         public enum MESSAGE_GROUP : int
         {

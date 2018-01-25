@@ -13,12 +13,13 @@ namespace KUSC
     public partial class KuscForm : Form
     {
         KuscSerial _kuscSerial;
+        KuscUtil _KuscUtil;
         public KuscForm()
         {
             InitializeComponent();
             _kuscSerial = new KuscSerial();
-            
-            
+            _KuscUtil = new KuscUtil();
+            _KuscUtil.UpdateStatusObject(this);
         }
 
         #region Technician mode
@@ -83,10 +84,14 @@ namespace KUSC
 
         private void btnUartTestSend_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteString(tbxWriteSerial.Text);
+            char c = Convert.ToChar(0xA1);
+            _kuscSerial.SerialWriteChar(c);
         }
 
-
+        public void TestUart(char c)
+        {
+            tbxTestUart.Text = c.ToString();
+        }
 
         #endregion
 
@@ -96,13 +101,13 @@ namespace KUSC
 
         #region Application interface
 
-        void WriteStatusOk(string statMessage)
+        public void WriteStatusOk(string statMessage)
         {
             lblStatus.ForeColor = Color.Black;
             lblStatus.Text = statMessage;
         }
 
-        void WriteStatusFail(string statMessage)
+        public void WriteStatusFail(string statMessage)
         {
             lblStatus.ForeColor = Color.Red;
             lblStatus.Text = statMessage;
@@ -113,7 +118,12 @@ namespace KUSC
 
         private void btnControlLedTest_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessage.MESSAGE_GROUP.CONTROL_MSG, KuscMessage.MESSAGE_REQUEST.CONTROL_TEST_LEDS, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.CONTROL_TEST_LEDS, string.Empty);
+        }
+
+        private void btnReadMcuFwVer_Click(object sender, EventArgs e)
+        {
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_FW_VERSION, string.Empty);
         }
     }
 }

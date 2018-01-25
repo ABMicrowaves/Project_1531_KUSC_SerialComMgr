@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KuscUtil.cs" />
     <Compile Include="KuscCommon.cs" />
     <Compile Include="KuscLogs.cs" />
-    <Compile Include="KuscMessage.cs" />
+    <Compile Include="KuscMessageFunctions.cs" />
+    <Compile Include="KuscMessageParams.cs" />
     <Compile Include="KuscSerial.cs" />
     <Compile Include="KuscForm.cs">
       <SubType>Form</SubType>
