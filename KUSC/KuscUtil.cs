@@ -63,12 +63,12 @@ namespace KUSC
             _KuscForm = Sender;
         }
 
-        public void UpdateStatusOk(string msg)
+        public static void UpdateStatusOk(string msg)
         {
             _KuscForm.WriteStatusOk(msg);
         }
 
-        public void UpdateStatusFail(string msg)
+        public static void UpdateStatusFail(string msg)
         {
             _KuscForm.WriteStatusFail(msg);
         }

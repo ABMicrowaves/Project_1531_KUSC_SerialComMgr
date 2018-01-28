@@ -18,9 +18,17 @@ namespace KUSC
         private static int _rxReadCount = 0;
         private static List<char> _txMessageBuffer;
 
-        // define functions of delegates:
-        delegate double MessagesGroups(string data);
-        private KuscMessageFunctions _messageGroups;
+        // define groups functions array:
+        public delegate bool Delegatearray(KuscMessageParams.MESSAGE_REQUEST request, string data);
+        Delegatearray[] _groups =
+        {
+            new Delegatearray(KuscMessageFunctions.GroupControlMcu),
+            new Delegatearray(KuscMessageFunctions.GroupStatusAndVersion),
+            new Delegatearray(KuscMessageFunctions.GroupAdc),
+            new Delegatearray(KuscMessageFunctions.GroupSynthesizers),
+            new Delegatearray(KuscMessageFunctions.GroupFlashMemory),
+            new Delegatearray(KuscMessageFunctions.GroupDAC),
+        };
 
         // System utils:
         KuscUtil _KuscUtil;
@@ -33,8 +41,10 @@ namespace KUSC
             _rxBuffer = new List<char>();
             _txMessageBuffer = new List<char>();
             _KuscUtil = new KuscUtil();
-            _messageGroups = new KuscMessageFunctions();
-            //MessagesGroups[] groups = new MessagesGroups
+            
+
+
+
         }
 
         public List<string> GetComPorts()
@@ -125,7 +135,6 @@ namespace KUSC
                 {
                     if (_rxBuffer[KuscMessageParams.MSG_MAGIC_LOCATION] == KuscMessageParams.MSG_MAGIC_A)
                     {
-                        
                         // Store CRC-8 Rx input:
                         char crcIn = _rxBuffer[_rxBuffer.Count - 1];
 
@@ -136,16 +145,26 @@ namespace KUSC
                         {
                             KuscMessageParams.MESSAGE_GROUP group = (KuscMessageParams.MESSAGE_GROUP)_rxBuffer[KuscMessageParams.MSG_GROUP_LOCATION];
                             KuscMessageParams.MESSAGE_REQUEST request = (KuscMessageParams.MESSAGE_REQUEST)_rxBuffer[KuscMessageParams.MSG_REQUEST_LOCATION];
+                            string requestData = string.Empty;
+                            if (_rxBuffer[KuscMessageParams.MSG_REQUEST_DATA_SIZE] > 0)
+                            {
+                                 
+                                for (int dataIdx = KuscMessageParams.MSG_REQUEST_DATA_SIZE; dataIdx < _rxBuffer.Count - 2; dataIdx++)
+                                {
+                                    requestData += _rxBuffer[dataIdx] + ",";
+                                }
+                            }
+                            _groups[(int)group - 1](request, requestData);
                         }
-                        _rxReadCount = _rxBuffer.Count;
 
-                        //_rxBuffer.RemoveRange(0, _rxReadCount);
+                        // Empty rx buffer after read message
+                        _rxReadCount = _rxBuffer.Count;
+                        _rxBuffer.RemoveRange(0, _rxReadCount);
                     }
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(KuscMessageParams.DELAY_BETWEEN_MESSAGE_READ);
             }
         }
-
 
         #endregion
 
@@ -159,7 +178,7 @@ namespace KUSC
             }
             else
             {
-                _KuscUtil.UpdateStatusFail("Port is not open, please open it");
+                KuscUtil.UpdateStatusFail("Port is not open, please open it");
             }
             
         }
@@ -168,11 +187,6 @@ namespace KUSC
         {
             _serialPort.Write(stringData);
         }
-        #endregion
-
-        #endregion
-
-        #region UART messages
 
         public bool SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP group, KuscMessageParams.MESSAGE_REQUEST request, string data)
         {
@@ -203,8 +217,8 @@ namespace KUSC
 
             return true;
         }
+        #endregion
 
-        delegate double ControlMessageGroup(string data);
         #endregion
     }
 }
