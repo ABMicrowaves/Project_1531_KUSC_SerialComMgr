@@ -102,13 +102,13 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.btnAdcChannelMode = new System.Windows.Forms.GroupBox();
             this.btnAdcChMode = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.cbxAdcSingleCh = new System.Windows.Forms.ComboBox();
+            this.rdbAdcCircMode = new System.Windows.Forms.RadioButton();
+            this.rdbAdcSingleMode = new System.Windows.Forms.RadioButton();
             this.btnAdcConversionMode = new System.Windows.Forms.GroupBox();
             this.btnAdcConvMode = new System.Windows.Forms.Button();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.rdbAdcConvFormatLeft = new System.Windows.Forms.RadioButton();
+            this.rdbAdcConvFormatRight = new System.Windows.Forms.RadioButton();
             this.btnAdcPositiveVoltage = new System.Windows.Forms.GroupBox();
             this.btnAdcPositveVoltage = new System.Windows.Forms.Button();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
@@ -925,7 +925,6 @@
             this.gbxTechMode.Size = new System.Drawing.Size(738, 338);
             this.gbxTechMode.TabIndex = 11;
             this.gbxTechMode.TabStop = false;
-            this.gbxTechMode.Visible = false;
             // 
             // groupBox4
             // 
@@ -1006,9 +1005,9 @@
             // btnAdcChannelMode
             // 
             this.btnAdcChannelMode.Controls.Add(this.btnAdcChMode);
-            this.btnAdcChannelMode.Controls.Add(this.comboBox3);
-            this.btnAdcChannelMode.Controls.Add(this.radioButton11);
-            this.btnAdcChannelMode.Controls.Add(this.radioButton12);
+            this.btnAdcChannelMode.Controls.Add(this.cbxAdcSingleCh);
+            this.btnAdcChannelMode.Controls.Add(this.rdbAdcCircMode);
+            this.btnAdcChannelMode.Controls.Add(this.rdbAdcSingleMode);
             this.btnAdcChannelMode.Location = new System.Drawing.Point(276, 21);
             this.btnAdcChannelMode.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdcChannelMode.Name = "btnAdcChannelMode";
@@ -1028,49 +1027,49 @@
             this.btnAdcChMode.UseVisualStyleBackColor = true;
             this.btnAdcChMode.Click += new System.EventHandler(this.btnAdcChMode_Click);
             // 
-            // comboBox3
+            // cbxAdcSingleCh
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cbxAdcSingleCh.FormattingEnabled = true;
+            this.cbxAdcSingleCh.Items.AddRange(new object[] {
             "Temperature.",
             "Reverse analog voltage. ",
             "Forward analog voltage.",
             "System input voltage.",
             "Current analog voltage."});
-            this.comboBox3.Location = new System.Drawing.Point(4, 84);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(131, 21);
-            this.comboBox3.TabIndex = 2;
+            this.cbxAdcSingleCh.Location = new System.Drawing.Point(4, 84);
+            this.cbxAdcSingleCh.Name = "cbxAdcSingleCh";
+            this.cbxAdcSingleCh.Size = new System.Drawing.Size(131, 21);
+            this.cbxAdcSingleCh.TabIndex = 2;
             // 
-            // radioButton11
+            // rdbAdcCircMode
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(4, 32);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(89, 17);
-            this.radioButton11.TabIndex = 1;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Circular mode";
-            this.radioButton11.UseVisualStyleBackColor = true;
+            this.rdbAdcCircMode.AutoSize = true;
+            this.rdbAdcCircMode.Location = new System.Drawing.Point(4, 32);
+            this.rdbAdcCircMode.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcCircMode.Name = "rdbAdcCircMode";
+            this.rdbAdcCircMode.Size = new System.Drawing.Size(89, 17);
+            this.rdbAdcCircMode.TabIndex = 1;
+            this.rdbAdcCircMode.TabStop = true;
+            this.rdbAdcCircMode.Text = "Circular mode";
+            this.rdbAdcCircMode.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // rdbAdcSingleMode
             // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(4, 58);
-            this.radioButton12.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(95, 17);
-            this.radioButton12.TabIndex = 0;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Single channel";
-            this.radioButton12.UseVisualStyleBackColor = true;
+            this.rdbAdcSingleMode.AutoSize = true;
+            this.rdbAdcSingleMode.Location = new System.Drawing.Point(4, 58);
+            this.rdbAdcSingleMode.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcSingleMode.Name = "rdbAdcSingleMode";
+            this.rdbAdcSingleMode.Size = new System.Drawing.Size(95, 17);
+            this.rdbAdcSingleMode.TabIndex = 0;
+            this.rdbAdcSingleMode.TabStop = true;
+            this.rdbAdcSingleMode.Text = "Single channel";
+            this.rdbAdcSingleMode.UseVisualStyleBackColor = true;
             // 
             // btnAdcConversionMode
             // 
             this.btnAdcConversionMode.Controls.Add(this.btnAdcConvMode);
-            this.btnAdcConversionMode.Controls.Add(this.radioButton9);
-            this.btnAdcConversionMode.Controls.Add(this.radioButton10);
+            this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatLeft);
+            this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatRight);
             this.btnAdcConversionMode.Location = new System.Drawing.Point(562, 21);
             this.btnAdcConversionMode.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdcConversionMode.Name = "btnAdcConversionMode";
@@ -1090,29 +1089,29 @@
             this.btnAdcConvMode.UseVisualStyleBackColor = true;
             this.btnAdcConvMode.Click += new System.EventHandler(this.btnAdcConvMode_Click);
             // 
-            // radioButton9
+            // rdbAdcConvFormatLeft
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(4, 36);
-            this.radioButton9.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(81, 17);
-            this.radioButton9.TabIndex = 1;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "Left justified";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rdbAdcConvFormatLeft.AutoSize = true;
+            this.rdbAdcConvFormatLeft.Location = new System.Drawing.Point(4, 36);
+            this.rdbAdcConvFormatLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcConvFormatLeft.Name = "rdbAdcConvFormatLeft";
+            this.rdbAdcConvFormatLeft.Size = new System.Drawing.Size(81, 17);
+            this.rdbAdcConvFormatLeft.TabIndex = 1;
+            this.rdbAdcConvFormatLeft.TabStop = true;
+            this.rdbAdcConvFormatLeft.Text = "Left justified";
+            this.rdbAdcConvFormatLeft.UseVisualStyleBackColor = true;
             // 
-            // radioButton10
+            // rdbAdcConvFormatRight
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(4, 62);
-            this.radioButton10.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(88, 17);
-            this.radioButton10.TabIndex = 0;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Right justified";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rdbAdcConvFormatRight.AutoSize = true;
+            this.rdbAdcConvFormatRight.Location = new System.Drawing.Point(4, 62);
+            this.rdbAdcConvFormatRight.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcConvFormatRight.Name = "rdbAdcConvFormatRight";
+            this.rdbAdcConvFormatRight.Size = new System.Drawing.Size(88, 17);
+            this.rdbAdcConvFormatRight.TabIndex = 0;
+            this.rdbAdcConvFormatRight.TabStop = true;
+            this.rdbAdcConvFormatRight.Text = "Right justified";
+            this.rdbAdcConvFormatRight.UseVisualStyleBackColor = true;
             // 
             // btnAdcPositiveVoltage
             // 
@@ -1807,12 +1806,12 @@
         private System.Windows.Forms.RadioButton radioButton14;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox btnAdcChannelMode;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.ComboBox cbxAdcSingleCh;
+        private System.Windows.Forms.RadioButton rdbAdcCircMode;
+        private System.Windows.Forms.RadioButton rdbAdcSingleMode;
         private System.Windows.Forms.GroupBox btnAdcConversionMode;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton rdbAdcConvFormatLeft;
+        private System.Windows.Forms.RadioButton rdbAdcConvFormatRight;
         private System.Windows.Forms.GroupBox btnAdcPositiveVoltage;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;

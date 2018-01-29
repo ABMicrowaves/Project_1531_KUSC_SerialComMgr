@@ -49,8 +49,10 @@ namespace KUSC
 
             // ADC
             ADC_ENABLE = 0x31,
-            ADC_CHANNEL_SELECT_MODE     = 0x32,
-            ADC_CONV_RESULT_FORMAT      = 0x33,
+            ADC_CHANNEL_SINGLE_MODE     = 0x32,
+            ADC_CHANNEL_CIRC_MODE       = 0x33,
+            ADC_CONV_RESULT_RIGHT       = 0x34,
+            ADC_CONV_RESULT_LEFT        = 0x35,
 
             // Synthesizer (Up / Down):
             SYNTH_DOWN_SET              = 0x41,

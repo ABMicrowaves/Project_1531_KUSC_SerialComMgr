@@ -22,7 +22,6 @@ namespace KUSC
             for (int i = 0; i < input.Length; i++)
                 crc += input[i];
             crc &= 0xff;
-            //string crchex = crc.ToString("X2");
             return Convert.ToChar(crc);
         }
 

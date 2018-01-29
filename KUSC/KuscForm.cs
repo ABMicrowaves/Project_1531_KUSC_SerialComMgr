@@ -148,17 +148,17 @@ namespace KUSC
 
         private void btnReadMcuFwVer_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_FW_VERSION, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_FW_VERSION, string.Empty);
         }
 
         private void btnReadCpldFwVersion_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_CPLD_VERSION, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_CPLD_VERSION, string.Empty);
         }
 
         private void btnReadMcuTime_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_RUN_TIME, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_RUN_TIME, string.Empty);
         }
         #endregion
 
@@ -166,22 +166,40 @@ namespace KUSC
 
         private void btnAdcNegativVoltage_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
         }
 
         private void btnAdcChMode_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SELECT_MODE, string.Empty);
+            string data = string.Empty;
+            if(rdbAdcCircMode.Checked == true)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_CIRC_MODE, data);
+            }
+            else if (rdbAdcSingleMode.Checked == true)
+            {
+                data = (cbxAdcSingleCh.SelectedIndex + 1).ToString();
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SINGLE_MODE, data);
+            }
+            
         }
 
         private void btnAdcPositveVoltage_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
         }
 
         private void btnAdcConvMode_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_FORMAT, string.Empty);
+            if(rdbAdcConvFormatLeft.Checked == true)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_LEFT, string.Empty);
+            }
+            else if(rdbAdcConvFormatRight.Checked == true)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_RIGHT, string.Empty);
+            }
+            
         }
         #endregion
 
@@ -189,12 +207,12 @@ namespace KUSC
 
         private void btnSetSyntDown_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, string.Empty);
         }
 
         private void btnSetSyntUp_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, string.Empty);
         }
 
         #endregion
@@ -203,17 +221,17 @@ namespace KUSC
 
         private void btnReadFlashData_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_RAW_DATA, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.FLASH, KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_RAW_DATA, string.Empty);
         }
 
         private void btnEmptyFlash_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.FLASH_EREASE_MEMORY, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.FLASH, KuscMessageParams.MESSAGE_REQUEST.FLASH_EREASE_MEMORY, string.Empty);
         }
 
         private void btnReadFlashStatus_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_CONDITION, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.FLASH, KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_CONDITION, string.Empty);
         }
 
         #endregion
@@ -222,13 +240,12 @@ namespace KUSC
 
         private void btnSetDac_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, string.Empty);
         }
 
         #endregion
 
         #endregion
-
 
     }
 }

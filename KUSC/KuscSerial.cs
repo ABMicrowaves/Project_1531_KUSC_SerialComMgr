@@ -200,9 +200,9 @@ namespace KUSC
             {
                 foreach (char dataChar in data)
                 {
-                    _txMessageBuffer.Add(dataChar);
+                    char c = Convert.ToChar(Convert.ToInt32(dataChar) - '0');
+                    _txMessageBuffer.Add(c);
                 }
-                _txMessageBuffer.Add(Convert.ToChar(data.Length));
             }
 
             // Calc CRC-8:

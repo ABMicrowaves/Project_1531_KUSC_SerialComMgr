@@ -70,12 +70,12 @@ namespace KUSC
                     KuscUtil.UpdateStatusOk("MCU: Turn ADC ok");
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SELECT_MODE:
-                    KuscUtil.UpdateStatusOk("MCU: Set ADC channel mode ok");
+                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SINGLE_MODE:
+                    KuscUtil.UpdateStatusOk("MCU: Set ADC single channel mode ok");
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_FORMAT:
-                    KuscUtil.UpdateStatusOk("MCU: Set ADC conversion result format ok");
+                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_CIRC_MODE:
+                    KuscUtil.UpdateStatusOk("MCU: Set ADC circular channel mode ok");
                     break;
             }
             return true;
