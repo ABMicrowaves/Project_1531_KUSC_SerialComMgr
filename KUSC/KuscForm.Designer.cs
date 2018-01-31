@@ -1657,6 +1657,7 @@
             this.MaximizeBox = false;
             this.Name = "KuscForm";
             this.Text = "KU serial communication controller";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

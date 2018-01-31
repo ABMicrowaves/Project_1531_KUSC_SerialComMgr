@@ -102,7 +102,12 @@ namespace KUSC
         public void WriteStatusOk(string statMessage)
         {
             lblStatus.ForeColor = Color.Black;
-            //lblStatus.Text = statMessage;
+            lblStatus.Text = statMessage;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         public void WriteStatusFail(string statMessage)
