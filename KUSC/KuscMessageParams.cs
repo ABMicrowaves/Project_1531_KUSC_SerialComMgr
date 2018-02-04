@@ -12,13 +12,15 @@ namespace KUSC
 
         #region Uart messages
 
-        public static char MSG_MAGIC_A                  = '$';
-        public static int DELAY_BETWEEN_MESSAGE_READ    = 500;
-        public static int MIN_RX_MSG_SIZE               = 4;
-        public static int MSG_MAGIC_LOCATION            = 0;
-        public static int MSG_GROUP_LOCATION            = 1;
-        public static int MSG_REQUEST_LOCATION          = 2;
-        public static int MSG_REQUEST_DATA_SIZE         = 3;
+        public static char MSG_MAGIC_A                      = '$';
+        public static int DELAY_BETWEEN_MESSAGE_READ        = 100;
+        public static int MIN_RX_MSG_SIZE                   = 3;
+        public static int MSG_MAGIC_LOCATION                = 0;
+        public static int MSG_GROUP_LOCATION                = 1;
+        public static int MSG_REQUEST_LOCATION              = 2;
+        public static int MSG_REQUEST_DATA_SIZE_LOCATION    = 3;
+
+        public static int MSG_RX_BUFFER_SIZE                = 100;
 
         public enum MESSAGE_GROUP : int
         {
@@ -61,7 +63,9 @@ namespace KUSC
             // Flash memory
             FLASH_EREASE_MEMORY         = 0x51,
             FLASH_READ_CONDITION        = 0x52,
-            FLASH_READ_RAW_DATA         = 0x53,
+            FLASH_SEND_CONDITION        = 0x53,
+            FLASH_REQUEST_RAW_DATA      = 0x54,
+            FLASH_SEND_RAW_DATA         = 0x55,
 
             //DAC
             DAC_SET_VALUE               = 0x61,

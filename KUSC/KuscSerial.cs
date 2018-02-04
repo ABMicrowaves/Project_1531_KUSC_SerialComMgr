@@ -13,9 +13,17 @@ namespace KUSC
         #region Class verbs
 
         private static SerialPort _serialPort = new SerialPort();
+
+        // UART Read variables:
         private static bool _readMessageMutex;
         private static List<char> _rxBuffer;
+        private List<char> _rxMsgBuffer;
         private static int _rxReadCount = 0;
+        private static int _rxWriteCount = 0;
+        private char cRxChar;
+        private int _rxMsgCount = 0;
+
+        // UART Write
         private static List<char> _txMessageBuffer;
 
         // define groups functions array:
@@ -30,6 +38,22 @@ namespace KUSC
             new Delegatearray(KuscMessageFunctions.GroupDAC),
         };
 
+        // Serial RX enum:
+
+        enum UART_READ_STATE
+        {
+            START_RX_MESSAGE_READ = 0,
+            FIND_MAGIC,
+            READ_GROUP,
+            READ_REQUEST,
+            READ_DATA_SIZE,
+            READ_DATA,
+            CHECK_CRC,
+            JUMP_FUNCTION
+        };
+
+        static UART_READ_STATE cRxState;
+
         // System utils:
         KuscUtil _KuscUtil;
         #endregion
@@ -39,12 +63,14 @@ namespace KUSC
         public KuscSerial()
         {
             _rxBuffer = new List<char>();
+            for (int i = 0; i < KuscMessageParams.MSG_RX_BUFFER_SIZE; i++)
+            {
+                _rxBuffer.Add('0');
+            }
+            _rxMsgBuffer = new List<char>();
             _txMessageBuffer = new List<char>();
             _KuscUtil = new KuscUtil();
-            
-
-
-
+            cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
         }
 
         public List<string> GetComPorts()
@@ -106,7 +132,9 @@ namespace KUSC
         {
             SerialPort sp = (SerialPort)sender;
             char rxRec = Convert.ToChar(sp.ReadChar());
-            _rxBuffer.Add(rxRec);
+            _rxBuffer[_rxWriteCount] = rxRec;
+            _rxWriteCount++;
+            _rxWriteCount %= KuscMessageParams.MSG_RX_BUFFER_SIZE;
         }
 
         public string OpenUartReadMessage()
@@ -130,38 +158,89 @@ namespace KUSC
         {
             while (true == _readMessageMutex)
             {
-                // Try to find start of normal frame by 2 magic bytes: 
-                if (_rxBuffer.Count > KuscMessageParams.MIN_RX_MSG_SIZE)
+                switch(cRxState)
                 {
-                    if (_rxBuffer[KuscMessageParams.MSG_MAGIC_LOCATION] == KuscMessageParams.MSG_MAGIC_A)
-                    {
-                        // Store CRC-8 Rx input:
-                        char crcIn = _rxBuffer[_rxBuffer.Count - 1];
+                    case UART_READ_STATE.START_RX_MESSAGE_READ:
 
-                        // Remove CRC char:
-                        _rxBuffer.RemoveAt(_rxBuffer.Count - 1);
-                        char crcCalc = _KuscUtil.CalcCrc8(_rxBuffer.ToArray());
-                        if (crcIn == crcCalc) // It is valid frame and recieve ok.
+                        if(Math.Abs(_rxWriteCount - _rxReadCount) > KuscMessageParams.MIN_RX_MSG_SIZE)   // TODO: need to fix this line.
                         {
-                            KuscMessageParams.MESSAGE_GROUP group = (KuscMessageParams.MESSAGE_GROUP)_rxBuffer[KuscMessageParams.MSG_GROUP_LOCATION];
-                            KuscMessageParams.MESSAGE_REQUEST request = (KuscMessageParams.MESSAGE_REQUEST)_rxBuffer[KuscMessageParams.MSG_REQUEST_LOCATION];
-                            string requestData = string.Empty;
-                            if (_rxBuffer[KuscMessageParams.MSG_REQUEST_DATA_SIZE] > 0)
-                            {
-                                 
-                                for (int dataIdx = KuscMessageParams.MSG_REQUEST_DATA_SIZE; dataIdx < _rxBuffer.Count - 2; dataIdx++)
-                                {
-                                    requestData += _rxBuffer[dataIdx] + ",";
-                                }
-                            }
-                            _groups[(int)group - 1](request, requestData);
+                            _rxMsgBuffer.Clear();
+                            cRxState = UART_READ_STATE.FIND_MAGIC;
+                        }
+                        break;
+
+                    case UART_READ_STATE.FIND_MAGIC:
+
+                        cRxChar = _rxBuffer[_rxReadCount++];
+                        if (cRxChar == KuscMessageParams.MSG_MAGIC_A)
+                        {
+                            _rxMsgBuffer.Insert(KuscMessageParams.MSG_MAGIC_LOCATION, cRxChar); 
+                            cRxState = UART_READ_STATE.READ_GROUP;
+                        }
+                        break;
+
+                    case UART_READ_STATE.READ_GROUP:
+
+                        cRxChar = _rxBuffer[_rxReadCount++];
+                        _rxMsgBuffer.Insert(KuscMessageParams.MSG_GROUP_LOCATION, cRxChar);
+                        cRxState = UART_READ_STATE.READ_REQUEST;
+
+                        break;
+
+                    case UART_READ_STATE.READ_REQUEST:
+
+                        cRxChar = _rxBuffer[_rxReadCount++];
+                        _rxMsgBuffer.Insert(KuscMessageParams.MSG_REQUEST_LOCATION, cRxChar);
+                        cRxState = UART_READ_STATE.READ_DATA_SIZE;
+                        break;
+
+                    case UART_READ_STATE.READ_DATA_SIZE:
+
+                        cRxChar = _rxBuffer[_rxReadCount++];
+                        _rxMsgBuffer.Insert(KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION, cRxChar);
+                        if (cRxChar == 0x0)  // check if there is data to read.
+                        {
+                            cRxState = UART_READ_STATE.CHECK_CRC;
+                        }
+                        else
+                        {
+                            cRxState = UART_READ_STATE.READ_DATA;
+
+                        }
+                        
+                        break;
+
+                    case UART_READ_STATE.READ_DATA:
+                        for (int i = 0; i < _rxMsgBuffer[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]; i++)
+                        {
+                            //_rxMsgBuffer.Add(_rxBuffer[_rxReadCount++]);
+                            
                         }
 
-                        // Empty rx buffer after read message
-                        _rxReadCount = _rxBuffer.Count;
-                        _rxBuffer.RemoveRange(0, _rxReadCount);
-                    }
+                        char[] dataArray = _rxMsgBuffer.ToArray();
+                        cRxState = UART_READ_STATE.CHECK_CRC;
+                        break;
+
+                    case UART_READ_STATE.CHECK_CRC:
+                        char crcGiven = _rxBuffer[_rxReadCount++];
+                        char crcCalc = _KuscUtil.CalcCrc8(_rxMsgBuffer.ToArray());
+                        if(crcGiven == crcCalc)
+                        {
+                            cRxState = UART_READ_STATE.JUMP_FUNCTION;
+                        }
+                        else
+                        {
+                            cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
+                        }
+                        break;
+
+                    case UART_READ_STATE.JUMP_FUNCTION:
+                        
+                        _groups[_rxMsgBuffer[KuscMessageParams.MSG_GROUP_LOCATION] - 1]((KuscMessageParams.MESSAGE_REQUEST)_rxMsgBuffer[KuscMessageParams.MSG_REQUEST_LOCATION], _rxMsgBuffer[1].ToString());
+                        cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
+                        break;
                 }
+                _rxReadCount %= KuscMessageParams.MSG_RX_BUFFER_SIZE;
                 Thread.Sleep(KuscMessageParams.DELAY_BETWEEN_MESSAGE_READ);
             }
         }
@@ -196,13 +275,10 @@ namespace KUSC
             _txMessageBuffer.Add(Convert.ToChar(group));            // Second frame char contain group.
             _txMessageBuffer.Add(Convert.ToChar(request));          // Second frame char contain message request.
             _txMessageBuffer.Add(Convert.ToChar(data.Length));      // Third frame contain number of bytes of data.
-            if (data.Length > 0)
+            if (data != string.Empty)
             {
-                foreach (char dataChar in data)
-                {
-                    char c = Convert.ToChar(Convert.ToInt32(dataChar) - '0');
-                    _txMessageBuffer.Add(c);
-                }
+                char c = Convert.ToChar(Convert.ToInt32(data));
+                _txMessageBuffer.Add(c);
             }
 
             // Calc CRC-8:

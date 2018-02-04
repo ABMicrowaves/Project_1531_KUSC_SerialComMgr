@@ -69,7 +69,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.btnReadFlashData = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbxFlashNumSampleRead = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
@@ -144,6 +144,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rtbLogRunWindow = new System.Windows.Forms.RichTextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -182,6 +190,10 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -620,7 +632,7 @@
             this.groupBox29.Controls.Add(this.button15);
             this.groupBox29.Controls.Add(this.button11);
             this.groupBox29.Controls.Add(this.btnReadFlashData);
-            this.groupBox29.Controls.Add(this.textBox8);
+            this.groupBox29.Controls.Add(this.tbxFlashNumSampleRead);
             this.groupBox29.Controls.Add(this.label22);
             this.groupBox29.Controls.Add(this.label21);
             this.groupBox29.Controls.Add(this.richTextBox3);
@@ -671,13 +683,13 @@
             this.btnReadFlashData.UseVisualStyleBackColor = false;
             this.btnReadFlashData.Click += new System.EventHandler(this.btnReadFlashData_Click);
             // 
-            // textBox8
+            // tbxFlashNumSampleRead
             // 
-            this.textBox8.Location = new System.Drawing.Point(108, 34);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(68, 20);
-            this.textBox8.TabIndex = 6;
+            this.tbxFlashNumSampleRead.Location = new System.Drawing.Point(108, 34);
+            this.tbxFlashNumSampleRead.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxFlashNumSampleRead.Name = "tbxFlashNumSampleRead";
+            this.tbxFlashNumSampleRead.Size = new System.Drawing.Size(68, 20);
+            this.tbxFlashNumSampleRead.TabIndex = 6;
             // 
             // label22
             // 
@@ -1520,6 +1532,7 @@
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox9.Controls.Add(this.tabControl2);
             this.groupBox9.Location = new System.Drawing.Point(1, 1);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
@@ -1527,7 +1540,86 @@
             this.groupBox9.Size = new System.Drawing.Size(754, 406);
             this.groupBox9.TabIndex = 1;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "System logs";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Location = new System.Drawing.Point(2, 2);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(754, 404);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.rtbLogRunWindow);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(746, 378);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Run time logs";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(655, 347);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 25);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Save log to file";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(564, 347);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 25);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Clear window";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // rtbLogRunWindow
+            // 
+            this.rtbLogRunWindow.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbLogRunWindow.Location = new System.Drawing.Point(3, 6);
+            this.rtbLogRunWindow.Name = "rtbLogRunWindow";
+            this.rtbLogRunWindow.Size = new System.Drawing.Size(739, 335);
+            this.rtbLogRunWindow.TabIndex = 1;
+            this.rtbLogRunWindow.Text = "";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.button3);
+            this.tabPage5.Controls.Add(this.richTextBox4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(746, 378);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Logs viewer";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(654, 347);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 25);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Open log";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox4.Location = new System.Drawing.Point(0, 6);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(739, 335);
+            this.richTextBox4.TabIndex = 2;
+            this.richTextBox4.Text = "";
             // 
             // tabPage10
             // 
@@ -1701,6 +1793,10 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage9.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -1770,7 +1866,7 @@
         private System.Windows.Forms.TextBox tbxTechUser;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnReadFlashData;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tbxFlashNumSampleRead;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox btnReadMcuRunTime;
         private System.Windows.Forms.Button btnReadMcuTime;
@@ -1836,6 +1932,14 @@
         private System.Windows.Forms.Button btnAdcPositveVoltage;
         private System.Windows.Forms.Button btnAdcNegativVoltage;
         private System.Windows.Forms.Button btnSetDac;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox rtbLogRunWindow;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RichTextBox richTextBox4;
     }
 }
 

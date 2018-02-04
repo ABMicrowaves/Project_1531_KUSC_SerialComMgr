@@ -8,5 +8,10 @@ namespace KUSC
 {
     class KuscLogs
     {
+        static KuscForm _KuscForm;
+        public static void LogPrintCommand (string cmd)
+        {
+            _KuscForm.WriteCmdToLogWindow(cmd);
+        }
     }
 }

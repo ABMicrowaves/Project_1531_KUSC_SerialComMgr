@@ -12,6 +12,8 @@ namespace KUSC
 {
     public partial class KuscForm : Form
     {
+        #region Class c`tor and verbs
+
         KuscSerial _kuscSerial;
         KuscUtil _KuscUtil;
         public KuscForm()
@@ -21,6 +23,8 @@ namespace KUSC
             _KuscUtil = new KuscUtil();
             _KuscUtil.UpdateStatusObject(this);
         }
+        #endregion
+
 
         #region Technician mode
 
@@ -47,9 +51,19 @@ namespace KUSC
         {
 
             cbxLocalPortsNames.Items.Clear();
-            foreach (var port in _kuscSerial.GetComPorts())
+            var selectedPorts = _kuscSerial.GetComPorts();
+            if(selectedPorts.Count > 0)
             {
-                cbxLocalPortsNames.Items.Add(port);
+                foreach (var port in selectedPorts)
+                {
+                    cbxLocalPortsNames.Items.Add(port);
+                }
+                cbxLocalPortsNames.SelectedText = selectedPorts[0];
+                cbxLocalPortsNames.SelectedItem = selectedPorts[0];
+            }
+            else
+            {
+                WriteStatusFail("Dont found any comport available");
             }
         }
 
@@ -115,6 +129,12 @@ namespace KUSC
             lblStatus.ForeColor = Color.Red;
             lblStatus.Text = statMessage;
         }
+
+        public void WriteCmdToLogWindow(string cmd)
+        {
+            rtbLogRunWindow.Text = cmd;
+        }
+
         #endregion
 
         #endregion
@@ -226,7 +246,7 @@ namespace KUSC
 
         private void btnReadFlashData_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.FLASH, KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_RAW_DATA, string.Empty);
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.FLASH, KuscMessageParams.MESSAGE_REQUEST.FLASH_REQUEST_RAW_DATA, tbxFlashNumSampleRead.Text.ToString());
         }
 
         private void btnEmptyFlash_Click(object sender, EventArgs e)
