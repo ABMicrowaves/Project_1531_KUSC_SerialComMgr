@@ -272,8 +272,18 @@ namespace KUSC
             _txMessageBuffer.Add(Convert.ToChar(data.Length));      // Third frame contain number of bytes of data.
             if (data != string.Empty)
             {
-                char c = Convert.ToChar(Convert.ToInt32(data));
-                _txMessageBuffer.Add(c);
+                foreach (char dataItem in data)
+                {
+                    if(dataItem >= 0x30) // Dont convert special sings.
+                    {
+                        char c = Convert.ToChar(Convert.ToInt32(dataItem) - 0x30);
+                        _txMessageBuffer.Add(c);
+                    }
+                    else
+                    {
+                        _txMessageBuffer.Add(dataItem);
+                    }
+                }
             }
 
             // Calc CRC-8:

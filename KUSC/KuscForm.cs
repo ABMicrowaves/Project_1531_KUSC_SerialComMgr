@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,7 +25,6 @@ namespace KUSC
             _KuscUtil.UpdateStatusObject(this);
         }
         #endregion
-
 
         #region Technician mode
 
@@ -145,7 +145,18 @@ namespace KUSC
         {
             rtbAdcResults.Text = dataSample;
         }
+
+        public void UpdateMcuFw(string dataSample)
+        {
+            tbxMcuFwVersion.Text = dataSample;
+        }
+
+        public void UpdateSystemRunTime(string dataSample)
+        {
+            tbxSysRunTime.Text = dataSample;
+        }
         #endregion
+
         #region UART messages events
 
         #region MCU control message group
@@ -191,6 +202,32 @@ namespace KUSC
         private void btnReadMcuTime_Click(object sender, EventArgs e)
         {
             _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_RUN_TIME, string.Empty);
+        }
+
+        private void btnSetMcuFw_Click(object sender, EventArgs e)
+        {
+            var fwVersion = tbxSetMcuFwValue.Text;
+            if (fwVersion != string.Empty)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_MCU_FW_VERSION, fwVersion);
+            }
+            else
+            {
+                WriteStatusFail("Please Insert MCU FW version first");
+            }
+        }
+
+        private void btnSetCpldFw_Click(object sender, EventArgs e)
+        {
+            var fwVersion = tbxSetCpldFwValue.Text;
+            if (fwVersion != string.Empty)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_CPLD_VERSION, fwVersion);
+            }
+            else
+            {
+                WriteStatusFail("Please Insert CPLD FW version first");
+            }
         }
         #endregion
 
@@ -272,37 +309,22 @@ namespace KUSC
 
         private void btnSetDac_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, string.Empty);
+            if( (tbxDacVal.Text != string.Empty) || 
+                (tbxDacVal.Text.Length != 5) ||
+                (tbxDacVal.Text[1] != 0x2e))    // 0x2e = "." 
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, tbxDacVal.Text);
+            }
+            else
+            {
+                WriteStatusFail("Please insert dac value");
+            }
+            
         }
 
         #endregion
 
         #endregion
 
-        private void btnSetMcuFw_Click(object sender, EventArgs e)
-        {
-            var fwVersion = tbxSetMcuFwValue.Text;
-            if(fwVersion != string.Empty)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_MCU_FW_VERSION, string.Empty);
-            }
-            else
-            {
-                WriteStatusFail("Please Insert MCU FW version first");
-            }
-        }
-
-        private void btnSetCpldFw_Click(object sender, EventArgs e)
-        {
-            var fwVersion = tbxSetCpldFwValue.Text;
-            if (fwVersion != string.Empty)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.CONTROL_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_CPLD_VERSION, string.Empty);
-            }
-            else
-            {
-                WriteStatusFail("Please Insert CPLD FW version first");
-            }
-        }
     }
 }

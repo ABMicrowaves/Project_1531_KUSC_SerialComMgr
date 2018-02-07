@@ -51,13 +51,13 @@
             this.btnEmptyFlash = new System.Windows.Forms.Button();
             this.btnReadFlashStatus = new System.Windows.Forms.Button();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
-            this.btnReadMcuRunTime = new System.Windows.Forms.TextBox();
+            this.tbxSysRunTime = new System.Windows.Forms.TextBox();
             this.btnReadMcuTime = new System.Windows.Forms.Button();
             this.btnReadCpldFwVer = new System.Windows.Forms.TextBox();
             this.btnReadCpldFwVersion = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tbxMcuFwVersion = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.btnReadMcuFwVer = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -93,6 +93,13 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gbxTechMode = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.tbxSetCpldFwValue = new System.Windows.Forms.TextBox();
+            this.btnSetCpldFw = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.tbxSetMcuFwValue = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.btnSetMcuFw = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label33 = new System.Windows.Forms.Label();
             this.tbxTestUart = new System.Windows.Forms.TextBox();
@@ -120,9 +127,7 @@
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.btnSetDac = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.tbxDacVal = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -162,13 +167,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.tbxSetCpldFwValue = new System.Windows.Forms.TextBox();
-            this.btnSetCpldFw = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.tbxSetMcuFwValue = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.btnSetMcuFw = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -185,6 +185,7 @@
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbxTechMode.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.btnAdcChannelMode.SuspendLayout();
@@ -204,7 +205,6 @@
             this.tabPage10.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -456,13 +456,14 @@
             // 
             // groupBox35
             // 
-            this.groupBox35.Controls.Add(this.btnReadMcuRunTime);
+            this.groupBox35.Controls.Add(this.label34);
+            this.groupBox35.Controls.Add(this.tbxSysRunTime);
             this.groupBox35.Controls.Add(this.btnReadMcuTime);
             this.groupBox35.Controls.Add(this.btnReadCpldFwVer);
             this.groupBox35.Controls.Add(this.btnReadCpldFwVersion);
             this.groupBox35.Controls.Add(this.label12);
             this.groupBox35.Controls.Add(this.label23);
-            this.groupBox35.Controls.Add(this.textBox11);
+            this.groupBox35.Controls.Add(this.tbxMcuFwVersion);
             this.groupBox35.Controls.Add(this.label24);
             this.groupBox35.Controls.Add(this.btnReadMcuFwVer);
             this.groupBox35.Location = new System.Drawing.Point(10, 23);
@@ -474,14 +475,14 @@
             this.groupBox35.TabStop = false;
             this.groupBox35.Text = "MCU and CPLD F.W version";
             // 
-            // btnReadMcuRunTime
+            // tbxSysRunTime
             // 
-            this.btnReadMcuRunTime.Location = new System.Drawing.Point(11, 141);
-            this.btnReadMcuRunTime.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReadMcuRunTime.Name = "btnReadMcuRunTime";
-            this.btnReadMcuRunTime.ReadOnly = true;
-            this.btnReadMcuRunTime.Size = new System.Drawing.Size(108, 20);
-            this.btnReadMcuRunTime.TabIndex = 16;
+            this.tbxSysRunTime.Location = new System.Drawing.Point(11, 141);
+            this.tbxSysRunTime.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSysRunTime.Name = "tbxSysRunTime";
+            this.tbxSysRunTime.ReadOnly = true;
+            this.tbxSysRunTime.Size = new System.Drawing.Size(75, 20);
+            this.tbxSysRunTime.TabIndex = 16;
             // 
             // btnReadMcuTime
             // 
@@ -538,14 +539,14 @@
             this.label23.TabIndex = 8;
             this.label23.Text = "CPLD F.W version number";
             // 
-            // textBox11
+            // tbxMcuFwVersion
             // 
-            this.textBox11.Location = new System.Drawing.Point(11, 39);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(108, 20);
-            this.textBox11.TabIndex = 6;
+            this.tbxMcuFwVersion.Location = new System.Drawing.Point(11, 39);
+            this.tbxMcuFwVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxMcuFwVersion.Name = "tbxMcuFwVersion";
+            this.tbxMcuFwVersion.ReadOnly = true;
+            this.tbxMcuFwVersion.Size = new System.Drawing.Size(108, 20);
+            this.tbxMcuFwVersion.TabIndex = 6;
             // 
             // label24
             // 
@@ -947,6 +948,85 @@
             this.gbxTechMode.TabIndex = 11;
             this.gbxTechMode.TabStop = false;
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.tbxSetCpldFwValue);
+            this.groupBox12.Controls.Add(this.btnSetCpldFw);
+            this.groupBox12.Controls.Add(this.label35);
+            this.groupBox12.Controls.Add(this.tbxSetMcuFwValue);
+            this.groupBox12.Controls.Add(this.label36);
+            this.groupBox12.Controls.Add(this.btnSetMcuFw);
+            this.groupBox12.Location = new System.Drawing.Point(236, 191);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Size = new System.Drawing.Size(181, 142);
+            this.groupBox12.TabIndex = 20;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Set MCU and CPLD F.W version";
+            // 
+            // tbxSetCpldFwValue
+            // 
+            this.tbxSetCpldFwValue.Location = new System.Drawing.Point(12, 94);
+            this.tbxSetCpldFwValue.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSetCpldFwValue.Name = "tbxSetCpldFwValue";
+            this.tbxSetCpldFwValue.Size = new System.Drawing.Size(108, 20);
+            this.tbxSetCpldFwValue.TabIndex = 14;
+            // 
+            // btnSetCpldFw
+            // 
+            this.btnSetCpldFw.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSetCpldFw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSetCpldFw.Location = new System.Drawing.Point(124, 94);
+            this.btnSetCpldFw.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetCpldFw.Name = "btnSetCpldFw";
+            this.btnSetCpldFw.Size = new System.Drawing.Size(44, 19);
+            this.btnSetCpldFw.TabIndex = 13;
+            this.btnSetCpldFw.Text = "Set";
+            this.btnSetCpldFw.UseVisualStyleBackColor = false;
+            this.btnSetCpldFw.Click += new System.EventHandler(this.btnSetCpldFw_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(8, 77);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(95, 13);
+            this.label35.TabIndex = 8;
+            this.label35.Text = "CPLD F.W version";
+            // 
+            // tbxSetMcuFwValue
+            // 
+            this.tbxSetMcuFwValue.Location = new System.Drawing.Point(11, 39);
+            this.tbxSetMcuFwValue.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSetMcuFwValue.Name = "tbxSetMcuFwValue";
+            this.tbxSetMcuFwValue.Size = new System.Drawing.Size(108, 20);
+            this.tbxSetMcuFwValue.TabIndex = 6;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(8, 24);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(110, 13);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Set MCU F.W version";
+            // 
+            // btnSetMcuFw
+            // 
+            this.btnSetMcuFw.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSetMcuFw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSetMcuFw.Location = new System.Drawing.Point(123, 39);
+            this.btnSetMcuFw.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetMcuFw.Name = "btnSetMcuFw";
+            this.btnSetMcuFw.Size = new System.Drawing.Size(44, 19);
+            this.btnSetMcuFw.TabIndex = 3;
+            this.btnSetMcuFw.Text = "Set";
+            this.btnSetMcuFw.UseVisualStyleBackColor = false;
+            this.btnSetMcuFw.Click += new System.EventHandler(this.btnSetMcuFw_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label33);
@@ -1029,7 +1109,7 @@
             this.btnAdcChannelMode.Controls.Add(this.cbxAdcSingleCh);
             this.btnAdcChannelMode.Controls.Add(this.rdbAdcCircMode);
             this.btnAdcChannelMode.Controls.Add(this.rdbAdcSingleMode);
-            this.btnAdcChannelMode.Location = new System.Drawing.Point(276, 21);
+            this.btnAdcChannelMode.Location = new System.Drawing.Point(309, 21);
             this.btnAdcChannelMode.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdcChannelMode.Name = "btnAdcChannelMode";
             this.btnAdcChannelMode.Padding = new System.Windows.Forms.Padding(2);
@@ -1091,18 +1171,18 @@
             this.btnAdcConversionMode.Controls.Add(this.btnAdcConvMode);
             this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatLeft);
             this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatRight);
-            this.btnAdcConversionMode.Location = new System.Drawing.Point(562, 21);
+            this.btnAdcConversionMode.Location = new System.Drawing.Point(609, 21);
             this.btnAdcConversionMode.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdcConversionMode.Name = "btnAdcConversionMode";
             this.btnAdcConversionMode.Padding = new System.Windows.Forms.Padding(2);
-            this.btnAdcConversionMode.Size = new System.Drawing.Size(170, 141);
+            this.btnAdcConversionMode.Size = new System.Drawing.Size(123, 141);
             this.btnAdcConversionMode.TabIndex = 12;
             this.btnAdcConversionMode.TabStop = false;
             this.btnAdcConversionMode.Text = "ADC Conversion Result Format";
             // 
             // btnAdcConvMode
             // 
-            this.btnAdcConvMode.Location = new System.Drawing.Point(116, 111);
+            this.btnAdcConvMode.Location = new System.Drawing.Point(69, 111);
             this.btnAdcConvMode.Name = "btnAdcConvMode";
             this.btnAdcConvMode.Size = new System.Drawing.Size(49, 25);
             this.btnAdcConvMode.TabIndex = 15;
@@ -1139,7 +1219,7 @@
             this.btnAdcPositiveVoltage.Controls.Add(this.btnAdcPositveVoltage);
             this.btnAdcPositiveVoltage.Controls.Add(this.radioButton7);
             this.btnAdcPositiveVoltage.Controls.Add(this.radioButton8);
-            this.btnAdcPositiveVoltage.Location = new System.Drawing.Point(422, 21);
+            this.btnAdcPositiveVoltage.Location = new System.Drawing.Point(462, 21);
             this.btnAdcPositiveVoltage.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdcPositiveVoltage.Name = "btnAdcPositiveVoltage";
             this.btnAdcPositiveVoltage.Padding = new System.Windows.Forms.Padding(2);
@@ -1187,7 +1267,7 @@
             this.groupBox19.Controls.Add(this.btnAdcNegativVoltage);
             this.groupBox19.Controls.Add(this.radioButton5);
             this.groupBox19.Controls.Add(this.radioButton6);
-            this.groupBox19.Location = new System.Drawing.Point(121, 17);
+            this.groupBox19.Location = new System.Drawing.Point(154, 17);
             this.groupBox19.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Padding = new System.Windows.Forms.Padding(2);
@@ -1232,23 +1312,22 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.label37);
             this.groupBox15.Controls.Add(this.btnSetDac);
             this.groupBox15.Controls.Add(this.label18);
-            this.groupBox15.Controls.Add(this.textBox7);
-            this.groupBox15.Controls.Add(this.radioButton4);
-            this.groupBox15.Controls.Add(this.radioButton3);
+            this.groupBox15.Controls.Add(this.tbxDacVal);
             this.groupBox15.Location = new System.Drawing.Point(0, 17);
             this.groupBox15.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox15.Size = new System.Drawing.Size(112, 145);
+            this.groupBox15.Size = new System.Drawing.Size(150, 145);
             this.groupBox15.TabIndex = 11;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "DAC Operation";
             // 
             // btnSetDac
             // 
-            this.btnSetDac.Location = new System.Drawing.Point(54, 115);
+            this.btnSetDac.Location = new System.Drawing.Point(96, 115);
             this.btnSetDac.Name = "btnSetDac";
             this.btnSetDac.Size = new System.Drawing.Size(49, 25);
             this.btnSetDac.TabIndex = 14;
@@ -1259,42 +1338,18 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1, 73);
+            this.label18.Location = new System.Drawing.Point(5, 27);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(67, 13);
             this.label18.TabIndex = 6;
             this.label18.Text = "DAC voltage";
             // 
-            // textBox7
+            // tbxDacVal
             // 
-            this.textBox7.Location = new System.Drawing.Point(0, 89);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 5;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(4, 17);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(85, 17);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Disable DAC";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(4, 43);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(83, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Enable DAC";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.tbxDacVal.Location = new System.Drawing.Point(5, 43);
+            this.tbxDacVal.Name = "tbxDacVal";
+            this.tbxDacVal.Size = new System.Drawing.Size(104, 20);
+            this.tbxDacVal.TabIndex = 5;
             // 
             // groupBox30
             // 
@@ -1745,84 +1800,23 @@
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = ".";
             // 
-            // groupBox12
+            // label34
             // 
-            this.groupBox12.Controls.Add(this.tbxSetCpldFwValue);
-            this.groupBox12.Controls.Add(this.btnSetCpldFw);
-            this.groupBox12.Controls.Add(this.label35);
-            this.groupBox12.Controls.Add(this.tbxSetMcuFwValue);
-            this.groupBox12.Controls.Add(this.label36);
-            this.groupBox12.Controls.Add(this.btnSetMcuFw);
-            this.groupBox12.Location = new System.Drawing.Point(236, 191);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(181, 142);
-            this.groupBox12.TabIndex = 20;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Set MCU and CPLD F.W version";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(88, 144);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(30, 13);
+            this.label34.TabIndex = 17;
+            this.label34.Text = "[sec]";
             // 
-            // tbxSetCpldFwValue
+            // label37
             // 
-            this.tbxSetCpldFwValue.Location = new System.Drawing.Point(12, 94);
-            this.tbxSetCpldFwValue.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSetCpldFwValue.Name = "tbxSetCpldFwValue";
-            this.tbxSetCpldFwValue.Size = new System.Drawing.Size(108, 20);
-            this.tbxSetCpldFwValue.TabIndex = 14;
-            // 
-            // btnSetCpldFw
-            // 
-            this.btnSetCpldFw.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSetCpldFw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSetCpldFw.Location = new System.Drawing.Point(124, 94);
-            this.btnSetCpldFw.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetCpldFw.Name = "btnSetCpldFw";
-            this.btnSetCpldFw.Size = new System.Drawing.Size(44, 19);
-            this.btnSetCpldFw.TabIndex = 13;
-            this.btnSetCpldFw.Text = "Set";
-            this.btnSetCpldFw.UseVisualStyleBackColor = false;
-            this.btnSetCpldFw.Click += new System.EventHandler(this.btnSetCpldFw_Click);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(8, 77);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(95, 13);
-            this.label35.TabIndex = 8;
-            this.label35.Text = "CPLD F.W version";
-            // 
-            // tbxSetMcuFwValue
-            // 
-            this.tbxSetMcuFwValue.Location = new System.Drawing.Point(11, 39);
-            this.tbxSetMcuFwValue.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSetMcuFwValue.Name = "tbxSetMcuFwValue";
-            this.tbxSetMcuFwValue.Size = new System.Drawing.Size(108, 20);
-            this.tbxSetMcuFwValue.TabIndex = 6;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(8, 24);
-            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(110, 13);
-            this.label36.TabIndex = 5;
-            this.label36.Text = "Set MCU F.W version";
-            // 
-            // btnSetMcuFw
-            // 
-            this.btnSetMcuFw.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSetMcuFw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSetMcuFw.Location = new System.Drawing.Point(123, 39);
-            this.btnSetMcuFw.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSetMcuFw.Name = "btnSetMcuFw";
-            this.btnSetMcuFw.Size = new System.Drawing.Size(44, 19);
-            this.btnSetMcuFw.TabIndex = 3;
-            this.btnSetMcuFw.Text = "Set";
-            this.btnSetMcuFw.UseVisualStyleBackColor = false;
-            this.btnSetMcuFw.Click += new System.EventHandler(this.btnSetMcuFw_Click);
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(2, 68);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(117, 13);
+            this.label37.TabIndex = 15;
+            this.label37.Text = "Format = [X.YZW VDC]";
             // 
             // KuscForm
             // 
@@ -1860,6 +1854,8 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.gbxTechMode.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -1889,8 +1885,6 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1924,7 +1918,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox35;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tbxMcuFwVersion;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btnReadMcuFwVer;
         private System.Windows.Forms.GroupBox groupBox13;
@@ -1958,7 +1952,7 @@
         private System.Windows.Forms.Button btnReadFlashData;
         private System.Windows.Forms.TextBox tbxFlashNumSampleRead;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox btnReadMcuRunTime;
+        private System.Windows.Forms.TextBox tbxSysRunTime;
         private System.Windows.Forms.Button btnReadMcuTime;
         private System.Windows.Forms.TextBox btnReadCpldFwVer;
         private System.Windows.Forms.Button btnReadCpldFwVersion;
@@ -2007,9 +2001,7 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.TextBox tbxDacVal;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox tbxTestUart;
@@ -2037,6 +2029,8 @@
         private System.Windows.Forms.TextBox tbxSetMcuFwValue;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button btnSetMcuFw;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label37;
     }
 }
 

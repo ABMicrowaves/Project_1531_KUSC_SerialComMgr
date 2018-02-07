@@ -53,6 +53,21 @@ namespace KUSC
             return crc;
         }
 
+        private static string ConvertDataToString(string data)
+        {
+            string result = string.Empty;
+            foreach (var num in data)
+            {
+                string t = num.ToString().Replace(",", "");
+                if (t != string.Empty && t != "0")
+                {
+                    int a = num;
+                    result += a.ToString();
+                }
+            }
+            return result;
+        }
+
         #endregion
 
         #region Update main form
@@ -80,6 +95,16 @@ namespace KUSC
         public static void UpdateAdcTable(string dataSample)
         {
             _KuscForm.UpdateAdcTable(dataSample);
+        }
+
+        public static void UpdateMcuFwVersion(string fwVersionData)
+        {
+            _KuscForm.UpdateMcuFw(ConvertDataToString(fwVersionData));
+        }
+
+        public static void UpdateRunTime(string sysRunTime)
+        {
+            _KuscForm.UpdateSystemRunTime(ConvertDataToString(sysRunTime));
         }
         #endregion
 

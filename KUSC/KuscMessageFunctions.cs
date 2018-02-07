@@ -57,6 +57,7 @@ namespace KUSC
             switch (request)
             {
                 case KuscMessageParams.MESSAGE_REQUEST.STATUS_GET_MCU_FW_VERSION:
+                    KuscUtil.UpdateMcuFwVersion(data);
                     statusMsg = "MCU: Read MCU FW Version";
                     break;
 
@@ -65,7 +66,16 @@ namespace KUSC
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_RUN_TIME:
+                    KuscUtil.UpdateRunTime(data);
                     statusMsg =  "MCU: Read MCU run-time OK";
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_MCU_FW_VERSION:
+                    statusMsg = "MCU: set MCU firmware version OK";
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_CPLD_VERSION:
+                    statusMsg = "MCU: set CPLD firmware version OK";
                     break;
             }
 
