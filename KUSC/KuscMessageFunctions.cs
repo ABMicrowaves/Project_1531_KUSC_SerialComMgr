@@ -12,6 +12,7 @@ namespace KUSC
         #region Class c`tor verbs
         
         KuscLogs _kuscLogs = new KuscLogs();
+        KuscUtil _KuscUtil = new KuscUtil();
         private static string statusMsg = string.Empty;
         
         #endregion
@@ -55,11 +56,11 @@ namespace KUSC
         {
             switch (request)
             {
-                case KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_FW_VERSION:
+                case KuscMessageParams.MESSAGE_REQUEST.STATUS_GET_MCU_FW_VERSION:
                     statusMsg = "MCU: Read MCU FW Version";
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_CPLD_VERSION:
+                case KuscMessageParams.MESSAGE_REQUEST.STATUS_GET_CPLD_VERSION:
                     statusMsg = "MCU: Read CPLD FW Version";
                     break;
 
@@ -142,6 +143,7 @@ namespace KUSC
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_SEND_RAW_DATA:
+                    KuscUtil.UpdateAdcTable(data);
                     statusMsg = "MCU: Request flash raw data ok";
                     break;
             }

@@ -76,6 +76,11 @@ namespace KUSC
         {
             _KuscForm.TestUart(c);
         }
+
+        public static void UpdateAdcTable(string dataSample)
+        {
+            _KuscForm.UpdateAdcTable(dataSample);
+        }
         #endregion
 
     }

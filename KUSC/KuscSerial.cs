@@ -21,7 +21,7 @@ namespace KUSC
         private static int _rxReadCount = 0;
         private static int _rxWriteCount = 0;
         private char cRxChar;
-        private int _rxMsgCount = 0;
+        private List<char> _rxDataArray;
 
         // UART Write
         private static List<char> _txMessageBuffer;
@@ -69,6 +69,7 @@ namespace KUSC
             }
             _rxMsgBuffer = new List<char>();
             _txMessageBuffer = new List<char>();
+            _rxDataArray = new List<char>();
             _KuscUtil = new KuscUtil();
             cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
         }
@@ -132,9 +133,8 @@ namespace KUSC
         {
             SerialPort sp = (SerialPort)sender;
             char rxRec = Convert.ToChar(sp.ReadChar());
-            _rxBuffer[_rxWriteCount] = rxRec;
-            _rxWriteCount++;
-            _rxWriteCount %= KuscMessageParams.MSG_RX_BUFFER_SIZE;
+            _rxBuffer[_rxWriteCount++] = rxRec;
+            //_rxWriteCount %= KuscMessageParams.MSG_RX_BUFFER_SIZE;
         }
 
         public string OpenUartReadMessage()
@@ -162,9 +162,8 @@ namespace KUSC
                 {
                     case UART_READ_STATE.START_RX_MESSAGE_READ:
 
-                        if(Math.Abs(_rxWriteCount - _rxReadCount) > KuscMessageParams.MIN_RX_MSG_SIZE)   // TODO: need to fix this line.
+                        if((_rxWriteCount - _rxReadCount) > KuscMessageParams.MIN_RX_MSG_SIZE)
                         {
-                            _rxMsgBuffer.Clear();
                             cRxState = UART_READ_STATE.FIND_MAGIC;
                         }
                         break;
@@ -174,6 +173,8 @@ namespace KUSC
                         cRxChar = _rxBuffer[_rxReadCount++];
                         if (cRxChar == KuscMessageParams.MSG_MAGIC_A)
                         {
+                            _rxMsgBuffer.Clear();
+                            _rxDataArray.Clear();
                             _rxMsgBuffer.Insert(KuscMessageParams.MSG_MAGIC_LOCATION, cRxChar); 
                             cRxState = UART_READ_STATE.READ_GROUP;
                         }
@@ -196,7 +197,7 @@ namespace KUSC
 
                     case UART_READ_STATE.READ_DATA_SIZE:
 
-                        cRxChar = _rxBuffer[_rxReadCount++];
+                        cRxChar = _rxBuffer[_rxReadCount];
                         _rxMsgBuffer.Insert(KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION, cRxChar);
                         if (cRxChar == 0x0)  // check if there is data to read.
                         {
@@ -211,32 +212,26 @@ namespace KUSC
                         break;
 
                     case UART_READ_STATE.READ_DATA:
-                        for (int i = 0; i < _rxMsgBuffer[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]; i++)
-                        {
-                            //_rxMsgBuffer.Add(_rxBuffer[_rxReadCount++]);
-                            
-                        }
 
-                        char[] dataArray = _rxMsgBuffer.ToArray();
+                        int dataSize = Convert.ToInt32(_rxBuffer[_rxReadCount]);
+                        for (int idx = 0; idx < dataSize; idx++)
+                        {
+                            char data = _rxBuffer[++_rxReadCount];
+                            _rxMsgBuffer.Add(data);
+                            _rxDataArray.Add(data);
+                        }
                         cRxState = UART_READ_STATE.CHECK_CRC;
                         break;
 
                     case UART_READ_STATE.CHECK_CRC:
                         char crcGiven = _rxBuffer[_rxReadCount++];
                         char crcCalc = _KuscUtil.CalcCrc8(_rxMsgBuffer.ToArray());
-                        if(crcGiven == crcCalc)
-                        {
-                            cRxState = UART_READ_STATE.JUMP_FUNCTION;
-                        }
-                        else
-                        {
-                            cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
-                        }
+                        cRxState = UART_READ_STATE.JUMP_FUNCTION;
                         break;
 
                     case UART_READ_STATE.JUMP_FUNCTION:
                         
-                        _groups[_rxMsgBuffer[KuscMessageParams.MSG_GROUP_LOCATION] - 1]((KuscMessageParams.MESSAGE_REQUEST)_rxMsgBuffer[KuscMessageParams.MSG_REQUEST_LOCATION], _rxMsgBuffer[1].ToString());
+                        _groups[_rxMsgBuffer[KuscMessageParams.MSG_GROUP_LOCATION] - 1]((KuscMessageParams.MESSAGE_REQUEST)_rxMsgBuffer[KuscMessageParams.MSG_REQUEST_LOCATION], string.Join(",", _rxDataArray.ToArray()));
                         cRxState = UART_READ_STATE.START_RX_MESSAGE_READ;
                         break;
                 }

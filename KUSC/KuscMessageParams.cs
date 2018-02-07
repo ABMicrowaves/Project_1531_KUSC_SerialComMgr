@@ -13,14 +13,14 @@ namespace KUSC
         #region Uart messages
 
         public static char MSG_MAGIC_A                      = '$';
-        public static int DELAY_BETWEEN_MESSAGE_READ        = 100;
+        public static int DELAY_BETWEEN_MESSAGE_READ        = 500;
         public static int MIN_RX_MSG_SIZE                   = 3;
         public static int MSG_MAGIC_LOCATION                = 0;
         public static int MSG_GROUP_LOCATION                = 1;
         public static int MSG_REQUEST_LOCATION              = 2;
         public static int MSG_REQUEST_DATA_SIZE_LOCATION    = 3;
 
-        public static int MSG_RX_BUFFER_SIZE                = 100;
+        public static int MSG_RX_BUFFER_SIZE                = 50;
 
         public enum MESSAGE_GROUP : int
         {
@@ -46,11 +46,13 @@ namespace KUSC
 
             // MCU status and version:
             STATUS_MCU_RUN_TIME         = 0x21,
-            STATUS_MCU_FW_VERSION       = 0x22,
-            STATUS_MCU_CPLD_VERSION     = 0x23,
+            STATUS_GET_MCU_FW_VERSION   = 0x22,
+            STATUS_GET_CPLD_VERSION     = 0x23,
+            STATUS_SET_MCU_FW_VERSION   = 0x24,
+            STATUS_SET_CPLD_VERSION     = 0x25,
 
             // ADC
-            ADC_ENABLE = 0x31,
+            ADC_ENABLE                  = 0x31,
             ADC_CHANNEL_SINGLE_MODE     = 0x32,
             ADC_CHANNEL_CIRC_MODE       = 0x33,
             ADC_CONV_RESULT_RIGHT       = 0x34,
