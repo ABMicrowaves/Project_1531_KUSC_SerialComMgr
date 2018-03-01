@@ -1,0 +1,8 @@
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Release\KUSC.exe.config
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Release\KUSC.exe
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\bin\Release\KUSC.pdb
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.KuscForm.resources
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.Properties.Resources.resources
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.csproj.GenerateResource.Cache
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.exe
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.pdb

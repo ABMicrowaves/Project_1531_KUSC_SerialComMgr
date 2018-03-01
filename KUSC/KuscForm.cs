@@ -17,11 +17,24 @@ namespace KUSC
 
         KuscSerial _kuscSerial;
         KuscUtil _KuscUtil;
+        KuscSynth _kuscSynth;
+        KuscExtDac _kuscExtDac;
         public KuscForm()
         {
             InitializeComponent();
             _kuscSerial = new KuscSerial();
             _KuscUtil = new KuscUtil();
+            _kuscSynth = new KuscSynth();
+            _kuscExtDac = new KuscExtDac();
+
+            // Set Synthesizers init value
+            tbxSynthTxFifInit.Text = KuscCommon.SYNTH_TX_F_RF_INIT_VALUE;
+            tbxSynthTxFifInit.Text = KuscCommon.SYNTH_TX_F_IF_INIT_VALUE;
+            tbxSynthRxFrfInit.Text = KuscCommon.SYNTH_RX_F_RF_INIT_VALUE;
+            tbxSynthRxFifInit.Text = KuscCommon.SYNTH_RX_F_IF_INIT_VALUE;
+
+            // Set UI Vref
+            lblAdcVrefUi.Text = string.Format("Vref= {0} [mVdc]", KuscCommon.DAC_VSOURCEPLUS_MILI.ToString());
             _KuscUtil.UpdateStatusObject(this);
         }
         #endregion
@@ -84,27 +97,18 @@ namespace KUSC
                 }
                 else
                 {
-                    WriteStatusOk("Comport open OK");
-
-                    err = _kuscSerial.OpenUartReadMessage();
-                    if(err != string.Empty)
-                    {
-                        WriteStatusFail(err);
-                    }
+                    WriteStatusOk("Comport open ok");
                 }
             }
         }
+
+
         #endregion
 
         private void btnUartTestSend_Click(object sender, EventArgs e)
         {
             char c = Convert.ToChar(0xA1);
             _kuscSerial.SerialWriteChar(c);
-        }
-
-        public void TestUart(char c)
-        {
-            tbxTestUart.Text = c.ToString();
         }
 
         #endregion
@@ -141,19 +145,113 @@ namespace KUSC
 
         #region Application controller
 
+        #region ADC component
+
         public void UpdateAdcTable(string dataSample)
         {
-            rtbAdcResults.Text = dataSample;
+            var samples = dataSample.Split(',');
+            for (int i = 0; i < samples.Length - 1; i+=2)
+            {
+                if(samples[i + 1] == string.Empty || samples[i] == string.Empty)
+                {
+                    continue;
+                }
+                int highRes = Convert.ToChar(samples[i + 1]) << 8;
+                int lowRes = Convert.ToChar(samples[i]);
+                int res = highRes + lowRes;
+                UInt16 sampleData = (UInt16)(res & 0x0FFF);
+                UInt16 channel = (UInt16)(res >> 12);
+
+                // update channels tables:
+                UpdateAdcChannelTable(sampleData, channel);
+
+                // update row data:
+                rtbAdcResults.Text += res;
+            }
         }
+
+        private void UpdateAdcChannelTable(UInt16 dataSample, UInt16 channel)
+        {
+            switch(channel)
+            {
+                case 0x1:
+                    rtbAdcRE2.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x2:
+                    rtbAdcRE1.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x3:
+                    rtbAdcRE0.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x4:
+                    rtbAdcRA5.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x5:
+                    rtbAdcRD5.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x6:
+                    rtbAdcRB1.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x7:
+                    rtbAdcRB5.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+            }
+        }
+
+        private void btnClearAdcTable_Click(object sender, EventArgs e)
+        {
+            rtbAdcResults.Clear();
+            rtbAdcRE2.Clear();
+            rtbAdcRE1.Clear();
+            rtbAdcRE0.Clear();
+            rtbAdcRA5.Clear();
+            rtbAdcRD5.Clear();
+            rtbAdcRB1.Clear();
+            rtbAdcRB5.Clear();
+        }
+
+        #endregion
+
 
         public void UpdateMcuFw(string dataSample)
         {
             tbxMcuFwVersion.Text = dataSample;
         }
 
+        public void UpdateCpldFw(string dataSample)
+        {
+            tbxCpldFwVersion.Text = dataSample;
+        }
+
         public void UpdateSystemRunTime(string dataSample)
         {
-            tbxSysRunTime.Text = dataSample;
+            dataSample = dataSample.Replace(",", "");
+            int seconds = Convert.ToInt32(new string(dataSample.ToCharArray().Reverse().ToArray()));
+            tbxSysRunTime.Text = TimeSpan.FromSeconds(seconds).ToString();
+             
+        }
+
+        public void UpdateFlashCondition(string dataSample)
+        {
+            var samples = dataSample.Split(',');
+            var FlashSize = (Convert.ToInt16(Convert.ToChar(samples[0]) << 8) + Convert.ToInt16(Convert.ToChar(samples[1])));
+            var writeAddress = (Convert.ToInt16(Convert.ToChar(samples[2]) << 8) + Convert.ToInt16(Convert.ToChar(samples[3])));
+            var precentage = Convert.ToInt16(((double)(FlashSize - writeAddress) / FlashSize) * 100);
+            var numPackets = (FlashSize - writeAddress) / 32;
+
+            // Update checkbox fields:
+
+            tbxFlashCondTotal.Text = FlashSize.ToString();
+            tbxFlashCondFree.Text = writeAddress.ToString();
+            tbxFlashCondPrecentage.Text = precentage.ToString();
+            tbxFlashCondNumPackets.Text = numPackets.ToString();
         }
         #endregion
 
@@ -207,26 +305,26 @@ namespace KUSC
         private void btnSetMcuFw_Click(object sender, EventArgs e)
         {
             var fwVersion = tbxSetMcuFwValue.Text;
-            if (fwVersion != string.Empty)
+            if (fwVersion != string.Empty && fwVersion.Length == 4)
             {
                 _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_MCU_FW_VERSION, fwVersion);
             }
             else
             {
-                WriteStatusFail("Please Insert MCU FW version first");
+                WriteStatusFail("Please Insert MCU FW version [4 digits]");
             }
         }
 
         private void btnSetCpldFw_Click(object sender, EventArgs e)
         {
             var fwVersion = tbxSetCpldFwValue.Text;
-            if (fwVersion != string.Empty)
+            if (fwVersion != string.Empty && fwVersion.Length == 4)
             {
                 _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.MCU_STATUS_VERSION_MSG, KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_CPLD_VERSION, fwVersion);
             }
             else
             {
-                WriteStatusFail("Please Insert CPLD FW version first");
+                WriteStatusFail("Please Insert CPLD FW version first [4 digits]");
             }
         }
         #endregion
@@ -235,53 +333,126 @@ namespace KUSC
 
         private void btnAdcNegativVoltage_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
+            //_kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
         }
 
         private void btnAdcChMode_Click(object sender, EventArgs e)
         {
             string data = string.Empty;
-            if(rdbAdcCircMode.Checked == true)
+            if(rdbAdcCircMode.Checked == true || rdbAdcSingleMode.Checked == true)
             {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_CIRC_MODE, data);
+                if (rdbAdcCircMode.Checked == true)
+                {
+                    data = 0x0.ToString();
+                }
+                else if (rdbAdcSingleMode.Checked == true)
+                {
+                    if(cbxAdcSingleCh.SelectedIndex == -1)
+                    {
+                        WriteStatusFail("In ADC single mode please choose channel to sample");
+                        return;
+                    }
+                    else
+                    {
+                        data = (1*10 + cbxAdcSingleCh.SelectedIndex).ToString(); 
+                    }
+                    
+                }
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_MODE, data);
             }
-            else if (rdbAdcSingleMode.Checked == true)
+            else
             {
-                data = (cbxAdcSingleCh.SelectedIndex + 1).ToString();
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SINGLE_MODE, data);
+                WriteStatusFail("Please choose desire ADC sampling mode");
             }
             
         }
 
         private void btnAdcPositveVoltage_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
+            //_kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
         }
 
-        private void btnAdcConvMode_Click(object sender, EventArgs e)
-        {
-            if(rdbAdcConvFormatLeft.Checked == true)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_LEFT, string.Empty);
-            }
-            else if(rdbAdcConvFormatRight.Checked == true)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_CONV_RESULT_RIGHT, string.Empty);
-            }
-            
-        }
         #endregion
 
         #region MCU Synthesizers down / up
 
         private void btnSetSyntDown_Click(object sender, EventArgs e)
+        // Set TX synth
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, string.Empty);
+            if( (tbxSynthTxRf.Text.Length == 5) && (tbxSynthTxIf.Text.Length == 5))
+            {
+                if ((Convert.ToInt32(tbxSynthTxRf.Text) * 1000 % KuscCommon.FREQ_STEP_KHZ  == 0) && (Convert.ToInt32(tbxSynthTxIf.Text) * 1000  % KuscCommon.FREQ_STEP_KHZ  == 0))
+                {
+                    if ((Convert.ToInt32(tbxSynthTxRf.Text) >= KuscCommon.SYNTH_TX_FRF_MIN_VALUE_MHZ) &&
+                        (Convert.ToInt32(tbxSynthTxRf.Text) <= KuscCommon.SYNTH_TX_FRF_MAX_VALUE_MHZ))
+                    {
+                        if ((Convert.ToInt32(tbxSynthTxIf.Text) >= KuscCommon.SYNTH_TX_FIF_MIN_VALUE_MHZ) &&
+                        (Convert.ToInt32(tbxSynthTxIf.Text) <= KuscCommon.SYNTH_TX_FIF_MAX_VALUE_MHZ))
+                        {
+                            var dataList = _kuscSynth.GetDataRegisters(Convert.ToInt32(tbxSynthTxRf.Text), Convert.ToInt32(tbxSynthTxIf.Text));
+                            foreach (var regData in dataList)
+                            {
+                                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, regData);
+                            }
+                        }
+                        else
+                        {
+                            WriteStatusFail(string.Format("Please insert TX synthesizer F-IF between {0} and {1}", KuscCommon.SYNTH_TX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FIF_MAX_VALUE_MHZ));
+                        }
+                    }
+                    else
+                    {
+                        WriteStatusFail(string.Format("Please insert TX synthesizer F-RF between {0} and {1}", KuscCommon.SYNTH_TX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FRF_MAX_VALUE_MHZ));
+                    }
+                }
+                else
+                {
+                    WriteStatusFail(string.Format("Allowed steps in TX F-RF and F-IF is {0} KHz", KuscCommon.FREQ_STEP_KHZ));
+                }
+
+            } 
+            else
+            {
+                WriteStatusFail("Please insert correct TX synthesizer Frf [5 digits length] and Fif values [5 digits length]");
+            }
         }
 
         private void btnSetSyntUp_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, string.Empty);
+            string data = string.Empty;
+            if ((tbxSynthRxRf.Text.Length == 5) && (tbxSynthRxIf.Text.Length == 5))
+            {
+                if ((Convert.ToInt32(tbxSynthRxRf.Text) * 1000 % KuscCommon.FREQ_STEP_KHZ == 0) && (Convert.ToInt32(tbxSynthRxIf.Text) * 1000 % KuscCommon.FREQ_STEP_KHZ == 0))
+                {
+                    if ((Convert.ToInt32(tbxSynthRxRf.Text) >= KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ) &&
+                        (Convert.ToInt32(tbxSynthRxRf.Text) <= KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ))
+                    {
+                        if ((Convert.ToInt32(tbxSynthRxIf.Text) >= KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ) &&
+                        (Convert.ToInt32(tbxSynthRxIf.Text) <= KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ))
+                        {
+                            data = tbxSynthRxRf.Text;
+                            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, data);
+                        }
+                        else
+                        {
+                            WriteStatusFail(string.Format("Please insert RX synthesizer F-IF between {0} and {1}", KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ));
+                        }
+                    }
+                    else
+                    {
+                        WriteStatusFail(string.Format("Please insert RX synthesizer F-RF between {0} and {1}", KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ));
+                    }
+                }
+                else
+                {
+                    WriteStatusFail(string.Format("Allowed steps in RX F-RF and F-IF is {0} KHz", KuscCommon.FREQ_STEP_KHZ));
+                }
+                
+            }
+            else
+            {
+                WriteStatusFail("Please insert correct RX synthesizer Frf [5 digits length] and Fif values [5 digits length]");
+            }
         }
 
         #endregion
@@ -309,22 +480,123 @@ namespace KUSC
 
         private void btnSetDac_Click(object sender, EventArgs e)
         {
-            if( (tbxDacVal.Text != string.Empty) || 
-                (tbxDacVal.Text.Length != 5) ||
-                (tbxDacVal.Text[1] != 0x2e))    // 0x2e = "." 
+            int dacIndex = 0;
+            int dacVal = 0;
+
+            if (rdbDacA.Checked == false && rdbDacB.Checked == false && rdbDacC.Checked == false && rdbDacD.Checked == false)
             {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, tbxDacVal.Text);
+                WriteStatusFail("None of the DAC unit had been selected");
+                return;
             }
             else
             {
-                WriteStatusFail("Please insert dac value");
+                if(rdbDacA.Checked)
+                {
+                    if(tbxDacValA.Text == string.Empty || tbxDacValA.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format("Please insert dac A value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 0;
+                        dacVal = Convert.ToInt32(tbxDacValA.Text);
+                    }
+                    
+                }
+                else if (rdbDacB.Checked)
+                {
+                    if (tbxDacValB.Text == string.Empty || tbxDacValB.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format("Please insert dac B value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 1;
+                        dacVal = Convert.ToInt32(tbxDacValB.Text);
+                    }
+                }
+                else if (rdbDacC.Checked)
+                {
+                    if (tbxDacValC.Text == string.Empty || tbxDacValC.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format("Please insert dac C value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 2;
+                        dacVal = Convert.ToInt32(tbxDacValC.Text);
+                    }
+                }
+                else if (rdbDacD.Checked)
+                {
+                    if (tbxDacValD.Text == string.Empty || tbxDacValD.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format("Please insert dac D value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 3;
+                        dacVal = Convert.ToInt32(tbxDacValD.Text);
+                    }
+                }
+                if((dacVal > KuscCommon.DAC_VSOURCEPLUS_MILI) || (dacVal < KuscCommon.DAC_VSOURCEMINUS_MILI))
+                {
+                    WriteStatusFail(string.Format("Dac value can`t be lower then Vsource_minus [{0} [mVdc]] or higher then Vref = [{1} [mVdc]]", KuscCommon.DAC_VSOURCEMINUS_MILI, KuscCommon.DAC_VSOURCEPLUS_MILI));
+                    return;
+                }
+            }
+
+            // Prepere configuration word:
+            var data = _kuscExtDac.GetDacData(dacIndex, dacVal);
+
+            // Send data to MCU:
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, data);
+
+        }
+
+
+        #endregion
+
+        #endregion
+
+        #region Update system at start
+
+        internal void UpdateSystemAtStart()
+        {
+            InitSynthesizers();
+        }
+
+        internal void InitSynthesizers()
+        {
+            var dataList = _kuscSynth.GetStartRegisters(Convert.ToInt32(tbxSynthTxFrfInit.Text), Convert.ToInt32(tbxSynthTxFifInit.Text));
+            foreach (var regData in dataList)
+            {
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_TX_INIT_SET, regData);
+            }
+        }
+        #endregion
+
+        private void tmrSysEvents_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnBootFileSelect_Click(object sender, EventArgs e)
+        {
+            if (fdBootloaderOpenFile.ShowDialog() == DialogResult.OK) // Test result.
+            {
+                WriteStatusOk("Boot file: " + fdBootloaderOpenFile.FileName + "Load ok, start transferring to MCU unit");
             }
             
         }
 
-        #endregion
+        private void btnSetSynthInit_Click(object sender, EventArgs e)
+        {
 
-        #endregion
-
+        }
     }
 }

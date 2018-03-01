@@ -16,7 +16,7 @@ namespace KUSC
 
         #region CRC
 
-        public char CalcCrc8(char[] input)
+        public static char CalcCrc8(char[] input)
         {
             int crc = 0;
             for (int i = 0; i < input.Length; i++)
@@ -25,47 +25,37 @@ namespace KUSC
             return Convert.ToChar(crc);
         }
 
-        public ushort CalcCrc16(char[] bytes)
-        {
-            const ushort poly = 4129;
-            ushort[] table = new ushort[256];
-            ushort initialValue = 0xffff;
-            ushort temp, a;
-            ushort crc = initialValue;
-            for (int i = 0; i < table.Length; ++i)
-            {
-                temp = 0;
-                a = (ushort)(i << 8);
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (((temp ^ a) & 0x8000) != 0)
-                        temp = (ushort)((temp << 1) ^ poly);
-                    else
-                        temp <<= 1;
-                    a <<= 1;
-                }
-                table[i] = temp;
-            }
-            for (int i = 0; i < bytes.Length; ++i)
-            {
-                crc = (ushort)((crc << 8) ^ table[((crc >> 8) ^ (0xff & bytes[i]))]);
-            }
-            return crc;
-        }
-
         private static string ConvertDataToString(string data)
         {
             string result = string.Empty;
             foreach (var num in data)
             {
-                string t = num.ToString().Replace(",", "");
-                if (t != string.Empty && t != "0")
+                if(num == 0x2c)
                 {
-                    int a = num;
-                    result += a.ToString();
+                    result += num.ToString();
                 }
+                else
+                {
+                    result += ((int)num).ToString();
+                } 
             }
             return result;
+        }
+
+        public static int GCD(int a, int b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            if (a == 0)
+                return b;
+            else
+                return a;
         }
 
         #endregion
@@ -87,11 +77,6 @@ namespace KUSC
             _KuscForm.WriteStatusFail(msg);
         }
 
-        public void TestUartCom(char c)
-        {
-            _KuscForm.TestUart(c);
-        }
-
         public static void UpdateAdcTable(string dataSample)
         {
             _KuscForm.UpdateAdcTable(dataSample);
@@ -102,10 +87,26 @@ namespace KUSC
             _KuscForm.UpdateMcuFw(ConvertDataToString(fwVersionData));
         }
 
+        public static void UpdateCpldFwVersion(string fwVersionData)
+        {
+            _KuscForm.UpdateCpldFw(ConvertDataToString(fwVersionData));
+        }
+
         public static void UpdateRunTime(string sysRunTime)
         {
             _KuscForm.UpdateSystemRunTime(ConvertDataToString(sysRunTime));
         }
+
+        public static void UpdateFlashCondition(string flashCondData)
+        {
+            _KuscForm.UpdateFlashCondition(flashCondData);
+        }
+
+        public static void UpdateSystemRegisters()
+        {
+            _KuscForm.UpdateSystemAtStart();
+        }
+
         #endregion
 
     }

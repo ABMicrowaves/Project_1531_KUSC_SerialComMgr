@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KuscForm));
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -42,18 +43,24 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.tbxFlashCondNumPackets = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.tbxFlashCondPrecentage = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxFlashCondTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxFlashCondFree = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnEmptyFlash = new System.Windows.Forms.Button();
             this.btnReadFlashStatus = new System.Windows.Forms.Button();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.tbxSysRunTime = new System.Windows.Forms.TextBox();
             this.btnReadMcuTime = new System.Windows.Forms.Button();
-            this.btnReadCpldFwVer = new System.Windows.Forms.TextBox();
+            this.tbxCpldFwVersion = new System.Windows.Forms.TextBox();
             this.btnReadCpldFwVersion = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -66,68 +73,73 @@
             this.btnResetMcu = new System.Windows.Forms.Button();
             this.btnResetCPLD = new System.Windows.Forms.Button();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label59 = new System.Windows.Forms.Label();
+            this.rtbAdcRB5 = new System.Windows.Forms.RichTextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.rtbAdcRB1 = new System.Windows.Forms.RichTextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.rtbAdcRD5 = new System.Windows.Forms.RichTextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.rtbAdcRA5 = new System.Windows.Forms.RichTextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.rtbAdcRE0 = new System.Windows.Forms.RichTextBox();
+            this.rtbAdcRE1 = new System.Windows.Forms.RichTextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.rtbAdcRE2 = new System.Windows.Forms.RichTextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.rtbAdcResults = new System.Windows.Forms.RichTextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.btnClearAdcTable = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.btnReadFlashData = new System.Windows.Forms.Button();
             this.tbxFlashNumSampleRead = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.rtbAdcResults = new System.Windows.Forms.RichTextBox();
             this.groupBox36 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tbxSynthRxIf = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.btnSetSyntUp = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.tbxSynthRxRf = new System.Windows.Forms.TextBox();
             this.groupBox38 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tbxSynthTxIf = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.btnSetSyntDown = new System.Windows.Forms.Button();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.tbxSynthTxRf = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gbxTechMode = new System.Windows.Forms.GroupBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.tbxSetCpldFwValue = new System.Windows.Forms.TextBox();
-            this.btnSetCpldFw = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.tbxSetMcuFwValue = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.btnSetMcuFw = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnSetSynthInit = new System.Windows.Forms.Button();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.tbxSynthRxFifInit = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.tbxSynthRxFrfInit = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.tbxSynthTxFifInit = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.tbxSynthTxFrfInit = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.tbxTestUart = new System.Windows.Forms.TextBox();
-            this.btnUartTestSend = new System.Windows.Forms.Button();
-            this.label32 = new System.Windows.Forms.Label();
-            this.tbxWriteSerial = new System.Windows.Forms.TextBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.btnAdcChannelMode = new System.Windows.Forms.GroupBox();
-            this.btnAdcChMode = new System.Windows.Forms.Button();
-            this.cbxAdcSingleCh = new System.Windows.Forms.ComboBox();
-            this.rdbAdcCircMode = new System.Windows.Forms.RadioButton();
-            this.rdbAdcSingleMode = new System.Windows.Forms.RadioButton();
-            this.btnAdcConversionMode = new System.Windows.Forms.GroupBox();
-            this.btnAdcConvMode = new System.Windows.Forms.Button();
-            this.rdbAdcConvFormatLeft = new System.Windows.Forms.RadioButton();
-            this.rdbAdcConvFormatRight = new System.Windows.Forms.RadioButton();
-            this.btnAdcPositiveVoltage = new System.Windows.Forms.GroupBox();
-            this.btnAdcPositveVoltage = new System.Windows.Forms.Button();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.btnAdcNegativVoltage = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.btnSetDac = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbxDacVal = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.btnBootFileSelect = new System.Windows.Forms.Button();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -141,6 +153,35 @@
             this.btnPA1Set = new System.Windows.Forms.Button();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.btnAdcChannelMode = new System.Windows.Forms.GroupBox();
+            this.btnAdcChMode = new System.Windows.Forms.Button();
+            this.cbxAdcSingleCh = new System.Windows.Forms.ComboBox();
+            this.rdbAdcCircMode = new System.Windows.Forms.RadioButton();
+            this.rdbAdcSingleMode = new System.Windows.Forms.RadioButton();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.tbxSetCpldFwValue = new System.Windows.Forms.TextBox();
+            this.btnSetCpldFw = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.tbxSetMcuFwValue = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.btnSetMcuFw = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.lblAdcVrefUi = new System.Windows.Forms.Label();
+            this.rdbDacD = new System.Windows.Forms.RadioButton();
+            this.rdbDacC = new System.Windows.Forms.RadioButton();
+            this.rdbDacB = new System.Windows.Forms.RadioButton();
+            this.rdbDacA = new System.Windows.Forms.RadioButton();
+            this.label65 = new System.Windows.Forms.Label();
+            this.tbxDacValD = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.tbxDacValC = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.tbxDacValB = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.btnSetDac = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbxDacValA = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnTechLogin = new System.Windows.Forms.Button();
             this.tbxTechPass = new System.Windows.Forms.TextBox();
@@ -148,11 +189,11 @@
             this.tbxTechUser = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.rtbLogRunWindow = new System.Windows.Forms.RichTextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
@@ -167,8 +208,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
+            this.tmrSysEvents = new System.Windows.Forms.Timer(this.components);
+            this.fdBootloaderOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -179,23 +220,23 @@
             this.groupBox13.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox29.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.groupBox36.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox38.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbxTechMode.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.btnAdcChannelMode.SuspendLayout();
-            this.btnAdcConversionMode.SuspendLayout();
-            this.btnAdcPositiveVoltage.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.groupBox30.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.btnAdcChannelMode.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -211,7 +252,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(4, 438);
+            this.label1.Location = new System.Drawing.Point(4, 471);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
@@ -229,7 +270,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(765, 435);
+            this.tabControl1.Size = new System.Drawing.Size(895, 468);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -240,7 +281,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(757, 409);
+            this.tabPage1.Size = new System.Drawing.Size(887, 442);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Local COM settings";
             // 
@@ -334,7 +375,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(757, 409);
+            this.tabPage2.Size = new System.Drawing.Size(887, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "User settings";
             // 
@@ -351,27 +392,77 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(749, 405);
+            this.groupBox2.Size = new System.Drawing.Size(869, 436);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "User settings";
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label46);
+            this.groupBox5.Controls.Add(this.label45);
+            this.groupBox5.Controls.Add(this.tbxFlashCondNumPackets);
+            this.groupBox5.Controls.Add(this.label44);
+            this.groupBox5.Controls.Add(this.tbxFlashCondPrecentage);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.tbxFlashCondTotal);
             this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.tbxFlashCondFree);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.btnEmptyFlash);
             this.groupBox5.Controls.Add(this.btnReadFlashStatus);
             this.groupBox5.Location = new System.Drawing.Point(499, 23);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(250, 125);
+            this.groupBox5.Size = new System.Drawing.Size(250, 172);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Internal Flash";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(146, 104);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(15, 13);
+            this.label46.TabIndex = 21;
+            this.label46.Text = "%";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(8, 126);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(55, 13);
+            this.label45.TabIndex = 20;
+            this.label45.Text = "# packets";
+            // 
+            // tbxFlashCondNumPackets
+            // 
+            this.tbxFlashCondNumPackets.Location = new System.Drawing.Point(98, 126);
+            this.tbxFlashCondNumPackets.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxFlashCondNumPackets.Name = "tbxFlashCondNumPackets";
+            this.tbxFlashCondNumPackets.ReadOnly = true;
+            this.tbxFlashCondNumPackets.Size = new System.Drawing.Size(43, 20);
+            this.tbxFlashCondNumPackets.TabIndex = 19;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(8, 104);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(85, 13);
+            this.label44.TabIndex = 18;
+            this.label44.Text = "Free precentage";
+            // 
+            // tbxFlashCondPrecentage
+            // 
+            this.tbxFlashCondPrecentage.Location = new System.Drawing.Point(98, 104);
+            this.tbxFlashCondPrecentage.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxFlashCondPrecentage.Name = "tbxFlashCondPrecentage";
+            this.tbxFlashCondPrecentage.ReadOnly = true;
+            this.tbxFlashCondPrecentage.Size = new System.Drawing.Size(43, 20);
+            this.tbxFlashCondPrecentage.TabIndex = 17;
             // 
             // label10
             // 
@@ -391,14 +482,14 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "Total";
             // 
-            // textBox2
+            // tbxFlashCondTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(128, 77);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(69, 20);
-            this.textBox2.TabIndex = 14;
+            this.tbxFlashCondTotal.Location = new System.Drawing.Point(128, 77);
+            this.tbxFlashCondTotal.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxFlashCondTotal.Name = "tbxFlashCondTotal";
+            this.tbxFlashCondTotal.ReadOnly = true;
+            this.tbxFlashCondTotal.Size = new System.Drawing.Size(69, 20);
+            this.tbxFlashCondTotal.TabIndex = 14;
             // 
             // label6
             // 
@@ -409,14 +500,14 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Free";
             // 
-            // textBox1
+            // tbxFlashCondFree
             // 
-            this.textBox1.Location = new System.Drawing.Point(38, 77);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(54, 20);
-            this.textBox1.TabIndex = 12;
+            this.tbxFlashCondFree.Location = new System.Drawing.Point(38, 77);
+            this.tbxFlashCondFree.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxFlashCondFree.Name = "tbxFlashCondFree";
+            this.tbxFlashCondFree.ReadOnly = true;
+            this.tbxFlashCondFree.Size = new System.Drawing.Size(54, 20);
+            this.tbxFlashCondFree.TabIndex = 12;
             // 
             // label4
             // 
@@ -445,7 +536,7 @@
             // 
             this.btnReadFlashStatus.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFlashStatus.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadFlashStatus.Location = new System.Drawing.Point(201, 101);
+            this.btnReadFlashStatus.Location = new System.Drawing.Point(201, 138);
             this.btnReadFlashStatus.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadFlashStatus.Name = "btnReadFlashStatus";
             this.btnReadFlashStatus.Size = new System.Drawing.Size(44, 19);
@@ -459,7 +550,7 @@
             this.groupBox35.Controls.Add(this.label34);
             this.groupBox35.Controls.Add(this.tbxSysRunTime);
             this.groupBox35.Controls.Add(this.btnReadMcuTime);
-            this.groupBox35.Controls.Add(this.btnReadCpldFwVer);
+            this.groupBox35.Controls.Add(this.tbxCpldFwVersion);
             this.groupBox35.Controls.Add(this.btnReadCpldFwVersion);
             this.groupBox35.Controls.Add(this.label12);
             this.groupBox35.Controls.Add(this.label23);
@@ -475,6 +566,15 @@
             this.groupBox35.TabStop = false;
             this.groupBox35.Text = "MCU and CPLD F.W version";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(89, 144);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(39, 13);
+            this.label34.TabIndex = 17;
+            this.label34.Text = "(hours)";
+            // 
             // tbxSysRunTime
             // 
             this.tbxSysRunTime.Location = new System.Drawing.Point(11, 141);
@@ -488,7 +588,7 @@
             // 
             this.btnReadMcuTime.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadMcuTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadMcuTime.Location = new System.Drawing.Point(123, 141);
+            this.btnReadMcuTime.Location = new System.Drawing.Point(133, 141);
             this.btnReadMcuTime.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadMcuTime.Name = "btnReadMcuTime";
             this.btnReadMcuTime.Size = new System.Drawing.Size(44, 19);
@@ -497,20 +597,20 @@
             this.btnReadMcuTime.UseVisualStyleBackColor = false;
             this.btnReadMcuTime.Click += new System.EventHandler(this.btnReadMcuTime_Click);
             // 
-            // btnReadCpldFwVer
+            // tbxCpldFwVersion
             // 
-            this.btnReadCpldFwVer.Location = new System.Drawing.Point(12, 94);
-            this.btnReadCpldFwVer.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReadCpldFwVer.Name = "btnReadCpldFwVer";
-            this.btnReadCpldFwVer.ReadOnly = true;
-            this.btnReadCpldFwVer.Size = new System.Drawing.Size(108, 20);
-            this.btnReadCpldFwVer.TabIndex = 14;
+            this.tbxCpldFwVersion.Location = new System.Drawing.Point(12, 94);
+            this.tbxCpldFwVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxCpldFwVersion.Name = "tbxCpldFwVersion";
+            this.tbxCpldFwVersion.ReadOnly = true;
+            this.tbxCpldFwVersion.Size = new System.Drawing.Size(108, 20);
+            this.tbxCpldFwVersion.TabIndex = 14;
             // 
             // btnReadCpldFwVersion
             // 
             this.btnReadCpldFwVersion.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadCpldFwVersion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadCpldFwVersion.Location = new System.Drawing.Point(124, 94);
+            this.btnReadCpldFwVersion.Location = new System.Drawing.Point(133, 92);
             this.btnReadCpldFwVersion.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadCpldFwVersion.Name = "btnReadCpldFwVersion";
             this.btnReadCpldFwVersion.Size = new System.Drawing.Size(44, 19);
@@ -525,9 +625,9 @@
             this.label12.Location = new System.Drawing.Point(11, 126);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 13);
+            this.label12.Size = new System.Drawing.Size(71, 13);
             this.label12.TabIndex = 11;
-            this.label12.Text = "MCU run time (min)";
+            this.label12.Text = "MCU run time";
             // 
             // label23
             // 
@@ -562,7 +662,7 @@
             // 
             this.btnReadMcuFwVer.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadMcuFwVer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadMcuFwVer.Location = new System.Drawing.Point(123, 39);
+            this.btnReadMcuFwVer.Location = new System.Drawing.Point(133, 39);
             this.btnReadMcuFwVer.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadMcuFwVer.Name = "btnReadMcuFwVer";
             this.btnReadMcuFwVer.Size = new System.Drawing.Size(44, 19);
@@ -574,7 +674,7 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.btnControlLedTest);
-            this.groupBox13.Location = new System.Drawing.Point(10, 332);
+            this.groupBox13.Location = new System.Drawing.Point(10, 371);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(2);
@@ -600,7 +700,7 @@
             // 
             this.groupBox27.Controls.Add(this.btnResetMcu);
             this.groupBox27.Controls.Add(this.btnResetCPLD);
-            this.groupBox27.Location = new System.Drawing.Point(10, 214);
+            this.groupBox27.Location = new System.Drawing.Point(10, 202);
             this.groupBox27.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox27.Name = "groupBox27";
             this.groupBox27.Padding = new System.Windows.Forms.Padding(2);
@@ -638,39 +738,248 @@
             // groupBox29
             // 
             this.groupBox29.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox29.Controls.Add(this.button15);
+            this.groupBox29.Controls.Add(this.tabControl3);
+            this.groupBox29.Controls.Add(this.label38);
+            this.groupBox29.Controls.Add(this.btnClearAdcTable);
             this.groupBox29.Controls.Add(this.button11);
             this.groupBox29.Controls.Add(this.btnReadFlashData);
             this.groupBox29.Controls.Add(this.tbxFlashNumSampleRead);
             this.groupBox29.Controls.Add(this.label22);
-            this.groupBox29.Controls.Add(this.label21);
-            this.groupBox29.Controls.Add(this.rtbAdcResults);
             this.groupBox29.Location = new System.Drawing.Point(195, 200);
             this.groupBox29.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox29.Name = "groupBox29";
             this.groupBox29.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox29.Size = new System.Drawing.Size(299, 189);
+            this.groupBox29.Size = new System.Drawing.Size(686, 232);
             this.groupBox29.TabIndex = 15;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Internal ADC sampling";
             // 
-            // button15
+            // tabControl3
             // 
-            this.button15.BackColor = System.Drawing.SystemColors.Control;
-            this.button15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button15.Location = new System.Drawing.Point(98, 155);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(87, 22);
-            this.button15.TabIndex = 18;
-            this.button15.Text = "Clear window";
-            this.button15.UseVisualStyleBackColor = false;
+            this.tabControl3.Controls.Add(this.tabPage6);
+            this.tabControl3.Controls.Add(this.tabPage7);
+            this.tabControl3.Location = new System.Drawing.Point(5, 62);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(676, 145);
+            this.tabControl3.TabIndex = 20;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage6.Controls.Add(this.label59);
+            this.tabPage6.Controls.Add(this.rtbAdcRB5);
+            this.tabPage6.Controls.Add(this.label33);
+            this.tabPage6.Controls.Add(this.rtbAdcRB1);
+            this.tabPage6.Controls.Add(this.label32);
+            this.tabPage6.Controls.Add(this.rtbAdcRD5);
+            this.tabPage6.Controls.Add(this.label43);
+            this.tabPage6.Controls.Add(this.rtbAdcRA5);
+            this.tabPage6.Controls.Add(this.label41);
+            this.tabPage6.Controls.Add(this.rtbAdcRE0);
+            this.tabPage6.Controls.Add(this.rtbAdcRE1);
+            this.tabPage6.Controls.Add(this.label42);
+            this.tabPage6.Controls.Add(this.label40);
+            this.tabPage6.Controls.Add(this.rtbAdcRE2);
+            this.tabPage6.Controls.Add(this.label21);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(668, 119);
+            this.tabPage6.TabIndex = 0;
+            this.tabPage6.Text = "Channels sampling";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(3, 103);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(155, 13);
+            this.label59.TabIndex = 22;
+            this.label59.Text = "All samples values are in mVDC";
+            // 
+            // rtbAdcRB5
+            // 
+            this.rtbAdcRB5.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRB5.Location = new System.Drawing.Point(571, 24);
+            this.rtbAdcRB5.Name = "rtbAdcRB5";
+            this.rtbAdcRB5.ReadOnly = true;
+            this.rtbAdcRB5.Size = new System.Drawing.Size(94, 68);
+            this.rtbAdcRB5.TabIndex = 21;
+            this.rtbAdcRB5.Text = "";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(568, 8);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(99, 13);
+            this.label33.TabIndex = 20;
+            this.label33.Text = "DOWN_TMP_SNS";
+            // 
+            // rtbAdcRB1
+            // 
+            this.rtbAdcRB1.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRB1.Location = new System.Drawing.Point(483, 24);
+            this.rtbAdcRB1.Name = "rtbAdcRB1";
+            this.rtbAdcRB1.ReadOnly = true;
+            this.rtbAdcRB1.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRB1.TabIndex = 19;
+            this.rtbAdcRB1.Text = "";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(480, 8);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(79, 13);
+            this.label32.TabIndex = 18;
+            this.label32.Text = "UP_TMP_SNS";
+            // 
+            // rtbAdcRD5
+            // 
+            this.rtbAdcRD5.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRD5.Location = new System.Drawing.Point(395, 24);
+            this.rtbAdcRD5.Name = "rtbAdcRD5";
+            this.rtbAdcRD5.ReadOnly = true;
+            this.rtbAdcRD5.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRD5.TabIndex = 17;
+            this.rtbAdcRD5.Text = "";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(392, 8);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(50, 13);
+            this.label43.TabIndex = 16;
+            this.label43.Text = "PA_TMP";
+            // 
+            // rtbAdcRA5
+            // 
+            this.rtbAdcRA5.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRA5.Location = new System.Drawing.Point(295, 24);
+            this.rtbAdcRA5.Name = "rtbAdcRA5";
+            this.rtbAdcRA5.ReadOnly = true;
+            this.rtbAdcRA5.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRA5.TabIndex = 15;
+            this.rtbAdcRA5.Text = "";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(292, 8);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(61, 13);
+            this.label41.TabIndex = 14;
+            this.label41.Text = "REV_PWR";
+            // 
+            // rtbAdcRE0
+            // 
+            this.rtbAdcRE0.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRE0.Location = new System.Drawing.Point(195, 24);
+            this.rtbAdcRE0.Name = "rtbAdcRE0";
+            this.rtbAdcRE0.ReadOnly = true;
+            this.rtbAdcRE0.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRE0.TabIndex = 13;
+            this.rtbAdcRE0.Text = "";
+            // 
+            // rtbAdcRE1
+            // 
+            this.rtbAdcRE1.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRE1.Location = new System.Drawing.Point(97, 24);
+            this.rtbAdcRE1.Name = "rtbAdcRE1";
+            this.rtbAdcRE1.ReadOnly = true;
+            this.rtbAdcRE1.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRE1.TabIndex = 12;
+            this.rtbAdcRE1.Text = "";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(192, 8);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(70, 13);
+            this.label42.TabIndex = 5;
+            this.label42.Text = "FWD_PWR2";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(94, 8);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(70, 13);
+            this.label40.TabIndex = 3;
+            this.label40.Text = "FWD_PWR1";
+            // 
+            // rtbAdcRE2
+            // 
+            this.rtbAdcRE2.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbAdcRE2.Location = new System.Drawing.Point(3, 24);
+            this.rtbAdcRE2.Name = "rtbAdcRE2";
+            this.rtbAdcRE2.ReadOnly = true;
+            this.rtbAdcRE2.Size = new System.Drawing.Size(82, 68);
+            this.rtbAdcRE2.TabIndex = 2;
+            this.rtbAdcRE2.Text = "";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(3, 8);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(81, 13);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "FWD_IN_PWR";
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage7.Controls.Add(this.rtbAdcResults);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(668, 119);
+            this.tabPage7.TabIndex = 1;
+            this.tabPage7.Text = "Flash row data";
+            // 
+            // rtbAdcResults
+            // 
+            this.rtbAdcResults.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rtbAdcResults.Location = new System.Drawing.Point(2, 5);
+            this.rtbAdcResults.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAdcResults.Name = "rtbAdcResults";
+            this.rtbAdcResults.ReadOnly = true;
+            this.rtbAdcResults.Size = new System.Drawing.Size(653, 103);
+            this.rtbAdcResults.TabIndex = 4;
+            this.rtbAdcResults.Text = "";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(306, 34);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(139, 13);
+            this.label38.TabIndex = 19;
+            this.label38.Text = "[ Packet size = 32 samples ]";
+            // 
+            // btnClearAdcTable
+            // 
+            this.btnClearAdcTable.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClearAdcTable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClearAdcTable.Location = new System.Drawing.Point(478, 208);
+            this.btnClearAdcTable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClearAdcTable.Name = "btnClearAdcTable";
+            this.btnClearAdcTable.Size = new System.Drawing.Size(87, 22);
+            this.btnClearAdcTable.TabIndex = 18;
+            this.btnClearAdcTable.Text = "Clear window";
+            this.btnClearAdcTable.UseVisualStyleBackColor = false;
+            this.btnClearAdcTable.Click += new System.EventHandler(this.btnClearAdcTable_Click);
             // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.SystemColors.Control;
             this.button11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button11.Location = new System.Drawing.Point(199, 155);
+            this.button11.Location = new System.Drawing.Point(577, 208);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(87, 22);
@@ -694,10 +1003,10 @@
             // 
             // tbxFlashNumSampleRead
             // 
-            this.tbxFlashNumSampleRead.Location = new System.Drawing.Point(108, 34);
+            this.tbxFlashNumSampleRead.Location = new System.Drawing.Point(159, 31);
             this.tbxFlashNumSampleRead.Margin = new System.Windows.Forms.Padding(2);
             this.tbxFlashNumSampleRead.Name = "tbxFlashNumSampleRead";
-            this.tbxFlashNumSampleRead.Size = new System.Drawing.Size(68, 20);
+            this.tbxFlashNumSampleRead.Size = new System.Drawing.Size(50, 20);
             this.tbxFlashNumSampleRead.TabIndex = 6;
             // 
             // label22
@@ -706,30 +1015,9 @@
             this.label22.Location = new System.Drawing.Point(7, 34);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(97, 13);
+            this.label22.Size = new System.Drawing.Size(150, 13);
             this.label22.TabIndex = 5;
-            this.label22.Text = "Number of samples";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 59);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(83, 13);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Sampling results";
-            // 
-            // rtbAdcResults
-            // 
-            this.rtbAdcResults.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.rtbAdcResults.Location = new System.Drawing.Point(5, 75);
-            this.rtbAdcResults.Margin = new System.Windows.Forms.Padding(2);
-            this.rtbAdcResults.Name = "rtbAdcResults";
-            this.rtbAdcResults.ReadOnly = true;
-            this.rtbAdcResults.Size = new System.Drawing.Size(281, 76);
-            this.rtbAdcResults.TabIndex = 3;
-            this.rtbAdcResults.Text = "";
+            this.label22.Text = "Number of packets of samples";
             // 
             // groupBox36
             // 
@@ -750,10 +1038,10 @@
             this.groupBox14.Controls.Add(this.label25);
             this.groupBox14.Controls.Add(this.label29);
             this.groupBox14.Controls.Add(this.label30);
-            this.groupBox14.Controls.Add(this.textBox10);
+            this.groupBox14.Controls.Add(this.tbxSynthRxIf);
             this.groupBox14.Controls.Add(this.label31);
             this.groupBox14.Controls.Add(this.btnSetSyntUp);
-            this.groupBox14.Controls.Add(this.textBox12);
+            this.groupBox14.Controls.Add(this.tbxSynthRxRf);
             this.groupBox14.Location = new System.Drawing.Point(159, 33);
             this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox14.Name = "groupBox14";
@@ -761,7 +1049,7 @@
             this.groupBox14.Size = new System.Drawing.Size(127, 128);
             this.groupBox14.TabIndex = 12;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Frequancy output";
+            this.groupBox14.Text = "Frequancy RX";
             // 
             // label25
             // 
@@ -790,13 +1078,13 @@
             this.label30.TabIndex = 7;
             this.label30.Text = "MHz";
             // 
-            // textBox10
+            // tbxSynthRxIf
             // 
-            this.textBox10.Location = new System.Drawing.Point(4, 81);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(77, 20);
-            this.textBox10.TabIndex = 6;
+            this.tbxSynthRxIf.Location = new System.Drawing.Point(4, 81);
+            this.tbxSynthRxIf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxIf.Name = "tbxSynthRxIf";
+            this.tbxSynthRxIf.Size = new System.Drawing.Size(77, 20);
+            this.tbxSynthRxIf.TabIndex = 6;
             // 
             // label31
             // 
@@ -820,23 +1108,23 @@
             this.btnSetSyntUp.UseVisualStyleBackColor = false;
             this.btnSetSyntUp.Click += new System.EventHandler(this.btnSetSyntUp_Click);
             // 
-            // textBox12
+            // tbxSynthRxRf
             // 
-            this.textBox12.Location = new System.Drawing.Point(4, 41);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(77, 20);
-            this.textBox12.TabIndex = 0;
+            this.tbxSynthRxRf.Location = new System.Drawing.Point(4, 41);
+            this.tbxSynthRxRf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxRf.Name = "tbxSynthRxRf";
+            this.tbxSynthRxRf.Size = new System.Drawing.Size(77, 20);
+            this.tbxSynthRxRf.TabIndex = 0;
             // 
             // groupBox38
             // 
             this.groupBox38.Controls.Add(this.label28);
             this.groupBox38.Controls.Add(this.label27);
             this.groupBox38.Controls.Add(this.label19);
-            this.groupBox38.Controls.Add(this.textBox9);
+            this.groupBox38.Controls.Add(this.tbxSynthTxIf);
             this.groupBox38.Controls.Add(this.label26);
             this.groupBox38.Controls.Add(this.btnSetSyntDown);
-            this.groupBox38.Controls.Add(this.textBox14);
+            this.groupBox38.Controls.Add(this.tbxSynthTxRf);
             this.groupBox38.Location = new System.Drawing.Point(5, 33);
             this.groupBox38.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox38.Name = "groupBox38";
@@ -844,7 +1132,7 @@
             this.groupBox38.Size = new System.Drawing.Size(127, 128);
             this.groupBox38.TabIndex = 8;
             this.groupBox38.TabStop = false;
-            this.groupBox38.Text = "Frequancy input";
+            this.groupBox38.Text = "Frequancy TX";
             // 
             // label28
             // 
@@ -873,13 +1161,13 @@
             this.label19.TabIndex = 7;
             this.label19.Text = "MHz";
             // 
-            // textBox9
+            // tbxSynthTxIf
             // 
-            this.textBox9.Location = new System.Drawing.Point(4, 81);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(77, 20);
-            this.textBox9.TabIndex = 6;
+            this.tbxSynthTxIf.Location = new System.Drawing.Point(4, 81);
+            this.tbxSynthTxIf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxIf.Name = "tbxSynthTxIf";
+            this.tbxSynthTxIf.Size = new System.Drawing.Size(77, 20);
+            this.tbxSynthTxIf.TabIndex = 6;
             // 
             // label26
             // 
@@ -903,13 +1191,13 @@
             this.btnSetSyntDown.UseVisualStyleBackColor = false;
             this.btnSetSyntDown.Click += new System.EventHandler(this.btnSetSyntDown_Click);
             // 
-            // textBox14
+            // tbxSynthTxRf
             // 
-            this.textBox14.Location = new System.Drawing.Point(4, 41);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(77, 20);
-            this.textBox14.TabIndex = 0;
+            this.tbxSynthTxRf.Location = new System.Drawing.Point(4, 41);
+            this.tbxSynthTxRf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxRf.Name = "tbxSynthTxRf";
+            this.tbxSynthTxRf.Size = new System.Drawing.Size(77, 20);
+            this.tbxSynthTxRf.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -918,7 +1206,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(757, 409);
+            this.tabPage3.Size = new System.Drawing.Size(887, 442);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Technician settings";
             // 
@@ -931,39 +1219,515 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(753, 405);
+            this.groupBox3.Size = new System.Drawing.Size(883, 438);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Technician settings";
             // 
             // gbxTechMode
             // 
-            this.gbxTechMode.Controls.Add(this.groupBox12);
+            this.gbxTechMode.Controls.Add(this.groupBox16);
             this.gbxTechMode.Controls.Add(this.groupBox4);
-            this.gbxTechMode.Controls.Add(this.groupBox11);
             this.gbxTechMode.Controls.Add(this.groupBox30);
+            this.gbxTechMode.Controls.Add(this.btnAdcChannelMode);
+            this.gbxTechMode.Controls.Add(this.groupBox12);
+            this.gbxTechMode.Controls.Add(this.groupBox15);
             this.gbxTechMode.Location = new System.Drawing.Point(9, 62);
             this.gbxTechMode.Name = "gbxTechMode";
-            this.gbxTechMode.Size = new System.Drawing.Size(738, 338);
+            this.gbxTechMode.Size = new System.Drawing.Size(869, 371);
             this.gbxTechMode.TabIndex = 11;
             this.gbxTechMode.TabStop = false;
+            this.gbxTechMode.Visible = false;
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.btnSetSynthInit);
+            this.groupBox16.Controls.Add(this.label58);
+            this.groupBox16.Controls.Add(this.label54);
+            this.groupBox16.Controls.Add(this.label55);
+            this.groupBox16.Controls.Add(this.tbxSynthRxFifInit);
+            this.groupBox16.Controls.Add(this.label56);
+            this.groupBox16.Controls.Add(this.label57);
+            this.groupBox16.Controls.Add(this.tbxSynthRxFrfInit);
+            this.groupBox16.Controls.Add(this.label52);
+            this.groupBox16.Controls.Add(this.label53);
+            this.groupBox16.Controls.Add(this.tbxSynthTxFifInit);
+            this.groupBox16.Controls.Add(this.label51);
+            this.groupBox16.Controls.Add(this.label50);
+            this.groupBox16.Controls.Add(this.label47);
+            this.groupBox16.Controls.Add(this.tbxSynthTxFrfInit);
+            this.groupBox16.Location = new System.Drawing.Point(520, 216);
+            this.groupBox16.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox16.Size = new System.Drawing.Size(282, 141);
+            this.groupBox16.TabIndex = 14;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Synthesizers Rx / Tx Init";
+            // 
+            // btnSetSynthInit
+            // 
+            this.btnSetSynthInit.Location = new System.Drawing.Point(122, 111);
+            this.btnSetSynthInit.Name = "btnSetSynthInit";
+            this.btnSetSynthInit.Size = new System.Drawing.Size(49, 25);
+            this.btnSetSynthInit.TabIndex = 16;
+            this.btnSetSynthInit.Text = "Set";
+            this.btnSetSynthInit.UseVisualStyleBackColor = true;
+            this.btnSetSynthInit.Click += new System.EventHandler(this.btnSetSynthInit_Click);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(149, 23);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(77, 13);
+            this.label58.TabIndex = 17;
+            this.label58.Text = "Synthesizer Rx";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(237, 75);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(35, 13);
+            this.label54.TabIndex = 27;
+            this.label54.Text = "[MHz]";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(149, 75);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(25, 13);
+            this.label55.TabIndex = 26;
+            this.label55.Text = "F-IF";
+            // 
+            // tbxSynthRxFifInit
+            // 
+            this.tbxSynthRxFifInit.Location = new System.Drawing.Point(185, 72);
+            this.tbxSynthRxFifInit.Name = "tbxSynthRxFifInit";
+            this.tbxSynthRxFifInit.Size = new System.Drawing.Size(46, 20);
+            this.tbxSynthRxFifInit.TabIndex = 25;
+            this.tbxSynthRxFifInit.Text = "13750";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(237, 49);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(35, 13);
+            this.label56.TabIndex = 24;
+            this.label56.Text = "[MHz]";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(149, 49);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(30, 13);
+            this.label57.TabIndex = 23;
+            this.label57.Text = "F-RF";
+            // 
+            // tbxSynthRxFrfInit
+            // 
+            this.tbxSynthRxFrfInit.Location = new System.Drawing.Point(184, 46);
+            this.tbxSynthRxFrfInit.Name = "tbxSynthRxFrfInit";
+            this.tbxSynthRxFrfInit.Size = new System.Drawing.Size(46, 20);
+            this.tbxSynthRxFrfInit.TabIndex = 22;
+            this.tbxSynthRxFrfInit.Text = "00950";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(98, 72);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(35, 13);
+            this.label52.TabIndex = 21;
+            this.label52.Text = "[MHz]";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(10, 72);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(25, 13);
+            this.label53.TabIndex = 20;
+            this.label53.Text = "F-IF";
+            // 
+            // tbxSynthTxFifInit
+            // 
+            this.tbxSynthTxFifInit.Location = new System.Drawing.Point(46, 69);
+            this.tbxSynthTxFifInit.Name = "tbxSynthTxFifInit";
+            this.tbxSynthTxFifInit.Size = new System.Drawing.Size(46, 20);
+            this.tbxSynthTxFifInit.TabIndex = 19;
+            this.tbxSynthTxFifInit.Text = "02100";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(98, 46);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(35, 13);
+            this.label51.TabIndex = 18;
+            this.label51.Text = "[MHz]";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(10, 46);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(30, 13);
+            this.label50.TabIndex = 17;
+            this.label50.Text = "F-RF";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(10, 23);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(76, 13);
+            this.label47.TabIndex = 16;
+            this.label47.Text = "Synthesizer Tx";
+            // 
+            // tbxSynthTxFrfInit
+            // 
+            this.tbxSynthTxFrfInit.Location = new System.Drawing.Point(46, 43);
+            this.tbxSynthTxFrfInit.Name = "tbxSynthTxFrfInit";
+            this.tbxSynthTxFrfInit.Size = new System.Drawing.Size(46, 20);
+            this.tbxSynthTxFrfInit.TabIndex = 15;
+            this.tbxSynthTxFrfInit.Text = "11000";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.label48);
+            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.label49);
+            this.groupBox4.Controls.Add(this.btnBootFileSelect);
+            this.groupBox4.Location = new System.Drawing.Point(234, 217);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(250, 141);
+            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Firmware boadlader";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(98, 73);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(38, 20);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(8, 77);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(79, 13);
+            this.label48.TabIndex = 8;
+            this.label48.Text = "# data packets";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(11, 39);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(108, 20);
+            this.textBox2.TabIndex = 6;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(8, 24);
+            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(67, 13);
+            this.label49.TabIndex = 5;
+            this.label49.Text = "Select fw file";
+            // 
+            // btnBootFileSelect
+            // 
+            this.btnBootFileSelect.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBootFileSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBootFileSelect.Location = new System.Drawing.Point(123, 39);
+            this.btnBootFileSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBootFileSelect.Name = "btnBootFileSelect";
+            this.btnBootFileSelect.Size = new System.Drawing.Size(85, 19);
+            this.btnBootFileSelect.TabIndex = 3;
+            this.btnBootFileSelect.Text = "Select boot file";
+            this.btnBootFileSelect.UseVisualStyleBackColor = false;
+            this.btnBootFileSelect.Click += new System.EventHandler(this.btnBootFileSelect_Click);
+            // 
+            // groupBox30
+            // 
+            this.groupBox30.Controls.Add(this.groupBox8);
+            this.groupBox30.Controls.Add(this.groupBox7);
+            this.groupBox30.Location = new System.Drawing.Point(234, 19);
+            this.groupBox30.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox30.Size = new System.Drawing.Size(250, 189);
+            this.groupBox30.TabIndex = 14;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Phase amplifier";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.comboBox2);
+            this.groupBox8.Controls.Add(this.btnPA2Set);
+            this.groupBox8.Controls.Add(this.radioButton1);
+            this.groupBox8.Controls.Add(this.radioButton2);
+            this.groupBox8.Location = new System.Drawing.Point(142, 19);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(91, 160);
+            this.groupBox8.TabIndex = 10;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "P.A 2";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 83);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Power range";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.comboBox2.Location = new System.Drawing.Point(7, 99);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(74, 21);
+            this.comboBox2.TabIndex = 8;
+            // 
+            // btnPA2Set
+            // 
+            this.btnPA2Set.Location = new System.Drawing.Point(6, 124);
+            this.btnPA2Set.Name = "btnPA2Set";
+            this.btnPA2Set.Size = new System.Drawing.Size(75, 23);
+            this.btnPA2Set.TabIndex = 5;
+            this.btnPA2Set.Text = "Set";
+            this.btnPA2Set.UseVisualStyleBackColor = true;
+            this.btnPA2Set.Click += new System.EventHandler(this.btnPA2Set_Click);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(5, 18);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(60, 17);
+            this.radioButton1.TabIndex = 7;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Disable";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(5, 38);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(58, 17);
+            this.radioButton2.TabIndex = 6;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Enable";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Controls.Add(this.btnPA1Set);
+            this.groupBox7.Controls.Add(this.radioButton13);
+            this.groupBox7.Controls.Add(this.radioButton14);
+            this.groupBox7.Location = new System.Drawing.Point(12, 18);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(91, 161);
+            this.groupBox7.TabIndex = 6;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "P.A 1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 83);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Power range";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 99);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(74, 21);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // btnPA1Set
+            // 
+            this.btnPA1Set.Location = new System.Drawing.Point(5, 124);
+            this.btnPA1Set.Name = "btnPA1Set";
+            this.btnPA1Set.Size = new System.Drawing.Size(75, 23);
+            this.btnPA1Set.TabIndex = 5;
+            this.btnPA1Set.Text = "Set";
+            this.btnPA1Set.UseVisualStyleBackColor = true;
+            this.btnPA1Set.Click += new System.EventHandler(this.btnPA1Set_Click);
+            // 
+            // radioButton13
+            // 
+            this.radioButton13.AutoSize = true;
+            this.radioButton13.Location = new System.Drawing.Point(5, 18);
+            this.radioButton13.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton13.Name = "radioButton13";
+            this.radioButton13.Size = new System.Drawing.Size(60, 17);
+            this.radioButton13.TabIndex = 7;
+            this.radioButton13.TabStop = true;
+            this.radioButton13.Text = "Disable";
+            this.radioButton13.UseVisualStyleBackColor = true;
+            // 
+            // radioButton14
+            // 
+            this.radioButton14.AutoSize = true;
+            this.radioButton14.Location = new System.Drawing.Point(5, 38);
+            this.radioButton14.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton14.Name = "radioButton14";
+            this.radioButton14.Size = new System.Drawing.Size(58, 17);
+            this.radioButton14.TabIndex = 6;
+            this.radioButton14.TabStop = true;
+            this.radioButton14.Text = "Enable";
+            this.radioButton14.UseVisualStyleBackColor = true;
+            // 
+            // btnAdcChannelMode
+            // 
+            this.btnAdcChannelMode.Controls.Add(this.btnAdcChMode);
+            this.btnAdcChannelMode.Controls.Add(this.cbxAdcSingleCh);
+            this.btnAdcChannelMode.Controls.Add(this.rdbAdcCircMode);
+            this.btnAdcChannelMode.Controls.Add(this.rdbAdcSingleMode);
+            this.btnAdcChannelMode.Location = new System.Drawing.Point(16, 216);
+            this.btnAdcChannelMode.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdcChannelMode.Name = "btnAdcChannelMode";
+            this.btnAdcChannelMode.Padding = new System.Windows.Forms.Padding(2);
+            this.btnAdcChannelMode.Size = new System.Drawing.Size(181, 141);
+            this.btnAdcChannelMode.TabIndex = 13;
+            this.btnAdcChannelMode.TabStop = false;
+            this.btnAdcChannelMode.Text = "ADC chennel selection";
+            // 
+            // btnAdcChMode
+            // 
+            this.btnAdcChMode.Location = new System.Drawing.Point(86, 111);
+            this.btnAdcChMode.Name = "btnAdcChMode";
+            this.btnAdcChMode.Size = new System.Drawing.Size(49, 25);
+            this.btnAdcChMode.TabIndex = 15;
+            this.btnAdcChMode.Text = "Set";
+            this.btnAdcChMode.UseVisualStyleBackColor = true;
+            this.btnAdcChMode.Click += new System.EventHandler(this.btnAdcChMode_Click);
+            // 
+            // cbxAdcSingleCh
+            // 
+            this.cbxAdcSingleCh.FormattingEnabled = true;
+            this.cbxAdcSingleCh.Items.AddRange(new object[] {
+            "FWD_IN_PWR",
+            "FWD_PWR1",
+            "FWD_PWR2",
+            "REV_PWR",
+            "PA_TMP",
+            "UP_TMP_SNS",
+            "DOWN_TMP_SNS"});
+            this.cbxAdcSingleCh.Location = new System.Drawing.Point(4, 84);
+            this.cbxAdcSingleCh.Name = "cbxAdcSingleCh";
+            this.cbxAdcSingleCh.Size = new System.Drawing.Size(131, 21);
+            this.cbxAdcSingleCh.TabIndex = 2;
+            // 
+            // rdbAdcCircMode
+            // 
+            this.rdbAdcCircMode.AutoSize = true;
+            this.rdbAdcCircMode.Location = new System.Drawing.Point(4, 32);
+            this.rdbAdcCircMode.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcCircMode.Name = "rdbAdcCircMode";
+            this.rdbAdcCircMode.Size = new System.Drawing.Size(89, 17);
+            this.rdbAdcCircMode.TabIndex = 1;
+            this.rdbAdcCircMode.TabStop = true;
+            this.rdbAdcCircMode.Text = "Circular mode";
+            this.rdbAdcCircMode.UseVisualStyleBackColor = true;
+            // 
+            // rdbAdcSingleMode
+            // 
+            this.rdbAdcSingleMode.AutoSize = true;
+            this.rdbAdcSingleMode.Location = new System.Drawing.Point(4, 58);
+            this.rdbAdcSingleMode.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAdcSingleMode.Name = "rdbAdcSingleMode";
+            this.rdbAdcSingleMode.Size = new System.Drawing.Size(95, 17);
+            this.rdbAdcSingleMode.TabIndex = 0;
+            this.rdbAdcSingleMode.TabStop = true;
+            this.rdbAdcSingleMode.Text = "Single channel";
+            this.rdbAdcSingleMode.UseVisualStyleBackColor = true;
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.label39);
             this.groupBox12.Controls.Add(this.tbxSetCpldFwValue);
             this.groupBox12.Controls.Add(this.btnSetCpldFw);
             this.groupBox12.Controls.Add(this.label35);
             this.groupBox12.Controls.Add(this.tbxSetMcuFwValue);
             this.groupBox12.Controls.Add(this.label36);
             this.groupBox12.Controls.Add(this.btnSetMcuFw);
-            this.groupBox12.Location = new System.Drawing.Point(236, 191);
+            this.groupBox12.Location = new System.Drawing.Point(520, 19);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(181, 142);
+            this.groupBox12.Size = new System.Drawing.Size(282, 189);
             this.groupBox12.TabIndex = 20;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Set MCU and CPLD F.W version";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(12, 123);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(158, 13);
+            this.label39.TabIndex = 15;
+            this.label39.Text = "[Firmware version size = 4 digits]";
             // 
             // tbxSetCpldFwValue
             // 
@@ -1027,307 +1791,145 @@
             this.btnSetMcuFw.UseVisualStyleBackColor = false;
             this.btnSetMcuFw.Click += new System.EventHandler(this.btnSetMcuFw_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label33);
-            this.groupBox4.Controls.Add(this.tbxTestUart);
-            this.groupBox4.Controls.Add(this.btnUartTestSend);
-            this.groupBox4.Controls.Add(this.label32);
-            this.groupBox4.Controls.Add(this.tbxWriteSerial);
-            this.groupBox4.Location = new System.Drawing.Point(491, 187);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(242, 145);
-            this.groupBox4.TabIndex = 16;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Debug UART";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label33.Location = new System.Drawing.Point(16, 49);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(42, 16);
-            this.label33.TabIndex = 8;
-            this.label33.Text = "Read";
-            // 
-            // tbxTestUart
-            // 
-            this.tbxTestUart.Location = new System.Drawing.Point(59, 46);
-            this.tbxTestUart.Name = "tbxTestUart";
-            this.tbxTestUart.ReadOnly = true;
-            this.tbxTestUart.Size = new System.Drawing.Size(100, 20);
-            this.tbxTestUart.TabIndex = 7;
-            // 
-            // btnUartTestSend
-            // 
-            this.btnUartTestSend.Location = new System.Drawing.Point(177, 20);
-            this.btnUartTestSend.Name = "btnUartTestSend";
-            this.btnUartTestSend.Size = new System.Drawing.Size(49, 23);
-            this.btnUartTestSend.TabIndex = 6;
-            this.btnUartTestSend.Text = "Send";
-            this.btnUartTestSend.UseVisualStyleBackColor = true;
-            this.btnUartTestSend.Click += new System.EventHandler(this.btnUartTestSend_Click);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label32.Location = new System.Drawing.Point(16, 23);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(38, 16);
-            this.label32.TabIndex = 1;
-            this.label32.Text = "send";
-            // 
-            // tbxWriteSerial
-            // 
-            this.tbxWriteSerial.Location = new System.Drawing.Point(59, 20);
-            this.tbxWriteSerial.Name = "tbxWriteSerial";
-            this.tbxWriteSerial.Size = new System.Drawing.Size(100, 20);
-            this.tbxWriteSerial.TabIndex = 0;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox11.Controls.Add(this.btnAdcChannelMode);
-            this.groupBox11.Controls.Add(this.btnAdcConversionMode);
-            this.groupBox11.Controls.Add(this.btnAdcPositiveVoltage);
-            this.groupBox11.Controls.Add(this.groupBox19);
-            this.groupBox11.Controls.Add(this.groupBox15);
-            this.groupBox11.Location = new System.Drawing.Point(6, 17);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox11.Size = new System.Drawing.Size(738, 166);
-            this.groupBox11.TabIndex = 15;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "MCU internal ADC";
-            // 
-            // btnAdcChannelMode
-            // 
-            this.btnAdcChannelMode.Controls.Add(this.btnAdcChMode);
-            this.btnAdcChannelMode.Controls.Add(this.cbxAdcSingleCh);
-            this.btnAdcChannelMode.Controls.Add(this.rdbAdcCircMode);
-            this.btnAdcChannelMode.Controls.Add(this.rdbAdcSingleMode);
-            this.btnAdcChannelMode.Location = new System.Drawing.Point(309, 21);
-            this.btnAdcChannelMode.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdcChannelMode.Name = "btnAdcChannelMode";
-            this.btnAdcChannelMode.Padding = new System.Windows.Forms.Padding(2);
-            this.btnAdcChannelMode.Size = new System.Drawing.Size(140, 141);
-            this.btnAdcChannelMode.TabIndex = 13;
-            this.btnAdcChannelMode.TabStop = false;
-            this.btnAdcChannelMode.Text = "ADC chennel selection";
-            // 
-            // btnAdcChMode
-            // 
-            this.btnAdcChMode.Location = new System.Drawing.Point(86, 111);
-            this.btnAdcChMode.Name = "btnAdcChMode";
-            this.btnAdcChMode.Size = new System.Drawing.Size(49, 25);
-            this.btnAdcChMode.TabIndex = 15;
-            this.btnAdcChMode.Text = "Set";
-            this.btnAdcChMode.UseVisualStyleBackColor = true;
-            this.btnAdcChMode.Click += new System.EventHandler(this.btnAdcChMode_Click);
-            // 
-            // cbxAdcSingleCh
-            // 
-            this.cbxAdcSingleCh.FormattingEnabled = true;
-            this.cbxAdcSingleCh.Items.AddRange(new object[] {
-            "Temperature.",
-            "Reverse analog voltage. ",
-            "Forward analog voltage.",
-            "System input voltage.",
-            "Current analog voltage."});
-            this.cbxAdcSingleCh.Location = new System.Drawing.Point(4, 84);
-            this.cbxAdcSingleCh.Name = "cbxAdcSingleCh";
-            this.cbxAdcSingleCh.Size = new System.Drawing.Size(131, 21);
-            this.cbxAdcSingleCh.TabIndex = 2;
-            // 
-            // rdbAdcCircMode
-            // 
-            this.rdbAdcCircMode.AutoSize = true;
-            this.rdbAdcCircMode.Location = new System.Drawing.Point(4, 32);
-            this.rdbAdcCircMode.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbAdcCircMode.Name = "rdbAdcCircMode";
-            this.rdbAdcCircMode.Size = new System.Drawing.Size(89, 17);
-            this.rdbAdcCircMode.TabIndex = 1;
-            this.rdbAdcCircMode.TabStop = true;
-            this.rdbAdcCircMode.Text = "Circular mode";
-            this.rdbAdcCircMode.UseVisualStyleBackColor = true;
-            // 
-            // rdbAdcSingleMode
-            // 
-            this.rdbAdcSingleMode.AutoSize = true;
-            this.rdbAdcSingleMode.Location = new System.Drawing.Point(4, 58);
-            this.rdbAdcSingleMode.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbAdcSingleMode.Name = "rdbAdcSingleMode";
-            this.rdbAdcSingleMode.Size = new System.Drawing.Size(95, 17);
-            this.rdbAdcSingleMode.TabIndex = 0;
-            this.rdbAdcSingleMode.TabStop = true;
-            this.rdbAdcSingleMode.Text = "Single channel";
-            this.rdbAdcSingleMode.UseVisualStyleBackColor = true;
-            // 
-            // btnAdcConversionMode
-            // 
-            this.btnAdcConversionMode.Controls.Add(this.btnAdcConvMode);
-            this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatLeft);
-            this.btnAdcConversionMode.Controls.Add(this.rdbAdcConvFormatRight);
-            this.btnAdcConversionMode.Location = new System.Drawing.Point(609, 21);
-            this.btnAdcConversionMode.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdcConversionMode.Name = "btnAdcConversionMode";
-            this.btnAdcConversionMode.Padding = new System.Windows.Forms.Padding(2);
-            this.btnAdcConversionMode.Size = new System.Drawing.Size(123, 141);
-            this.btnAdcConversionMode.TabIndex = 12;
-            this.btnAdcConversionMode.TabStop = false;
-            this.btnAdcConversionMode.Text = "ADC Conversion Result Format";
-            // 
-            // btnAdcConvMode
-            // 
-            this.btnAdcConvMode.Location = new System.Drawing.Point(69, 111);
-            this.btnAdcConvMode.Name = "btnAdcConvMode";
-            this.btnAdcConvMode.Size = new System.Drawing.Size(49, 25);
-            this.btnAdcConvMode.TabIndex = 15;
-            this.btnAdcConvMode.Text = "Set";
-            this.btnAdcConvMode.UseVisualStyleBackColor = true;
-            this.btnAdcConvMode.Click += new System.EventHandler(this.btnAdcConvMode_Click);
-            // 
-            // rdbAdcConvFormatLeft
-            // 
-            this.rdbAdcConvFormatLeft.AutoSize = true;
-            this.rdbAdcConvFormatLeft.Location = new System.Drawing.Point(4, 36);
-            this.rdbAdcConvFormatLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbAdcConvFormatLeft.Name = "rdbAdcConvFormatLeft";
-            this.rdbAdcConvFormatLeft.Size = new System.Drawing.Size(81, 17);
-            this.rdbAdcConvFormatLeft.TabIndex = 1;
-            this.rdbAdcConvFormatLeft.TabStop = true;
-            this.rdbAdcConvFormatLeft.Text = "Left justified";
-            this.rdbAdcConvFormatLeft.UseVisualStyleBackColor = true;
-            // 
-            // rdbAdcConvFormatRight
-            // 
-            this.rdbAdcConvFormatRight.AutoSize = true;
-            this.rdbAdcConvFormatRight.Location = new System.Drawing.Point(4, 62);
-            this.rdbAdcConvFormatRight.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbAdcConvFormatRight.Name = "rdbAdcConvFormatRight";
-            this.rdbAdcConvFormatRight.Size = new System.Drawing.Size(88, 17);
-            this.rdbAdcConvFormatRight.TabIndex = 0;
-            this.rdbAdcConvFormatRight.TabStop = true;
-            this.rdbAdcConvFormatRight.Text = "Right justified";
-            this.rdbAdcConvFormatRight.UseVisualStyleBackColor = true;
-            // 
-            // btnAdcPositiveVoltage
-            // 
-            this.btnAdcPositiveVoltage.Controls.Add(this.btnAdcPositveVoltage);
-            this.btnAdcPositiveVoltage.Controls.Add(this.radioButton7);
-            this.btnAdcPositiveVoltage.Controls.Add(this.radioButton8);
-            this.btnAdcPositiveVoltage.Location = new System.Drawing.Point(462, 21);
-            this.btnAdcPositiveVoltage.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdcPositiveVoltage.Name = "btnAdcPositiveVoltage";
-            this.btnAdcPositiveVoltage.Padding = new System.Windows.Forms.Padding(2);
-            this.btnAdcPositiveVoltage.Size = new System.Drawing.Size(136, 141);
-            this.btnAdcPositiveVoltage.TabIndex = 13;
-            this.btnAdcPositiveVoltage.TabStop = false;
-            this.btnAdcPositiveVoltage.Text = "ADC positive voltage reference";
-            // 
-            // btnAdcPositveVoltage
-            // 
-            this.btnAdcPositveVoltage.Location = new System.Drawing.Point(82, 111);
-            this.btnAdcPositveVoltage.Name = "btnAdcPositveVoltage";
-            this.btnAdcPositveVoltage.Size = new System.Drawing.Size(49, 25);
-            this.btnAdcPositveVoltage.TabIndex = 15;
-            this.btnAdcPositveVoltage.Text = "Set";
-            this.btnAdcPositveVoltage.UseVisualStyleBackColor = true;
-            this.btnAdcPositveVoltage.Click += new System.EventHandler(this.btnAdcPositveVoltage_Click);
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(4, 36);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(122, 17);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Disable Vref Positive";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(4, 62);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(120, 17);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Enable Vref Positive";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Controls.Add(this.btnAdcNegativVoltage);
-            this.groupBox19.Controls.Add(this.radioButton5);
-            this.groupBox19.Controls.Add(this.radioButton6);
-            this.groupBox19.Location = new System.Drawing.Point(154, 17);
-            this.groupBox19.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox19.Size = new System.Drawing.Size(140, 145);
-            this.groupBox19.TabIndex = 12;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "ADC negative voltage reference";
-            // 
-            // btnAdcNegativVoltage
-            // 
-            this.btnAdcNegativVoltage.Location = new System.Drawing.Point(91, 115);
-            this.btnAdcNegativVoltage.Name = "btnAdcNegativVoltage";
-            this.btnAdcNegativVoltage.Size = new System.Drawing.Size(49, 25);
-            this.btnAdcNegativVoltage.TabIndex = 15;
-            this.btnAdcNegativVoltage.Text = "Set";
-            this.btnAdcNegativVoltage.UseVisualStyleBackColor = true;
-            this.btnAdcNegativVoltage.Click += new System.EventHandler(this.btnAdcNegativVoltage_Click);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(4, 36);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(126, 17);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Disable Vref negative";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(4, 62);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(124, 17);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Enable Vref negative";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.lblAdcVrefUi);
+            this.groupBox15.Controls.Add(this.rdbDacD);
+            this.groupBox15.Controls.Add(this.rdbDacC);
+            this.groupBox15.Controls.Add(this.rdbDacB);
+            this.groupBox15.Controls.Add(this.rdbDacA);
+            this.groupBox15.Controls.Add(this.label65);
+            this.groupBox15.Controls.Add(this.tbxDacValD);
+            this.groupBox15.Controls.Add(this.label63);
+            this.groupBox15.Controls.Add(this.tbxDacValC);
+            this.groupBox15.Controls.Add(this.label61);
+            this.groupBox15.Controls.Add(this.tbxDacValB);
             this.groupBox15.Controls.Add(this.label37);
             this.groupBox15.Controls.Add(this.btnSetDac);
             this.groupBox15.Controls.Add(this.label18);
-            this.groupBox15.Controls.Add(this.tbxDacVal);
-            this.groupBox15.Location = new System.Drawing.Point(0, 17);
+            this.groupBox15.Controls.Add(this.tbxDacValA);
+            this.groupBox15.Location = new System.Drawing.Point(16, 19);
             this.groupBox15.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox15.Size = new System.Drawing.Size(150, 145);
+            this.groupBox15.Size = new System.Drawing.Size(181, 189);
             this.groupBox15.TabIndex = 11;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "DAC Operation";
             // 
+            // lblAdcVrefUi
+            // 
+            this.lblAdcVrefUi.AutoSize = true;
+            this.lblAdcVrefUi.Location = new System.Drawing.Point(8, 167);
+            this.lblAdcVrefUi.Name = "lblAdcVrefUi";
+            this.lblAdcVrefUi.Size = new System.Drawing.Size(38, 13);
+            this.lblAdcVrefUi.TabIndex = 30;
+            this.lblAdcVrefUi.Text = "Vref = ";
+            // 
+            // rdbDacD
+            // 
+            this.rdbDacD.AutoSize = true;
+            this.rdbDacD.Location = new System.Drawing.Point(8, 130);
+            this.rdbDacD.Name = "rdbDacD";
+            this.rdbDacD.Size = new System.Drawing.Size(61, 17);
+            this.rdbDacD.TabIndex = 29;
+            this.rdbDacD.TabStop = true;
+            this.rdbDacD.Text = "DAC_D";
+            this.rdbDacD.UseVisualStyleBackColor = true;
+            // 
+            // rdbDacC
+            // 
+            this.rdbDacC.AutoSize = true;
+            this.rdbDacC.Location = new System.Drawing.Point(8, 104);
+            this.rdbDacC.Name = "rdbDacC";
+            this.rdbDacC.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacC.TabIndex = 28;
+            this.rdbDacC.TabStop = true;
+            this.rdbDacC.Text = "DAC_C";
+            this.rdbDacC.UseVisualStyleBackColor = true;
+            // 
+            // rdbDacB
+            // 
+            this.rdbDacB.AutoSize = true;
+            this.rdbDacB.Location = new System.Drawing.Point(8, 78);
+            this.rdbDacB.Name = "rdbDacB";
+            this.rdbDacB.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacB.TabIndex = 27;
+            this.rdbDacB.TabStop = true;
+            this.rdbDacB.Text = "DAC_B";
+            this.rdbDacB.UseVisualStyleBackColor = true;
+            // 
+            // rdbDacA
+            // 
+            this.rdbDacA.AutoSize = true;
+            this.rdbDacA.Location = new System.Drawing.Point(8, 52);
+            this.rdbDacA.Name = "rdbDacA";
+            this.rdbDacA.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacA.TabIndex = 26;
+            this.rdbDacA.TabStop = true;
+            this.rdbDacA.Text = "DAC_A";
+            this.rdbDacA.UseVisualStyleBackColor = true;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(134, 134);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(43, 13);
+            this.label65.TabIndex = 24;
+            this.label65.Text = "[mVDC]";
+            // 
+            // tbxDacValD
+            // 
+            this.tbxDacValD.Location = new System.Drawing.Point(86, 130);
+            this.tbxDacValD.Name = "tbxDacValD";
+            this.tbxDacValD.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValD.TabIndex = 23;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(134, 108);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(43, 13);
+            this.label63.TabIndex = 21;
+            this.label63.Text = "[mVDC]";
+            // 
+            // tbxDacValC
+            // 
+            this.tbxDacValC.Location = new System.Drawing.Point(86, 104);
+            this.tbxDacValC.Name = "tbxDacValC";
+            this.tbxDacValC.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValC.TabIndex = 20;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(134, 82);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(43, 13);
+            this.label61.TabIndex = 18;
+            this.label61.Text = "[mVDC]";
+            // 
+            // tbxDacValB
+            // 
+            this.tbxDacValB.Location = new System.Drawing.Point(86, 78);
+            this.tbxDacValB.Name = "tbxDacValB";
+            this.tbxDacValB.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValB.TabIndex = 17;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(134, 56);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(43, 13);
+            this.label37.TabIndex = 15;
+            this.label37.Text = "[mVDC]";
+            // 
             // btnSetDac
             // 
-            this.btnSetDac.Location = new System.Drawing.Point(96, 115);
+            this.btnSetDac.Location = new System.Drawing.Point(127, 156);
             this.btnSetDac.Name = "btnSetDac";
             this.btnSetDac.Size = new System.Drawing.Size(49, 25);
             this.btnSetDac.TabIndex = 14;
@@ -1344,187 +1946,12 @@
             this.label18.TabIndex = 6;
             this.label18.Text = "DAC voltage";
             // 
-            // tbxDacVal
+            // tbxDacValA
             // 
-            this.tbxDacVal.Location = new System.Drawing.Point(5, 43);
-            this.tbxDacVal.Name = "tbxDacVal";
-            this.tbxDacVal.Size = new System.Drawing.Size(104, 20);
-            this.tbxDacVal.TabIndex = 5;
-            // 
-            // groupBox30
-            // 
-            this.groupBox30.Controls.Add(this.groupBox8);
-            this.groupBox30.Controls.Add(this.groupBox7);
-            this.groupBox30.Location = new System.Drawing.Point(6, 183);
-            this.groupBox30.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox30.Size = new System.Drawing.Size(217, 155);
-            this.groupBox30.TabIndex = 14;
-            this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "Phase amplifier";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label11);
-            this.groupBox8.Controls.Add(this.comboBox2);
-            this.groupBox8.Controls.Add(this.btnPA2Set);
-            this.groupBox8.Controls.Add(this.radioButton1);
-            this.groupBox8.Controls.Add(this.radioButton2);
-            this.groupBox8.Location = new System.Drawing.Point(109, 18);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(91, 132);
-            this.groupBox8.TabIndex = 10;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "P.A 2";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 62);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Power range";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
-            this.comboBox2.Location = new System.Drawing.Point(6, 78);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(74, 21);
-            this.comboBox2.TabIndex = 8;
-            // 
-            // btnPA2Set
-            // 
-            this.btnPA2Set.Location = new System.Drawing.Point(5, 103);
-            this.btnPA2Set.Name = "btnPA2Set";
-            this.btnPA2Set.Size = new System.Drawing.Size(75, 23);
-            this.btnPA2Set.TabIndex = 5;
-            this.btnPA2Set.Text = "Set";
-            this.btnPA2Set.UseVisualStyleBackColor = true;
-            this.btnPA2Set.Click += new System.EventHandler(this.btnPA2Set_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(5, 18);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 17);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Disable";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(5, 38);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(58, 17);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Enable";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label8);
-            this.groupBox7.Controls.Add(this.comboBox1);
-            this.groupBox7.Controls.Add(this.btnPA1Set);
-            this.groupBox7.Controls.Add(this.radioButton13);
-            this.groupBox7.Controls.Add(this.radioButton14);
-            this.groupBox7.Location = new System.Drawing.Point(12, 18);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(91, 132);
-            this.groupBox7.TabIndex = 6;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "P.A 1";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Power range";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 78);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(74, 21);
-            this.comboBox1.TabIndex = 8;
-            // 
-            // btnPA1Set
-            // 
-            this.btnPA1Set.Location = new System.Drawing.Point(5, 103);
-            this.btnPA1Set.Name = "btnPA1Set";
-            this.btnPA1Set.Size = new System.Drawing.Size(75, 23);
-            this.btnPA1Set.TabIndex = 5;
-            this.btnPA1Set.Text = "Set";
-            this.btnPA1Set.UseVisualStyleBackColor = true;
-            this.btnPA1Set.Click += new System.EventHandler(this.btnPA1Set_Click);
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(5, 18);
-            this.radioButton13.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(60, 17);
-            this.radioButton13.TabIndex = 7;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Disable";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(5, 38);
-            this.radioButton14.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(58, 17);
-            this.radioButton14.TabIndex = 6;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Enable";
-            this.radioButton14.UseVisualStyleBackColor = true;
+            this.tbxDacValA.Location = new System.Drawing.Point(86, 52);
+            this.tbxDacValA.Name = "tbxDacValA";
+            this.tbxDacValA.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValA.TabIndex = 5;
             // 
             // groupBox6
             // 
@@ -1584,14 +2011,34 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage9.Controls.Add(this.button1);
+            this.tabPage9.Controls.Add(this.button2);
             this.tabPage9.Controls.Add(this.groupBox9);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(757, 409);
+            this.tabPage9.Size = new System.Drawing.Size(887, 442);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "System logs";
-            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(694, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 25);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Clear window";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(785, 410);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 25);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Save log to file";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -1601,7 +2048,7 @@
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(754, 406);
+            this.groupBox9.Size = new System.Drawing.Size(869, 406);
             this.groupBox9.TabIndex = 1;
             this.groupBox9.TabStop = false;
             // 
@@ -1612,46 +2059,26 @@
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(754, 404);
+            this.tabControl2.Size = new System.Drawing.Size(862, 399);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.rtbLogRunWindow);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(746, 378);
+            this.tabPage4.Size = new System.Drawing.Size(854, 373);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Run time logs";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(655, 347);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 25);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Save log to file";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(564, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 25);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Clear window";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // rtbLogRunWindow
             // 
             this.rtbLogRunWindow.BackColor = System.Drawing.SystemColors.Control;
             this.rtbLogRunWindow.Location = new System.Drawing.Point(3, 6);
             this.rtbLogRunWindow.Name = "rtbLogRunWindow";
-            this.rtbLogRunWindow.Size = new System.Drawing.Size(739, 335);
+            this.rtbLogRunWindow.Size = new System.Drawing.Size(845, 361);
             this.rtbLogRunWindow.TabIndex = 1;
             this.rtbLogRunWindow.Text = "";
             // 
@@ -1663,13 +2090,13 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(746, 378);
+            this.tabPage5.Size = new System.Drawing.Size(854, 373);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Logs viewer";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(654, 347);
+            this.button3.Location = new System.Drawing.Point(763, 345);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(85, 25);
             this.button3.TabIndex = 17;
@@ -1681,7 +2108,7 @@
             this.richTextBox4.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox4.Location = new System.Drawing.Point(0, 6);
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(739, 335);
+            this.richTextBox4.Size = new System.Drawing.Size(848, 335);
             this.richTextBox4.TabIndex = 2;
             this.richTextBox4.Text = "";
             // 
@@ -1691,7 +2118,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(757, 409);
+            this.tabPage10.Size = new System.Drawing.Size(887, 442);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "About";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1710,7 +2137,7 @@
             this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Size = new System.Drawing.Size(754, 406);
+            this.groupBox10.Size = new System.Drawing.Size(873, 439);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "About";
@@ -1793,40 +2220,29 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(95, 438);
+            this.lblStatus.Location = new System.Drawing.Point(95, 471);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(10, 13);
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = ".";
             // 
-            // label34
+            // tmrSysEvents
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(88, 144);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(30, 13);
-            this.label34.TabIndex = 17;
-            this.label34.Text = "[sec]";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(2, 68);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(117, 13);
-            this.label37.TabIndex = 15;
-            this.label37.Text = "Format = [X.YZW VDC]";
+            this.tmrSysEvents.Enabled = true;
+            this.tmrSysEvents.Interval = 1000;
+            this.tmrSysEvents.Tick += new System.EventHandler(this.tmrSysEvents_Tick);
             // 
             // KuscForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 451);
+            this.ClientSize = new System.Drawing.Size(905, 493);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "KuscForm";
@@ -1846,6 +2262,10 @@
             this.groupBox27.ResumeLayout(false);
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
+            this.tabControl3.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
             this.groupBox36.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
@@ -1854,26 +2274,21 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.gbxTechMode.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.btnAdcChannelMode.ResumeLayout(false);
-            this.btnAdcChannelMode.PerformLayout();
-            this.btnAdcConversionMode.ResumeLayout(false);
-            this.btnAdcConversionMode.PerformLayout();
-            this.btnAdcPositiveVoltage.ResumeLayout(false);
-            this.btnAdcPositiveVoltage.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.groupBox30.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.btnAdcChannelMode.ResumeLayout(false);
+            this.btnAdcChannelMode.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage9.ResumeLayout(false);
@@ -1927,19 +2342,17 @@
         private System.Windows.Forms.Button btnResetMcu;
         private System.Windows.Forms.Button btnResetCPLD;
         private System.Windows.Forms.GroupBox groupBox29;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.RichTextBox rtbAdcResults;
         private System.Windows.Forms.GroupBox groupBox36;
         private System.Windows.Forms.GroupBox groupBox38;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnSetSyntDown;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox tbxSynthTxRf;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxFlashCondTotal;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxFlashCondFree;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEmptyFlash;
         private System.Windows.Forms.Button btnReadFlashStatus;
@@ -1954,22 +2367,22 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbxSysRunTime;
         private System.Windows.Forms.Button btnReadMcuTime;
-        private System.Windows.Forms.TextBox btnReadCpldFwVer;
+        private System.Windows.Forms.TextBox tbxCpldFwVersion;
         private System.Windows.Forms.Button btnReadCpldFwVersion;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tbxSynthRxIf;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnSetSyntUp;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox tbxSynthRxRf;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox tbxSynthTxIf;
+        private System.Windows.Forms.Button btnClearAdcTable;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.GroupBox gbxTechMode;
         private System.Windows.Forms.GroupBox groupBox30;
@@ -1985,35 +2398,12 @@
         private System.Windows.Forms.Button btnPA1Set;
         private System.Windows.Forms.RadioButton radioButton13;
         private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox btnAdcChannelMode;
         private System.Windows.Forms.ComboBox cbxAdcSingleCh;
         private System.Windows.Forms.RadioButton rdbAdcCircMode;
         private System.Windows.Forms.RadioButton rdbAdcSingleMode;
-        private System.Windows.Forms.GroupBox btnAdcConversionMode;
-        private System.Windows.Forms.RadioButton rdbAdcConvFormatLeft;
-        private System.Windows.Forms.RadioButton rdbAdcConvFormatRight;
-        private System.Windows.Forms.GroupBox btnAdcPositiveVoltage;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tbxDacVal;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox tbxTestUart;
-        private System.Windows.Forms.Button btnUartTestSend;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox tbxWriteSerial;
         private System.Windows.Forms.Button btnInitComport;
         private System.Windows.Forms.Button btnAdcChMode;
-        private System.Windows.Forms.Button btnAdcConvMode;
-        private System.Windows.Forms.Button btnAdcPositveVoltage;
-        private System.Windows.Forms.Button btnAdcNegativVoltage;
-        private System.Windows.Forms.Button btnSetDac;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button2;
@@ -2029,8 +2419,73 @@
         private System.Windows.Forms.TextBox tbxSetMcuFwValue;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button btnSetMcuFw;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.RichTextBox rtbAdcRD5;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.RichTextBox rtbAdcRA5;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.RichTextBox rtbAdcRE0;
+        private System.Windows.Forms.RichTextBox rtbAdcRE1;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.RichTextBox rtbAdcRE2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.RichTextBox rtbAdcResults;
+        private System.Windows.Forms.RichTextBox rtbAdcRB5;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.RichTextBox rtbAdcRB1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Timer tmrSysEvents;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox tbxFlashCondNumPackets;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox tbxFlashCondPrecentage;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Button btnBootFileSelect;
+        private System.Windows.Forms.OpenFileDialog fdBootloaderOpenFile;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnSetSynthInit;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox tbxSynthRxFifInit;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox tbxSynthRxFrfInit;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox tbxSynthTxFifInit;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox tbxSynthTxFrfInit;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.RadioButton rdbDacD;
+        private System.Windows.Forms.RadioButton rdbDacC;
+        private System.Windows.Forms.RadioButton rdbDacB;
+        private System.Windows.Forms.RadioButton rdbDacA;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.TextBox tbxDacValD;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TextBox tbxDacValC;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox tbxDacValB;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button btnSetDac;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbxDacValA;
+        private System.Windows.Forms.Label lblAdcVrefUi;
+        private System.Windows.Forms.Label label59;
     }
 }
 

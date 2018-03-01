@@ -23,6 +23,11 @@ namespace KUSC
         {
             switch (request)
             {
+                case KuscMessageParams.MESSAGE_REQUEST.CONTROL_SYSTEM_START:
+                    KuscUtil.UpdateSystemRegisters();
+                    statusMsg = "MCU: System init and start ok";
+                    break;
+
                 case KuscMessageParams.MESSAGE_REQUEST.CONTROL_TEST_LEDS:
                     statusMsg = "MCU: Turn leds ok";
                     break;
@@ -42,8 +47,13 @@ namespace KUSC
                 case KuscMessageParams.MESSAGE_REQUEST.CONTROL_PA2_SET:
                     statusMsg = "MCU: Set PA2 ok";
                     break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.CONTROL_KEEP_ALIVE:
+                    statusMsg = "MCU: System is running";
+                    break;
             }
             KuscUtil.UpdateStatusOk(statusMsg);
+
             //KuscLogs.LogPrintCommand(statusMsg);
 
             return true;
@@ -62,6 +72,7 @@ namespace KUSC
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.STATUS_GET_CPLD_VERSION:
+                    KuscUtil.UpdateCpldFwVersion(data);
                     statusMsg = "MCU: Read CPLD FW Version";
                     break;
 
@@ -92,16 +103,16 @@ namespace KUSC
         {
             switch (request)
             {
-                case KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE:
+                case KuscMessageParams.MESSAGE_REQUEST.ADC_OPERATION:
                     statusMsg = "MCU: Turn ADC ok";
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_SINGLE_MODE:
-                    statusMsg = "MCU: Set ADC single channel mode ok";
+                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_MODE:
+                    statusMsg = "MCU: Set ADC set channel mode ok";
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.ADC_CHANNEL_CIRC_MODE:
-                    statusMsg = "MCU: Set ADC circular channel mode ok";
+                case KuscMessageParams.MESSAGE_REQUEST.ADC_CONVERSION_MODE:
+                    statusMsg = "MCU: Set ADC conversion mode ok";
                     break;
             }
 
@@ -119,11 +130,11 @@ namespace KUSC
             switch (request)
             {
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET:
-                    statusMsg = "MCU: Set syntesizer down ok";
+                    statusMsg = "MCU: Set syntesizer down ok, wait for latch message";
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET:
-                    statusMsg = "MCU: Set syntesizer up ok";
+                    statusMsg = "MCU: Set syntesizer up ok, wait for latch message";
                     break;
             }
 
@@ -145,6 +156,7 @@ namespace KUSC
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_READ_CONDITION:
+                    KuscUtil.UpdateFlashCondition(data);
                     statusMsg = "MCU: Read flash status ok";
                     break;
 
@@ -155,6 +167,10 @@ namespace KUSC
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_SEND_RAW_DATA:
                     KuscUtil.UpdateAdcTable(data);
                     statusMsg = "MCU: Request flash raw data ok";
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.FLASH_NO_SAMPLE_YET:
+                    statusMsg = "MCU: No sample to read from internal Flash yet";
                     break;
             }
 
