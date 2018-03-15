@@ -11,14 +11,32 @@ namespace KUSC
 
         KuscCommon.REG_DATA regData = new KuscCommon.REG_DATA();
 
-        internal List<string> GetDataRegisters(int fRF, int fIF)
+        internal List<string> GetDataRegisters(double fRF, double fIF)
         {
             List<string> regList = new List<string>();
 
+            List<Int32> regListNum = new List<Int32>();
             CalcSynthParams(fRF, fIF);
-            regList.Add(CalcReg02() + '@');
-            regList.Add(CalcReg01() + '@');
-            regList.Add(CalcReg00() + '@');
+
+            regList.Add(KuscCommon.SYNTH_REG10.ToString() + '@');   // R10
+            regList.Add(KuscCommon.SYNTH_REG06.ToString() + '@');   // R6
+            regList.Add(KuscCommon.SYNTH_REG04.ToString() + '@');   // R4
+            regList.Add(CalcReg02().ToString() + '@');              // R2
+            regList.Add(CalcReg01().ToString() + '@');              // R1
+            regList.Add(CalcReg00().ToString() + '@');              // R0
+            regList.Add(KuscCommon.SYNTH_REG04.ToString() + '@');   // R4
+            regList.Add(CalcReg00().ToString() + '@');              // R0
+
+            // Testing:
+
+            regListNum.Add(KuscCommon.SYNTH_REG10);   // R10
+            regListNum.Add(KuscCommon.SYNTH_REG06);   // R6
+            regListNum.Add(KuscCommon.SYNTH_REG04);   // R4
+            regListNum.Add(CalcReg02());              // R2
+            regListNum.Add(CalcReg01());              // R1
+            regListNum.Add(CalcReg00());              // R0
+            regListNum.Add(KuscCommon.SYNTH_REG04);   // R4
+            regListNum.Add(CalcReg00());              // R0
 
             return regList;
         }
@@ -28,55 +46,51 @@ namespace KUSC
         {
             List<string> recvList = new List<string>();
 
-            recvList.Add(KuscCommon.SYNTH_REG11 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG10 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG09 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG08 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG07 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG06 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG05 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG04 + '@');
-            recvList.Add(KuscCommon.SYNTH_REG03 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG11 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG10 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG09 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG08 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG07 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG06 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG05 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG04 + '@');
+            //recvList.Add(KuscCommon.SYNTH_REG03 + '@');
 
             CalcSynthParams(fRF, fIF);
-            recvList.Add(CalcReg02());
-            recvList.Add(CalcReg01());
-            recvList.Add(CalcReg00());
+            //recvList.Add(CalcReg02());
+            //recvList.Add(CalcReg01());
+            //recvList.Add(CalcReg00());
 
             return recvList;
         }
 
-        private void CalcSynthParams(int fRF, int fIF)
+        private void CalcSynthParams(double fRF, double fIF)
         {
-            regData.fVco = Math.Abs(fRF - fIF) / 2;
-            regData.fPFD = (KuscCommon.SYNTH_F_REF_MHZ * (1 + KuscCommon.SYNTH_D)) / (KuscCommon.SYNTH_R * (1 + KuscCommon.SYNTH_T));
-            regData.INT = (regData.fVco / regData.fPFD);
+            regData.fVco = Math.Abs(fRF - fIF) / 2.0;
+            regData.fVco = Math.Round(regData.fVco, 3);
+            regData.fPFD = 40.0;
+            regData.INT = (int)(regData.fVco / regData.fPFD);
             regData.Mod1 = KuscCommon.SYNTH_MOD1;
-            regData.Fraq = (regData.fVco % regData.fPFD) / (double)regData.fPFD;
+            regData.Fraq = KuscUtil.GetFractionOfDouble(regData.fVco / regData.fPFD);
             regData.Fraq1 = (int)(regData.Fraq * KuscCommon.SYNTH_MOD1);
-            regData.remFraq1 = (regData.Fraq * KuscCommon.SYNTH_MOD1) % 1;
-            regData.Mod2 = (regData.fPFD * 1000) / KuscUtil.GCD(regData.fPFD * 1000, KuscCommon.FREQ_STEP_KHZ);
+            regData.remFraq1 = KuscUtil.GetFractionOfDouble(regData.Fraq * KuscCommon.SYNTH_MOD1);
+            regData.Mod2 = 5461; //(int)((regData.fPFD*10e6) / KuscUtil.GCD(regData.fPFD*10e6, KuscCommon.FREQ_STEP_KHZ * 10e3));
             regData.Fraq2 = (int)(regData.remFraq1 * regData.Mod2);
         }
 
-        private string CalcReg00()
+        private Int32 CalcReg00()
         {
-            int regConfig = (Convert.ToInt16(KuscCommon.SYNTH_AUTOCAL) << 21) + (regData.INT << 4) | 0x0;
-            return regConfig.ToString("X");
+            return ((Convert.ToInt16(KuscCommon.SYNTH_AUTOCAL) << 21) + (regData.INT << 4) | 0x0);
         }
 
-        private string CalcReg01()
+        private Int32 CalcReg01()
         {
-            int regConfig = (regData.Fraq1 << 4) | 0x1;
-            return regConfig.ToString("X");
+            return ((regData.Fraq1 << 4) | 0x1);
         }
 
-        private string CalcReg02()
+        private Int32 CalcReg02()
         {
-            int regConfig = (regData.Fraq2 << 18) + (regData.Mod2 << 4) | 0x2;
-            return regConfig.ToString("X");
+            return ((regData.Fraq2 << 18) + (regData.Mod2 << 4) | 0x2);
         }
-
-
     }
 }

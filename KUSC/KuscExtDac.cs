@@ -18,6 +18,7 @@ namespace KUSC
 
             int dacVal = (dVal << 2) | (ldac << 12) | (powerMode << 13) | (dacIndex << 14);
             dacConfigWord = dacVal.ToString("X") + '@';
+            int indx = (dacVal >> 14);
             return dacConfigWord;
         }
     }

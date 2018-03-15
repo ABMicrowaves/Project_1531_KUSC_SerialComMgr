@@ -6,3 +6,4 @@ C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUS
 C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.csproj.GenerateResource.Cache
 C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.exe
 C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.pdb
+C:\Software_projects\ABMicrowaves\Projects\PC\Project_1531_KUSC_SerialComMgr\KUSC\obj\Release\KUSC.csprojResolveAssemblyReference.cache

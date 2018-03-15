@@ -36,10 +36,6 @@ namespace KUSC
                     statusMsg = "MCU: Reset MCU ok";
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.CONTROL_RESET_CPLD:
-                    statusMsg = "MCU: Reset CPLD ok";
-                    break;
-
                 case KuscMessageParams.MESSAGE_REQUEST.CONTROL_PA1_SET:
                     statusMsg = "MCU: Set PA1 ok";
                     break;
@@ -71,22 +67,9 @@ namespace KUSC
                     statusMsg = "MCU: Read MCU FW Version";
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.STATUS_GET_CPLD_VERSION:
-                    KuscUtil.UpdateCpldFwVersion(data);
-                    statusMsg = "MCU: Read CPLD FW Version";
-                    break;
-
                 case KuscMessageParams.MESSAGE_REQUEST.STATUS_MCU_RUN_TIME:
                     KuscUtil.UpdateRunTime(data);
                     statusMsg =  "MCU: Read MCU run-time OK";
-                    break;
-
-                case KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_MCU_FW_VERSION:
-                    statusMsg = "MCU: set MCU firmware version OK";
-                    break;
-
-                case KuscMessageParams.MESSAGE_REQUEST.STATUS_SET_CPLD_VERSION:
-                    statusMsg = "MCU: set CPLD firmware version OK";
                     break;
             }
 
@@ -136,6 +119,27 @@ namespace KUSC
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET:
                     statusMsg = "MCU: Set syntesizer up ok, wait for latch message";
                     break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_OPER:
+                    KuscUtil.UpdateSynthUpOper();
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_OPER:
+                    KuscUtil.UpdateSynthDownOper();
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_READ_DATA:
+                    KuscUtil.ReadSynthUp(data);
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_READ_DATA:
+                    KuscUtil.ReadSynthDown(data);
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_REQ_ANTHER_REG:
+                    KuscUtil.ReqAntherRegister();
+                    break;
+
             }
 
             // Update status log and field:

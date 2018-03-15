@@ -41,18 +41,14 @@ namespace KUSC
             // Control MCU:
             CONTROL_SYSTEM_START        = 0x10,
             CONTROL_RESET_MCU           = 0x11,
-            CONTROL_RESET_CPLD          = 0x12,
-            CONTROL_PA1_SET             = 0x13,
-            CONTROL_PA2_SET             = 0x14,
-            CONTROL_TEST_LEDS           = 0x15,
-            CONTROL_KEEP_ALIVE          = 0x16,
+            CONTROL_PA1_SET             = 0x12,
+            CONTROL_PA2_SET             = 0x13,
+            CONTROL_TEST_LEDS           = 0x14,
+            CONTROL_KEEP_ALIVE          = 0x15,
 
             // MCU status and version:
             STATUS_MCU_RUN_TIME         = 0x21,
             STATUS_GET_MCU_FW_VERSION   = 0x22,
-            STATUS_GET_CPLD_VERSION     = 0x23,
-            STATUS_SET_MCU_FW_VERSION   = 0x24,
-            STATUS_SET_CPLD_VERSION     = 0x25,
 
             // ADC
             ADC_OPERATION               = 0x31,
@@ -64,6 +60,11 @@ namespace KUSC
             SYNTH_RX_INIT_SET           = 0x41,
             SYNTH_DOWN_SET              = 0x42,
             SYNTH_UP_SET                = 0x43,
+            SYNTH_UP_OPER               = 0x44,
+            SYNTH_DOWN_OPER             = 0x45,
+            SYNTH_UP_READ_DATA          = 0x46,
+            SYNTH_DOWN_READ_DATA        = 0x47,
+            SYNTH_REQ_ANTHER_REG        = 0x48,
 
             // Flash memory
             FLASH_EREASE_MEMORY         = 0x51,

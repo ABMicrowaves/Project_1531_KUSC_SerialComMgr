@@ -228,7 +228,7 @@ namespace KUSC
                         {
                             return 0;
                         }
-                        for (int idx = 0; idx < dataSize; idx++)
+                        for (int idx = 0; idx <= dataSize; idx++)
                         {
                             _rxDataArray.Add(msg[KuscMessageParams.MSG_REQUEST_DATA_LOCATION + idx]);
                         }

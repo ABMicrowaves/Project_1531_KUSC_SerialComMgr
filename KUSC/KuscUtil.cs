@@ -42,7 +42,7 @@ namespace KUSC
             return result;
         }
 
-        public static int GCD(int a, int b)
+        public static double GCD(double a, double b)
         {
             while (a != 0 && b != 0)
             {
@@ -52,12 +52,26 @@ namespace KUSC
                     b %= a;
             }
 
-            if (a == 0)
+            if(a == 0)
+            {
                 return b;
+            }
             else
+            {
                 return a;
+            }
         }
 
+        public static double GetFractionOfDouble(double num)
+        {
+            return num - (int)num;
+        }
+
+        public static double ParseDoubleFromString(string data)
+        {
+            var fraction = data.Split('.');
+            return Convert.ToDouble(fraction[0]) + (Convert.ToDouble(fraction[1]) / 100);
+        }
         #endregion
 
         #region Update main form
@@ -87,11 +101,6 @@ namespace KUSC
             _KuscForm.UpdateMcuFw(ConvertDataToString(fwVersionData));
         }
 
-        public static void UpdateCpldFwVersion(string fwVersionData)
-        {
-            _KuscForm.UpdateCpldFw(ConvertDataToString(fwVersionData));
-        }
-
         public static void UpdateRunTime(string sysRunTime)
         {
             _KuscForm.UpdateSystemRunTime(ConvertDataToString(sysRunTime));
@@ -107,6 +116,40 @@ namespace KUSC
             _KuscForm.UpdateSystemAtStart();
         }
 
+        #endregion
+
+        #region Util Functions
+
+        public static string HexToDecimalString(string val)
+        {
+            int value = Convert.ToInt32(val, 16);
+            return Convert.ToInt32(val.ToString(), 16).ToString();
+        }
+
+        internal static void UpdateSynthUpOper()
+        {
+            _KuscForm.UpdateSynthUpOper();
+        }
+
+        internal static void UpdateSynthDownOper()
+        {
+            _KuscForm.UpdateSynthDownOper();
+        }
+
+        internal static void ReadSynthUp(string data)
+        {
+            _KuscForm.ReadSynthUp(data);
+        }
+
+        internal static void ReadSynthDown(string data)
+        {
+            _KuscForm.ReadSynthDown(data);
+        }
+
+        internal static void ReqAntherRegister()
+        {
+            _KuscForm.SendSynthRegisters();
+        }
         #endregion
 
     }
