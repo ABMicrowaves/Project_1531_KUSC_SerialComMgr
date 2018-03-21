@@ -17,9 +17,26 @@ namespace KUSC
             int ldac = Convert.ToInt16(KuscCommon.DAC_UPDATE_OUTPUTS);
 
             int dacVal = (dVal << 2) | (ldac << 12) | (powerMode << 13) | (dacIndex << 14);
-            dacConfigWord = dacVal.ToString("X") + '@';
+            dacConfigWord = dacVal.ToString("X") + '@' + '#';
             int indx = (dacVal >> 14);
             return dacConfigWord;
+        }
+
+        internal void GetDacValueFromInputStream(string data, ref Int32 dacIndex, ref double AnalogVal)
+        {
+            var chars = data.Replace("\x2C", string.Empty).ToCharArray();
+
+            Int32 regsiterVal   = 0x0, dacVal = 0x0;
+            
+            for (int byteIdx = 0; byteIdx < KuscCommon.DAC_NUM_BYTE_UPDATE_REGISTER; byteIdx++)
+            {
+                regsiterVal |= chars[byteIdx] * (Int16)Math.Pow(2, 8 * byteIdx);
+            }
+
+            dacVal = (regsiterVal >> 2) & 0xFF;
+            dacIndex = regsiterVal >> 14;
+            AnalogVal = ((KuscCommon.DAC_VSOURCEPLUS_MILI * dacVal)/ (Math.Pow(2, KuscCommon.DAC_BITS) - 1));
+
         }
     }
 }

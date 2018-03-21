@@ -15,7 +15,6 @@ namespace KUSC
         private static SerialPort _serialPort = new SerialPort();
 
         // UART Read variables:
-        private static List<char> _rxBuffer;
         private static string _recBuffer = string.Empty;
         private static List<char> _rxMsgBuffer;
         private static List<char> _rxDataArray;

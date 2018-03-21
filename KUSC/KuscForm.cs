@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,6 +21,7 @@ namespace KUSC
         KuscUtil _KuscUtil;
         KuscSynth _kuscSynth;
         KuscExtDac _kuscExtDac;
+        KuscLogs _kuscLogs;
 
         // Synthesizers:
         List<string> dataList;
@@ -32,18 +34,15 @@ namespace KUSC
             _KuscUtil = new KuscUtil();
             _kuscSynth = new KuscSynth();
             _kuscExtDac = new KuscExtDac();
+            _kuscLogs = new KuscLogs();
 
             // Set Synthesizers init value
             dataList = new List<string>();
-            tbxSynthTxFifInit.Text = KuscCommon.SYNTH_TX_F_RF_INIT_VALUE;
-            tbxSynthTxFifInit.Text = KuscCommon.SYNTH_TX_F_IF_INIT_VALUE;
-            tbxSynthRxFrfInit.Text = KuscCommon.SYNTH_RX_F_RF_INIT_VALUE;
-            tbxSynthRxFifInit.Text = KuscCommon.SYNTH_RX_F_IF_INIT_VALUE;
-
 
             // Set UI Vref
             lblAdcVrefUi.Text = string.Format("Vref= {0} [mVdc]", KuscCommon.DAC_VSOURCEPLUS_MILI.ToString());
             _KuscUtil.UpdateStatusObject(this);
+            _kuscLogs.StoreFormArguments(rtbLogRunWindow, sfdLogFileSaver);
         }
         #endregion
 
@@ -84,7 +83,8 @@ namespace KUSC
             }
             else
             {
-                WriteStatusFail("Dont found any comport available");
+                WriteStatusFail(KuscCommon.MSG_SERIAL_ERR_DONT_FOUND_ANY_COMPORT); 
+
             }
         }
 
@@ -112,24 +112,64 @@ namespace KUSC
 
         internal void ReadSynthUp(string data)
         {
-
+            tbxSynthRxReadRf.Text = (2 * _kuscSynth.calcFreqFromUartData(data)).ToString("#.00");
+            _kuscSynth.GetCeCondition(data);
+            WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
         }
 
-        internal void SendSynthRegisters()
+        internal void SendSynthRegisters(KuscCommon.SYNTH_TYPE cSynthType)
         {
-            if(_synthUpdateCnt < KuscCommon.SYNTH_NUM_UPDATE_REGISTERS)
+            if(_synthUpdateCnt < KuscCommon.SYNTH_NUM_CYCLE_IN_UPDATE_REGISTERS)
             {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, dataList[_synthUpdateCnt]);
+                if(cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_TX)
+                {
+                    _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET, dataList[_synthUpdateCnt]);
+                }
+                else if (cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_RX)
+                {
+                    _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, dataList[_synthUpdateCnt]);
+                }
                 _synthUpdateCnt++;
             }
-            _synthUpdateCnt %= KuscCommon.SYNTH_NUM_UPDATE_REGISTERS;
+            _synthUpdateCnt %= KuscCommon.SYNTH_NUM_CYCLE_IN_UPDATE_REGISTERS;
+        }
+
+        internal void DacReadData(string data)
+        {
+            Int32 dacIndex = 0x0;
+            double AnalogVal = 0x0;
+            _kuscExtDac.GetDacValueFromInputStream(data, ref dacIndex, ref AnalogVal);
+            switch (dacIndex)
+            {
+                case 0:
+                    tbxDacReadValA.Text = AnalogVal.ToString();
+                    break;
+
+                case 1:
+                    tbxDacReadValB.Text = AnalogVal.ToString();
+                    break;
+
+                case 2:
+                    tbxDacReadValC.Text = AnalogVal.ToString();
+                    break;
+
+                case 3:
+                    tbxDacReadValD.Text = AnalogVal.ToString();
+                    break;
+
+                default:
+                    WriteStatusFail(KuscCommon.MSG_DAC_ERR_WRONG_INPUT_INDEX);
+                    break;
+            }
+            WriteStatusOk(string.Format("MCU: read DAC {0} OK", dacIndex + 1));
         }
 
         internal void ReadSynthDown(string data)
         {
-
+            tbxSynthTxReadRf.Text = (2 * _kuscSynth.calcFreqFromUartData(data)).ToString("#.00");
+            _kuscSynth.GetCeCondition(data);
+            WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
         }
-
         internal void UpdateSynthDownOper()
         {
             if(lblStatusSyntDown.Text == "ON")
@@ -146,7 +186,16 @@ namespace KUSC
 
         internal void UpdateSynthUpOper()
         {
-            throw new NotImplementedException();
+            if (lblStatusSyntUp.Text == "ON")
+            {
+                lblStatusSyntUp.Text = "OFF";
+                btnOperSyntUp.Text = "ON";
+            }
+            else if (lblStatusSyntUp.Text == "OFF")
+            {
+                lblStatusSyntUp.Text = "ON";
+                btnOperSyntUp.Text = "OFF";
+            }
         }
 
 
@@ -166,6 +215,7 @@ namespace KUSC
 
         public void WriteStatusOk(string statMessage)
         {
+            _kuscLogs.WriteLogMsgOk(statMessage);
             lblStatus.ForeColor = Color.Black;
             lblStatus.Text = statMessage;
         }
@@ -177,6 +227,7 @@ namespace KUSC
 
         public void WriteStatusFail(string statMessage)
         {
+            _kuscLogs.WriteLogMsgFail(statMessage);
             lblStatus.ForeColor = Color.Red;
             lblStatus.Text = statMessage;
         }
@@ -222,31 +273,39 @@ namespace KUSC
             switch(channel)
             {
                 case 0x1:
-                    rtbAdcRE2.AppendText(dataSample.ToString() + Environment.NewLine);
-                    break;
-
-                case 0x2:
-                    rtbAdcRE1.AppendText(dataSample.ToString() + Environment.NewLine);
-                    break;
-
-                case 0x3:
-                    rtbAdcRE0.AppendText(dataSample.ToString() + Environment.NewLine);
-                    break;
-
-                case 0x4:
                     rtbAdcRA5.AppendText(dataSample.ToString() + Environment.NewLine);
                     break;
 
+                case 0x2:
+                    rtbAdcRE0.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x3:
+                    rtbAdcRE1.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x4:
+                    rtbAdcRE2.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
                 case 0x5:
-                    rtbAdcRD5.AppendText(dataSample.ToString() + Environment.NewLine);
+                    rtbAdcRB2.AppendText(dataSample.ToString() + Environment.NewLine);
                     break;
 
                 case 0x6:
-                    rtbAdcRB1.AppendText(dataSample.ToString() + Environment.NewLine);
+                    rtbAdcRB3.AppendText(dataSample.ToString() + Environment.NewLine);
                     break;
 
                 case 0x7:
+                    rtbAdcRB1.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x8:
                     rtbAdcRB5.AppendText(dataSample.ToString() + Environment.NewLine);
+                    break;
+
+                case 0x9:
+                    rtbAdcRD5.AppendText(dataSample.ToString() + Environment.NewLine);
                     break;
 
             }
@@ -255,13 +314,15 @@ namespace KUSC
         private void btnClearAdcTable_Click(object sender, EventArgs e)
         {
             rtbAdcResults.Clear();
-            rtbAdcRE2.Clear();
-            rtbAdcRE1.Clear();
-            rtbAdcRE0.Clear();
             rtbAdcRA5.Clear();
-            rtbAdcRD5.Clear();
+            rtbAdcRE0.Clear();
+            rtbAdcRE1.Clear();
+            rtbAdcRE2.Clear();
+            rtbAdcRB2.Clear();
+            rtbAdcRB3.Clear();
             rtbAdcRB1.Clear();
             rtbAdcRB5.Clear();
+            rtbAdcRD5.Clear();
         }
 
         #endregion
@@ -269,16 +330,34 @@ namespace KUSC
 
         public void UpdateMcuFw(string data)
         {
-            data = data.Replace(",", "");
-            var mcuCompileDate = data[0] | data[1];
-            tbxMcuFwVerDate.Text = data;
+            var chars = data.Replace("\x2C", string.Empty).ToCharArray();
+
+            // Date parameters
+            string compileDateYear = (chars[0] << 8 | chars[1]).ToString();
+            string compileDateMonth = string.Format("{0}{1}{2}", chars[2], chars[3], chars[4]).ToUpper();
+            string compileDateDay = (chars[5] << 8 | chars[6]).ToString();
+
+            // Time parameters
+            string compileTimeHour = (chars[7] << 8 | chars[8]).ToString();
+            string compileTimeMin = (chars[9] << 8 | chars[10]).ToString();
+            string compileTimeSec = (chars[11] << 8 | chars[12]).ToString();
+
+            tbxMcuFwVerDate.Text = string.Format("{0}/{1}/{2}", compileDateDay, compileDateMonth, compileDateYear);
+            tbxMcuFwVerTimeOfDay.Text = string.Format("{0}:{1}:{2}", compileTimeHour, compileTimeMin, compileTimeSec);
         }
 
-        public void UpdateSystemRunTime(string dataSample)
+        public void UpdateSystemRunTime(string data)
         {
-            dataSample = dataSample.Replace(",", "");
-            int seconds = Convert.ToInt32(new string(dataSample.ToCharArray().Reverse().ToArray()));
-            tbxSysRunTime.Text = TimeSpan.FromSeconds(seconds).ToString();
+            var chars = data.Replace("\x2C", string.Empty).ToCharArray();
+            chars[chars.Length - 1] = '\0';
+
+            Int32 regsiterVal = 0x0;
+
+            for (int byteIdx = 0; byteIdx < 3; byteIdx++)
+            {
+                regsiterVal |= chars[byteIdx] * (Int16)Math.Pow(2, 8 * byteIdx);
+            }
+            tbxSysRunTime.Text = TimeSpan.FromSeconds(regsiterVal).ToString();
              
         }
 
@@ -340,11 +419,6 @@ namespace KUSC
 
         #region MCU ADC group
 
-        private void btnAdcNegativVoltage_Click(object sender, EventArgs e)
-        {
-            //_kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
-        }
-
         private void btnAdcChMode_Click(object sender, EventArgs e)
         {
             string data = string.Empty;
@@ -358,7 +432,7 @@ namespace KUSC
                 {
                     if(cbxAdcSingleCh.SelectedIndex == -1)
                     {
-                        WriteStatusFail("In ADC single mode please choose channel to sample");
+                        WriteStatusFail(KuscCommon.MSG_ADC_ERR_INPUT_WRONG_FORMAT);
                         return;
                     }
                     else
@@ -371,16 +445,10 @@ namespace KUSC
             }
             else
             {
-                WriteStatusFail("Please choose desire ADC sampling mode");
+                WriteStatusFail(KuscCommon.MSG_ADC_ERR_INPUT_MISSING);
             }
             
         }
-
-        private void btnAdcPositveVoltage_Click(object sender, EventArgs e)
-        {
-            //_kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.ADC_MSG, KuscMessageParams.MESSAGE_REQUEST.ADC_ENABLE, string.Empty);
-        }
-
         #endregion
 
         #region MCU Synthesizers down / up
@@ -395,66 +463,59 @@ namespace KUSC
                 double fIf = KuscUtil.ParseDoubleFromString(tbxSynthTxIf.Text);
                 tbxSynthVcoOutTxPre.Text = Math.Abs(fRf - fIf).ToString();
                 tbxSynthVcoOutTxAfter.Text = (Math.Abs(fRf - fIf) / 2).ToString("F2");
-                WriteStatusOk("Host: Freqancy send to unit");
+                WriteStatusOk(KuscCommon.MSG_SYNTH_OK_TX_FREQ_SENT);
                 if (fRf >= KuscCommon.SYNTH_TX_FRF_MIN_VALUE_MHZ && fRf <= KuscCommon.SYNTH_TX_FRF_MAX_VALUE_MHZ)
                 {
                     if (fIf >= KuscCommon.SYNTH_TX_FIF_MIN_VALUE_MHZ && fIf <= KuscCommon.SYNTH_TX_FIF_MAX_VALUE_MHZ)
                     {
                         dataList = _kuscSynth.GetDataRegisters(fRf, fIf);
-                        SendSynthRegisters();
+                        SendSynthRegisters(KuscCommon.SYNTH_TYPE.SYNTH_TX);
                     }
                     else
                     {
-                        WriteStatusFail(string.Format("Please insert TX synthesizer F-IF between {0} and {1}", KuscCommon.SYNTH_TX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FIF_MAX_VALUE_MHZ));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_SYNTH_ERR_TX_INPUT_F_IF_WRONG_RANGE, KuscCommon.SYNTH_TX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FIF_MAX_VALUE_MHZ));
                     }
                 }
                 else
                 {
-                    WriteStatusFail(string.Format("Please insert TX synthesizer F-RF between {0} and {1}", KuscCommon.SYNTH_TX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FRF_MAX_VALUE_MHZ));
+                    WriteStatusFail(string.Format(KuscCommon.MSG_SYNTH_ERR_TX_INPUT_F_RF_WRONG_RANGE, KuscCommon.SYNTH_TX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_TX_FRF_MAX_VALUE_MHZ));
                 }
             }
             else
             {
-                WriteStatusFail("Please insert correct TX synthesizer Frf [UVWX.YZ] and Fif values [UVWX.YZ]");
+                WriteStatusFail(KuscCommon.MSG_SYNTH_ERR_TX_INPUT_WRONG_FORMAT);
             }
         }
 
         private void btnSetSyntUp_Click(object sender, EventArgs e)
         {
-            string data = string.Empty;
-            if ((tbxSynthRxRf.Text.Length == 5) && (tbxSynthRxIf.Text.Length == 5))
+            if ((tbxSynthRxRf.Text != string.Empty) && (tbxSynthRxIf.Text != string.Empty) && (tbxSynthRxRf.Text.Length == 8) && (tbxSynthRxIf.Text.Length == 8) && (tbxSynthRxIf.Text[5] == '.') && (tbxSynthRxRf.Text[5] == '.'))
             {
-                if ((Convert.ToInt32(tbxSynthRxRf.Text) * 1000 % KuscCommon.FREQ_STEP_KHZ == 0) && (Convert.ToInt32(tbxSynthRxIf.Text) * 1000 % KuscCommon.FREQ_STEP_KHZ == 0))
+                double fRf = KuscUtil.ParseDoubleFromString(tbxSynthRxRf.Text);
+                double fIf = KuscUtil.ParseDoubleFromString(tbxSynthRxIf.Text);
+                tbxSynthVcoOutRxPre.Text = Math.Abs(fRf - fIf).ToString();
+                tbxSynthVcoOutTRxAfter.Text = (Math.Abs(fRf - fIf) / 2).ToString("F2");
+                WriteStatusOk(KuscCommon.MSG_SYNTH_OK_RX_FREQ_SENT);
+                if (fRf >= KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ && fRf <= KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ)
                 {
-                    if ((Convert.ToInt32(tbxSynthRxRf.Text) >= KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ) &&
-                        (Convert.ToInt32(tbxSynthRxRf.Text) <= KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ))
+                    if (fIf >= KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ && fIf <= KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ)
                     {
-                        if ((Convert.ToInt32(tbxSynthRxIf.Text) >= KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ) &&
-                        (Convert.ToInt32(tbxSynthRxIf.Text) <= KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ))
-                        {
-                            
-                            data = tbxSynthRxRf.Text;
-                            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET, data);
-                        }
-                        else
-                        {
-                            WriteStatusFail(string.Format("Please insert RX synthesizer F-IF between {0} and {1}", KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ));
-                        }
+                        dataList = _kuscSynth.GetDataRegisters(fRf, fIf);
+                        SendSynthRegisters(KuscCommon.SYNTH_TYPE.SYNTH_RX);
                     }
                     else
                     {
-                        WriteStatusFail(string.Format("Please insert RX synthesizer F-RF between {0} and {1}", KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_SYNTH_ERR_RX_INPUT_F_IF_WRONG_RANGE, KuscCommon.SYNTH_RX_FIF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FIF_MAX_VALUE_MHZ));
                     }
                 }
                 else
                 {
-                    WriteStatusFail(string.Format("Allowed steps in RX F-RF and F-IF is {0} KHz", KuscCommon.FREQ_STEP_KHZ));
+                    WriteStatusFail(string.Format(KuscCommon.MSG_SYNTH_ERR_RX_INPUT_F_RF_WRONG_RANGE, KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ, KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ));
                 }
-                
             }
             else
             {
-                WriteStatusFail("Please insert correct RX synthesizer Frf [5 digits length] and Fif values [5 digits length]");
+                WriteStatusFail(KuscCommon.MSG_SYNTH_ERR_RX_INPUT_WRONG_FORMAT);
             }
         }
 
@@ -488,7 +549,7 @@ namespace KUSC
 
             if (rdbDacA.Checked == false && rdbDacB.Checked == false && rdbDacC.Checked == false && rdbDacD.Checked == false)
             {
-                WriteStatusFail("None of the DAC unit had been selected");
+                WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
                 return;
             }
             else
@@ -497,7 +558,7 @@ namespace KUSC
                 {
                     if(tbxDacValA.Text == string.Empty || tbxDacValA.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
                     {
-                        WriteStatusFail(string.Format("Please insert dac A value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_A_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
                         return;
                     }
                     else
@@ -511,7 +572,7 @@ namespace KUSC
                 {
                     if (tbxDacValB.Text == string.Empty || tbxDacValB.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
                     {
-                        WriteStatusFail(string.Format("Please insert dac B value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_B_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
                         return;
                     }
                     else
@@ -524,7 +585,7 @@ namespace KUSC
                 {
                     if (tbxDacValC.Text == string.Empty || tbxDacValC.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
                     {
-                        WriteStatusFail(string.Format("Please insert dac C value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_C_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
                         return;
                     }
                     else
@@ -537,7 +598,7 @@ namespace KUSC
                 {
                     if (tbxDacValD.Text == string.Empty || tbxDacValD.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
                     {
-                        WriteStatusFail(string.Format("Please insert dac D value [{0} digits]", KuscCommon.DAC_MAX_UI_DIGITS));
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_D_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
                         return;
                     }
                     else
@@ -548,7 +609,7 @@ namespace KUSC
                 }
                 if((dacVal > KuscCommon.DAC_VSOURCEPLUS_MILI) || (dacVal < KuscCommon.DAC_VSOURCEMINUS_MILI))
                 {
-                    WriteStatusFail(string.Format("Dac value can`t be lower then Vsource_minus [{0} [mVdc]] or higher then Vref = [{1} [mVdc]]", KuscCommon.DAC_VSOURCEMINUS_MILI, KuscCommon.DAC_VSOURCEPLUS_MILI));
+                    WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_VALUE_NOT_IN_RANGE, KuscCommon.DAC_VSOURCEMINUS_MILI, KuscCommon.DAC_VSOURCEPLUS_MILI));
                     return;
                 }
             }
@@ -561,6 +622,36 @@ namespace KUSC
 
         }
 
+        private void btnReadDac_Click(object sender, EventArgs e)
+        {
+            byte dacIndex = 0;
+            if (rdbDacA.Checked == false && rdbDacB.Checked == false && rdbDacC.Checked == false && rdbDacD.Checked == false)
+            {
+                WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
+                return;
+            }
+            else
+            {
+                if (rdbDacA.Checked)
+                {
+                    dacIndex = 0;
+                }
+                else if (rdbDacB.Checked)
+                {
+                    dacIndex = 1;
+                }
+                else if (rdbDacC.Checked)
+                {
+                    dacIndex = 2;
+                }
+                else if (rdbDacD.Checked)
+                {
+                    dacIndex = 3;
+                }
+                // Send data to MCU:
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_READ_VALUE, dacIndex.ToString());
+            }
+        }
 
         #endregion
 
@@ -577,11 +668,11 @@ namespace KUSC
 
         internal void InitSynthesizers()
         {
-            var dataList = _kuscSynth.GetStartRegisters(Convert.ToInt32(tbxSynthTxFrfInit.Text), Convert.ToInt32(tbxSynthTxFifInit.Text));
-            foreach (var regData in dataList)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_TX_INIT_SET, regData);
-            }
+            //var dataList = _kuscSynth.GetStartRegisters(Convert.ToInt32(tbxSynthTxFrfInit.Text), Convert.ToInt32(tbxSynthTxFifInit.Text));
+            //foreach (var regData in dataList)
+            //{
+            //    _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_TX_INIT_SET, regData);
+            //}
         }
         #endregion
 
@@ -606,14 +697,7 @@ namespace KUSC
 
         private void btnOperSyntDown_Click(object sender, EventArgs e)
         {
-            if(lblStatusSyntDown.Text != string.Empty)
-            {
-                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_OPER, KuscCommon.TX_SYNTH_ID.ToString());
-            }
-            else
-            {
-                WriteStatusFail("Please read Synth TX values prioer to set operation state");
-            }
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_OPER, KuscCommon.TX_SYNTH_ID.ToString());
         }
 
         private void btnOperSyntUp_Click(object sender, EventArgs e)
@@ -624,19 +708,20 @@ namespace KUSC
             }
             else
             {
-                WriteStatusFail("Please read Synth RX values prioer to set operation state");
+                WriteStatusFail(KuscCommon.MSG_SYNTH_ERR_RX_SET_PER_BEFORE_READ_STATE);
             }
         }
 
         private void btnReadSyntDown_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_READ_DATA, 0x1.ToString());
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_READ_DATA, 0x0.ToString());
         }
 
         private void btnReadSyntUp_Click(object sender, EventArgs e)
         {
-            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_READ_DATA, 0x0.ToString());
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.SYNTH_MSG, KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_READ_DATA, 0x1.ToString());
         }
+
 
     }
 }

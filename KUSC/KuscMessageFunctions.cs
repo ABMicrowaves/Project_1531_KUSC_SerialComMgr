@@ -136,8 +136,12 @@ namespace KUSC
                     KuscUtil.ReadSynthDown(data);
                     break;
 
-                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_REQ_ANTHER_REG:
-                    KuscUtil.ReqAntherRegister();
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_REQ_ANTHER_TX_REG:
+                    KuscUtil.ReqAntherTxRegister();
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.SYNTH_REQ_ANTHER_RX_REG:
+                    KuscUtil.ReqAntherRxRegister();
                     break;
 
             }
@@ -193,6 +197,10 @@ namespace KUSC
             {
                 case KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE:
                     statusMsg = "MCU: Set DAC value";
+                    break;
+
+                case KuscMessageParams.MESSAGE_REQUEST.DAC_READ_VALUE:
+                    KuscUtil.DacReadValue(data);
                     break;
             }
 

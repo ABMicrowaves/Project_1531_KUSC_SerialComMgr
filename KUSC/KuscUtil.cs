@@ -16,7 +16,7 @@ namespace KUSC
 
         #region CRC
 
-        public static char CalcCrc8(char[] input)
+        internal static char CalcCrc8(char[] input)
         {
             int crc = 0;
             for (int i = 0; i < input.Length; i++)
@@ -42,7 +42,7 @@ namespace KUSC
             return result;
         }
 
-        public static double GCD(double a, double b)
+        internal static double GCD(double a, double b)
         {
             while (a != 0 && b != 0)
             {
@@ -62,12 +62,12 @@ namespace KUSC
             }
         }
 
-        public static double GetFractionOfDouble(double num)
+        internal static double GetFractionOfDouble(double num)
         {
             return num - (int)num;
         }
 
-        public static double ParseDoubleFromString(string data)
+        internal static double ParseDoubleFromString(string data)
         {
             var fraction = data.Split('.');
             return Convert.ToDouble(fraction[0]) + (Convert.ToDouble(fraction[1]) / 100);
@@ -76,42 +76,42 @@ namespace KUSC
 
         #region Update main form
 
-        public void UpdateStatusObject(KuscForm Sender)
+        internal void UpdateStatusObject(KuscForm Sender)
         {
             _KuscForm = Sender;
         }
 
-        public static void UpdateStatusOk(string msg)
+        internal static void UpdateStatusOk(string msg)
         {
             _KuscForm.WriteStatusOk(msg);
         }
 
-        public static void UpdateStatusFail(string msg)
+        internal static void UpdateStatusFail(string msg)
         {
             _KuscForm.WriteStatusFail(msg);
         }
 
-        public static void UpdateAdcTable(string dataSample)
+        internal static void UpdateAdcTable(string dataSample)
         {
             _KuscForm.UpdateAdcTable(dataSample);
         }
 
-        public static void UpdateMcuFwVersion(string fwVersionData)
+        internal static void UpdateMcuFwVersion(string fwVersionData)
         {
-            _KuscForm.UpdateMcuFw(ConvertDataToString(fwVersionData));
+            _KuscForm.UpdateMcuFw(fwVersionData);
         }
 
-        public static void UpdateRunTime(string sysRunTime)
+        internal static void UpdateRunTime(string sysRunTime)
         {
-            _KuscForm.UpdateSystemRunTime(ConvertDataToString(sysRunTime));
+            _KuscForm.UpdateSystemRunTime(sysRunTime);
         }
 
-        public static void UpdateFlashCondition(string flashCondData)
+        internal static void UpdateFlashCondition(string flashCondData)
         {
             _KuscForm.UpdateFlashCondition(flashCondData);
         }
 
-        public static void UpdateSystemRegisters()
+        internal static void UpdateSystemRegisters()
         {
             _KuscForm.UpdateSystemAtStart();
         }
@@ -120,7 +120,7 @@ namespace KUSC
 
         #region Util Functions
 
-        public static string HexToDecimalString(string val)
+        internal static string HexToDecimalString(string val)
         {
             int value = Convert.ToInt32(val, 16);
             return Convert.ToInt32(val.ToString(), 16).ToString();
@@ -146,9 +146,19 @@ namespace KUSC
             _KuscForm.ReadSynthDown(data);
         }
 
-        internal static void ReqAntherRegister()
+        internal static void ReqAntherTxRegister()
         {
-            _KuscForm.SendSynthRegisters();
+            _KuscForm.SendSynthRegisters(KuscCommon.SYNTH_TYPE.SYNTH_TX);
+        }
+
+        internal static void ReqAntherRxRegister()
+        {
+            _KuscForm.SendSynthRegisters(KuscCommon.SYNTH_TYPE.SYNTH_RX);
+        }
+
+        internal static void DacReadValue(string data)
+        {
+            _KuscForm.DacReadData(data);
         }
         #endregion
 

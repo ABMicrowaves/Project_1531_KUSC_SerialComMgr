@@ -10,10 +10,8 @@ namespace KUSC
     {
         #region Technician mode  
 
-        public static string TECH_USER              = "AB";
-        public static string TECH_PASS              = "1234";
-        public static string TECH_LOGIN_OK_MSG      = "Enter to technician mode";
-        public static string TECH_LOGIN_FAIL_MSG    = "Incorrect login parameters";
+        public static string TECH_USER  = "AB";
+        public static string TECH_PASS  = "1234";
         #endregion
 
         #region Serial configuration
@@ -26,9 +24,10 @@ namespace KUSC
 
         #region Logic configuration
 
-        #region SYNTH calculations params:
+        #region SYNTH calculations params
 
-        public static double FREQ_STEP_KHZ = 10;
+        public static double FREQ_STEP_KHZ  = 10;
+
 
         #region SYNTH TX
 
@@ -56,21 +55,32 @@ namespace KUSC
         #region SYNTH constant params
 
         // Synth ID:
-        public static Int16 TX_SYNTH_ID = 0x1;
-        public static Int16 RX_SYNTH_ID = 0x1;
-        public static Int16 SYNTH_NUM_UPDATE_REGISTERS = 7;
+        public static Int16 TX_SYNTH_ID                             = 0x1;
+        public static Int16 RX_SYNTH_ID                             = 0x1;
+
+        public static Int16 SYNTH_NUM_UPDATE_REGISTERS              = 0x3;
+        public static Int16 SYNTH_NUM_CYCLE_IN_UPDATE_REGISTERS     = 0x7;
+        public static Int16 SYNTH_NUM_BYTE_UPDATE_REGISTER          = 0x4;
+
+        public enum SYNTH_TYPE : int
+        {
+            SYNTH_TX = 0x00,
+            SYNTH_RX = 0x01,
+        };
 
         // Save Synth registers:
         public static Int32 SYNTH_REG04 = 0x30008384;
         public static Int32 SYNTH_REG06 = 0x35006076;
         public static Int32 SYNTH_REG10 = 0xC0193A;
 
-        public static int SYNTH_F_REF_MHZ = 40;
-        public static int SYNTH_D = 1;
-        public static int SYNTH_R = 1;
-        public static int SYNTH_T = 0;
-        public static int SYNTH_MOD1 = 16777216;
-        public static int SNYTH_F_CHSP_KHZ = 100;
+        public static int SYNTH_F_REF_MHZ   = 40;
+        public static double SYNTH_F_PFD    = 40.0;
+        public static int SYNTH_D           = 1;
+        public static int SYNTH_R           = 1;
+        public static int SYNTH_T           = 0;
+        public static int SYNTH_MOD1        = 16777216;
+        public static int SYNTH_MOD2        = 5461;
+        public static int SNYTH_F_CHSP_KHZ  = 100;
 
         public static string SYNTH_TX_F_RF_INIT_VALUE = "11000";
         public static string SYNTH_TX_F_IF_INIT_VALUE = "02100";
@@ -102,12 +112,69 @@ namespace KUSC
 
         #region Extenal DAC
 
-        public static int DAC_VSOURCEPLUS_MILI      = 4880;
-        public static int DAC_VSOURCEMINUS_MILI     = 0;
-        public static int DAC_BITS                  = 10;
-        public static int DAC_MAX_UI_DIGITS         = 4;
-        public static bool DAC_NO_LOW_POWER_MODE    = true;     // 0 - All DACs go shout-down, 1 - Normal operation.
-        public static bool DAC_UPDATE_OUTPUTS       = false;    // 0 - Update registers and outputs off all DACs, 1 - Update only registers, don`t change DACs ouputs.
+        public static int DAC_VSOURCEPLUS_MILI          = 4880;
+        public static int DAC_VSOURCEMINUS_MILI         = 0;
+        public static int DAC_BITS                      = 10;
+        public static int DAC_MAX_UI_DIGITS             = 4;
+        public static int DAC_NUM_BYTE_UPDATE_REGISTER  = 2;
+        public static bool DAC_NO_LOW_POWER_MODE        = true;     // 0 - All DACs go shout-down, 1 - Normal operation.
+        public static bool DAC_UPDATE_OUTPUTS           = false;    // 0 - Update registers and outputs off all DACs, 1 - Update only registers, don`t change DACs ouputs.
+
+        #endregion
+
+        #endregion
+
+        #region Status messages
+
+        #region Technician messages
+
+        public static string TECH_LOGIN_OK_MSG                          = "Enter to technician mode";
+        public static string TECH_LOGIN_FAIL_MSG                        = "Incorrect login parameters";
+        #endregion
+
+        #region Serial interface
+
+        public static string MSG_SERIAL_ERR_DONT_FOUND_ANY_COMPORT      = "Don`t found any comport available";
+        #endregion
+
+        #region Synthesizers messages
+
+        // TX (Down) synthesizer
+        public static string MSG_SYNTH_OK_TX_FREQ_SENT                  = "Host: TX Freqancy send to unit";
+        public static string MSG_SYNTH_ERR_TX_INPUT_F_RF_WRONG_RANGE    = "Please insert TX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_TX_INPUT_F_IF_WRONG_RANGE    = "Please insert TX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_TX_INPUT_WRONG_FORMAT        = "Please insert TX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_TX_SET_PER_BEFORE_READ_STATE = "Please read Synth TX values prioer to set operation state";
+
+        // RX (Up) synthesizer
+        public static string MSG_SYNTH_OK_RX_FREQ_SENT                  = "Host: RX Freqancy send to unit";
+        public static string MSG_SYNTH_ERR_RX_INPUT_F_RF_WRONG_RANGE    = "Please insert RX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_RX_INPUT_F_IF_WRONG_RANGE    = "Please insert RX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_RX_INPUT_WRONG_FORMAT        = "Please insert RX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_RX_SET_PER_BEFORE_READ_STATE = "Please read Synth RX values prioer to set operation state";
+
+        // Common messages
+        public static string MSG_SYNTH_OK_READ_STATUS_OK                = "MCU: Read synthesizer value ok"; 
+        #endregion
+
+        #region ADC messages
+
+        public static string MSG_ADC_ERR_INPUT_WRONG_FORMAT             = "In ADC single mode please choose channel to sample";
+        public static string MSG_ADC_ERR_INPUT_MISSING                  = "Please choose desire ADC sampling mode";
+        #endregion
+
+        #region DAC messages
+
+        public static string MSG_DAC_ERR_DAC_NOT_SELECTED               = "Please choose desire dac";
+        public static string MSG_DAC_ERR_VALUE_NOT_IN_RANGE             = "Dac input must be in range of (Vsource_minus {0} [mVdc],  Vref = {1} [mVdc]";
+        public static string MSG_DAC_ERR_DAC_A_INPUT_WRONG_FORMAT       = "Please insert dac A value [{0} digits]";
+        public static string MSG_DAC_ERR_DAC_B_INPUT_WRONG_FORMAT       = "Please insert dac B value [{0} digits]";
+        public static string MSG_DAC_ERR_DAC_C_INPUT_WRONG_FORMAT       = "Please insert dac C value [{0} digits]";
+        public static string MSG_DAC_ERR_DAC_D_INPUT_WRONG_FORMAT       = "Please insert dac D value [{0} digits]";
+        public static string MSG_DAC_ERR_WRONG_INPUT_INDEX              = "Getting wrong dac index, please check serial communication";
+
+
+
 
         #endregion
 
