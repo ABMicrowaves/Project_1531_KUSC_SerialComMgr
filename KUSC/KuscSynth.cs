@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,19 @@ namespace KUSC
 {
     class KuscSynth
     {
+        #region Class verbs
 
         KuscCommon.REG_DATA regData = new KuscCommon.REG_DATA();
 
-        internal List<string> GetDataRegisters(double fRF, double fIF)
+        Int32 synthReg04Tx = KuscCommon.SYNTH_REG04;
+        Int32 synthReg04Rx = KuscCommon.SYNTH_REG04;
+        #endregion
+
+        #region Synthesizers output calculations
+
+        #region Synthesizers make output registers list
+
+        internal List<string> GetDataRegisters(KuscCommon.SYNTH_TYPE cSynthType, double fRF, double fIF)
         {
             List<string> regList = new List<string>();
 
@@ -20,28 +30,25 @@ namespace KUSC
 
             regList.Add(KuscCommon.SYNTH_REG10.ToString() + '@' + 0xa.ToString() + '#');     // R10
             regList.Add(KuscCommon.SYNTH_REG06.ToString() + '@' + 0x6.ToString() + '#');     // R6
-            regList.Add(KuscCommon.SYNTH_REG04.ToString() + '@' + 0x4.ToString() + '#');     // R4
+            if (cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_TX)
+            {
+                regList.Add(synthReg04Tx.ToString() + '@' + 0x4.ToString() + '#');          // R4 - TX
+            }
+            else if (cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_RX)
+            {
+                regList.Add(synthReg04Rx.ToString() + '@' + 0x4.ToString() + '#');          // R4 - RX
+            }
             regList.Add(CalcReg02().ToString() + '@' + 0x2.ToString() + '#');                // R2
             regList.Add(CalcReg01().ToString() + '@' + 0x1.ToString() + '#');                // R1
             regList.Add(CalcReg00().ToString() + '@' + 0x0.ToString() + '#');                // R0
             regList.Add(KuscCommon.SYNTH_REG04.ToString() + '@' + 0x4.ToString() + '#');     // R4
             regList.Add(CalcReg00().ToString() + '@' + 0x0.ToString() + '#');                // R0
 
-            // Testing:
-            regListNum.Add(KuscCommon.SYNTH_REG10);   // R10
-            regListNum.Add(KuscCommon.SYNTH_REG06);   // R6
-            regListNum.Add(KuscCommon.SYNTH_REG04);   // R4
-            regListNum.Add(CalcReg02());              // R2
-            regListNum.Add(CalcReg01());              // R1
-            regListNum.Add(CalcReg00());              // R0
-            regListNum.Add(KuscCommon.SYNTH_REG04);   // R4
-            regListNum.Add(CalcReg00());              // R0
-
             return regList;
         }
 
-
         internal List<string> GetStartRegisters(int fRF, int fIF)
+        // This function is for future use.
         {
             List<string> recvList = new List<string>();
 
@@ -62,6 +69,9 @@ namespace KUSC
 
             return recvList;
         }
+        #endregion
+
+        #region Calculation of output Synthesizers registers
 
         private void CalcSynthParams(double fRF, double fIF)
         {
@@ -92,10 +102,42 @@ namespace KUSC
             return ((regData.Fraq2 << 18) + (regData.Mod2 << 4) | 0x2);
         }
 
-        private Int32 CalcReg04(double cpCurrent)
+        internal void CalcReg04(KuscCommon.SYNTH_TYPE cSynthType, int cpCurrentValue)
+        // According to data sheet: 0 -> 0.300, 15 -> 
         {
-            return ((regData.Fraq2 << 18) + (regData.Mod2 << 4) | 0x4);
+            // Create and change bit array
+            BitArray bitArr = new BitArray(new int[] { KuscCommon.SYNTH_REG04 });
+            BitArray bitArrCp = new BitArray(new int[] { cpCurrentValue });
+
+            for (int idx = 0; idx < 4; idx++)
+            {
+                bitArr[10 + idx] = bitArrCp[idx];
+            }
+
+
+            // Convert result to int32 again
+            int value = 0;
+
+            for (int i = 0; i < bitArr.Count; i++)
+            {
+                if (bitArr[i])
+                    value += Convert.ToInt32(Math.Pow(2, i));
+            }
+
+            if (cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_TX)
+            {
+                synthReg04Tx = value;
+            }
+            else if (cSynthType == KuscCommon.SYNTH_TYPE.SYNTH_RX)
+            {
+                synthReg04Rx = value;
+            }
         }
+        #endregion
+
+        #endregion
+
+        #region Synthesizers calculation from income EUSART stream
 
         internal double calcFreqFromUartData(string data)
         {
@@ -109,10 +151,10 @@ namespace KUSC
             // Make numbers array of the incoming stream
             for (int regIdx = 0; regIdx < KuscCommon.SYNTH_NUM_UPDATE_REGISTERS; regIdx++)
             {
-                for (int byteIdx = 0; byteIdx < KuscCommon.SYNTH_NUM_BYTE_UPDATE_REGISTER; byteIdx ++)
+                for (int byteIdx = 0; byteIdx < KuscCommon.SYNTH_NUM_BYTE_UPDATE_REGISTER; byteIdx++)
                 {
                     char t = chars[regIdx * KuscCommon.SYNTH_NUM_BYTE_UPDATE_REGISTER + byteIdx];
-                    Int32 numBase =  (Int32) Math.Pow(2, 8 * byteIdx);
+                    Int32 numBase = (Int32)Math.Pow(2, 8 * byteIdx);
                     regArr[regIdx] |= t * numBase;
                 }
             }
@@ -135,8 +177,17 @@ namespace KUSC
         internal bool GetCeCondition(string data)
         {
             var chars = data.Replace("\x2C", string.Empty).ToCharArray();
-            bool condition = chars[12] == 0x1 ? true:false;
+            bool condition = chars[16] == 0x1 ? true : false;
             return condition;
         }
+
+        internal Int32 GetCpIndxFromStream(string data)
+        {
+            var chars = data.Replace("\x2C", string.Empty).ToCharArray();
+            var returnVal = (Convert.ToInt32(chars[13]) & 0x3C) >> 2;
+            return returnVal;
+        }
+        #endregion
+
     }
 }

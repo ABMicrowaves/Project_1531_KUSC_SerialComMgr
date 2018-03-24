@@ -113,11 +113,11 @@ namespace KUSC
             switch (request)
             {
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_DOWN_SET:
-                    statusMsg = "MCU: Set syntesizer down ok, wait for latch message";
+                    statusMsg = "System: Send syntesizer TX (Down) setting serial packet";
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_SET:
-                    statusMsg = "MCU: Set syntesizer up ok, wait for latch message";
+                    statusMsg = "System: Send syntesizer RX (Up) setting serial packet";
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.SYNTH_UP_OPER:
@@ -169,16 +169,16 @@ namespace KUSC
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_REQUEST_RAW_DATA:
-                    statusMsg = "MCU: Request flash raw data ok";
+                    statusMsg = "MCU: Request flash raw packet ok";
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_SEND_RAW_DATA:
                     KuscUtil.UpdateAdcTable(data);
-                    statusMsg = "MCU: Request flash raw data ok";
+                    statusMsg = "MCU: Receive flash raw data packet ok";
                     break;
 
                 case KuscMessageParams.MESSAGE_REQUEST.FLASH_NO_SAMPLE_YET:
-                    statusMsg = "MCU: No sample to read from internal Flash yet";
+                    statusMsg = "MCU: You request number of samples that are bigger then actually MCU have";
                     break;
             }
 

@@ -10,7 +10,7 @@ namespace KUSC
     {
 
 
-        #region Uart messages
+        #region Uart verbs
 
         public static char MSG_MAGIC_A                      = '$';
         public static int RX_SLEEP_TIME_MSEC                = 10;
@@ -22,6 +22,9 @@ namespace KUSC
         public static int MSG_REQUEST_DATA_LOCATION         = 4;
 
         public static int MSG_RX_BUFFER_SIZE                = 50;
+        #endregion
+
+        #region Messages groups
 
         public enum MESSAGE_GROUP : int
         {
@@ -34,7 +37,7 @@ namespace KUSC
         };
         #endregion
 
-        #region Sub messages
+        #region Messages opcode (request)
 
         public enum MESSAGE_REQUEST : int
         {
@@ -78,7 +81,6 @@ namespace KUSC
             DAC_SET_VALUE               = 0x61,
             DAC_READ_VALUE              = 0x62,
         }
-
         #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace KUSC
 {
     class KuscUtil
     {
-        #region Class verbs:
+        #region Class verbs
 
         static KuscForm _KuscForm;
 
@@ -159,6 +160,25 @@ namespace KUSC
         internal static void DacReadValue(string data)
         {
             _KuscForm.DacReadData(data);
+        }
+
+        internal string WriteLockStateFromGivenData(ushort dataSample)
+        {
+            string returnVal = string.Empty;
+            BitArray bitArr = new BitArray(new int[] { dataSample });
+            for (int idx = 0; idx < 12; idx++)
+            {
+                if (bitArr[idx] == true)
+                {
+                    returnVal += "LOCK" + Environment.NewLine;
+                }
+                else
+                {
+                    returnVal += "UNLOCK" + Environment.NewLine;
+                }
+            }
+            return returnVal;
+
         }
         #endregion
 

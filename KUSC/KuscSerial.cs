@@ -164,94 +164,103 @@ namespace KUSC
 
             while (true)
             {
-                switch (cRxState)
+                try
                 {
+                    switch (cRxState)
+                    {
 
-                    case UART_READ_STATE.START_RX_MESSAGE_READ:
-                        _rxMsgBuffer.Clear();
-                        _rxDataArray.Clear();
-                        _rxReadByte = 0;
-                        cRxState = UART_READ_STATE.FIND_MAGIC;
-                        break;
+                        case UART_READ_STATE.START_RX_MESSAGE_READ:
+                            _rxMsgBuffer.Clear();
+                            _rxDataArray.Clear();
+                            _rxReadByte = 0;
+                            cRxState = UART_READ_STATE.FIND_MAGIC;
+                            break;
 
-                    case UART_READ_STATE.FIND_MAGIC:
+                        case UART_READ_STATE.FIND_MAGIC:
 
-                        _rxReadByte++;
-                        if (msg[KuscMessageParams.MSG_MAGIC_LOCATION] == KuscMessageParams.MSG_MAGIC_A)
-                        {
-                            _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_MAGIC_LOCATION]);
+                            _rxReadByte++;
+                            if (msg[KuscMessageParams.MSG_MAGIC_LOCATION] == KuscMessageParams.MSG_MAGIC_A)
+                            {
+                                _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_MAGIC_LOCATION]);
+                                cRxState = UART_READ_STATE.READ_GROUP;
+                            }
+                            else
+                            {
+                                return _rxReadByte;
+                            }
+
                             cRxState = UART_READ_STATE.READ_GROUP;
-                        }
-                        else
-                        {
-                            return _rxReadByte;
-                        }
-                        
-                        cRxState = UART_READ_STATE.READ_GROUP;
-                        break;
+                            break;
 
-                    case UART_READ_STATE.READ_GROUP:
+                        case UART_READ_STATE.READ_GROUP:
 
-                        _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_GROUP_LOCATION]);
-                        _rxReadByte++;
-                        cRxState = UART_READ_STATE.READ_REQUEST;
-                        break;
+                            _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_GROUP_LOCATION]);
+                            _rxReadByte++;
+                            cRxState = UART_READ_STATE.READ_REQUEST;
+                            break;
 
-                    case UART_READ_STATE.READ_REQUEST:
+                        case UART_READ_STATE.READ_REQUEST:
 
-                        _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_REQUEST_LOCATION]);
-                        cRxState = UART_READ_STATE.READ_DATA_SIZE;
-                        _rxReadByte++;
-                        break;
+                            _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_REQUEST_LOCATION]);
+                            cRxState = UART_READ_STATE.READ_DATA_SIZE;
+                            _rxReadByte++;
+                            break;
 
-                    case UART_READ_STATE.READ_DATA_SIZE:
+                        case UART_READ_STATE.READ_DATA_SIZE:
 
-                        _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
-                        cRxState = UART_READ_STATE.READ_DATA_SIZE;
-                        _rxReadByte++;
-                        if (msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION] == 0x0)  // check if there is data to read.
-                        {
+                            _rxMsgBuffer.Add(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
+                            cRxState = UART_READ_STATE.READ_DATA_SIZE;
+                            _rxReadByte++;
+                            if (msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION] == 0x0)  // check if there is data to read.
+                            {
+                                cRxState = UART_READ_STATE.CHECK_CRC;
+                            }
+                            else
+                            {
+                                cRxState = UART_READ_STATE.READ_DATA;
+
+                            }
+                            break;
+
+                        case UART_READ_STATE.READ_DATA:
+
+                            int dataSize = Convert.ToInt32(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
+                            if (dataSize > msg.Length)
+                            {
+                                return 0;
+                            }
+                            for (int idx = 0; idx <= dataSize; idx++)
+                            {
+                                _rxDataArray.Add(msg[KuscMessageParams.MSG_REQUEST_DATA_LOCATION + idx]);
+                            }
+                            _rxReadByte += dataSize;
                             cRxState = UART_READ_STATE.CHECK_CRC;
-                        }
-                        else
-                        {
-                            cRxState = UART_READ_STATE.READ_DATA;
+                            break;
 
-                        }
-                        break;
+                        case UART_READ_STATE.CHECK_CRC:
+                            int crcLocation = KuscMessageParams.MSG_REQUEST_DATA_LOCATION + Convert.ToInt32(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
+                            char crcGiven = msg[crcLocation];
+                            char crcCalc = KuscUtil.CalcCrc8(msg.ToArray());
+                            cRxState = UART_READ_STATE.JUMP_FUNCTION;
+                            break;
 
-                    case UART_READ_STATE.READ_DATA:
+                        case UART_READ_STATE.JUMP_FUNCTION:
 
-                        int dataSize = Convert.ToInt32(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
-                        if (dataSize > msg.Length)
-                        {
-                            return 0;
-                        }
-                        for (int idx = 0; idx <= dataSize; idx++)
-                        {
-                            _rxDataArray.Add(msg[KuscMessageParams.MSG_REQUEST_DATA_LOCATION + idx]);
-                        }
-                        _rxReadByte += dataSize;
-                        cRxState = UART_READ_STATE.CHECK_CRC;
-                        break;
+                            _groups[msg[KuscMessageParams.MSG_GROUP_LOCATION] - 1]((KuscMessageParams.MESSAGE_REQUEST)msg[KuscMessageParams.MSG_REQUEST_LOCATION], string.Join(",", _rxDataArray.ToArray()));
+                            cRxState = UART_READ_STATE.FINISH_ROUND;
+                            break;
 
-                    case UART_READ_STATE.CHECK_CRC:
-                        int crcLocation = KuscMessageParams.MSG_REQUEST_DATA_LOCATION + Convert.ToInt32(msg[KuscMessageParams.MSG_REQUEST_DATA_SIZE_LOCATION]);
-                        char crcGiven = msg[crcLocation];
-                        char crcCalc = KuscUtil.CalcCrc8(msg.ToArray());
-                        cRxState = UART_READ_STATE.JUMP_FUNCTION;
-                        break;
-
-                    case UART_READ_STATE.JUMP_FUNCTION:
-
-                        _groups[msg[KuscMessageParams.MSG_GROUP_LOCATION] - 1]((KuscMessageParams.MESSAGE_REQUEST)msg[KuscMessageParams.MSG_REQUEST_LOCATION], string.Join(",", _rxDataArray.ToArray()));
-                        cRxState = UART_READ_STATE.FINISH_ROUND;
-                        break;
-
-                    case UART_READ_STATE.FINISH_ROUND:
-                        return _rxReadByte;   
+                        case UART_READ_STATE.FINISH_ROUND:
+                            return _rxReadByte;
+                    }
                 }
+                catch (Exception)
+                {
+                    
+                }
+                  
             }
+            
         }
 
         #endregion

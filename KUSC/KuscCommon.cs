@@ -54,7 +54,11 @@ namespace KUSC
 
         #region SYNTH constant params
 
-        // Synth ID:
+        // CE states
+        internal static string SYNTH_STATE_ON                       = "ON";
+        internal static string SYNTH_STATE_OFF                      = "OFF";
+
+        // Synth ID
         public static Int16 TX_SYNTH_ID                             = 0x1;
         public static Int16 RX_SYNTH_ID                             = 0x1;
 
@@ -122,6 +126,17 @@ namespace KUSC
 
         #endregion
 
+        #region System logs params
+
+        internal static string LOG_FILE_FORMAT_NAME = ".kuscLog";
+        #endregion
+
+        #region FLASH
+
+        internal static int SYNTH_TX_CP_DEFAULT_INDEX = 0;  // 0.300
+        internal static int SYNTH_RX_CP_DEFAULT_INDEX = 1;  // 0.600
+        #endregion
+
         #endregion
 
         #region Status messages
@@ -141,18 +156,20 @@ namespace KUSC
 
         // TX (Down) synthesizer
         public static string MSG_SYNTH_OK_TX_FREQ_SENT                  = "Host: TX Freqancy send to unit";
-        public static string MSG_SYNTH_ERR_TX_INPUT_F_RF_WRONG_RANGE    = "Please insert TX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_TX_INPUT_F_RF_WRONG_RANGE    = "Please insert TX synthesizer F-RF between {0} and {1}";
         public static string MSG_SYNTH_ERR_TX_INPUT_F_IF_WRONG_RANGE    = "Please insert TX synthesizer F-IF between {0} and {1}";
-        public static string MSG_SYNTH_ERR_TX_INPUT_WRONG_FORMAT        = "Please insert TX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_TX_INPUT_WRONG_FORMAT        = "Please insert correct values to TX synthesizer F-IF and F_RF";
         public static string MSG_SYNTH_ERR_TX_SET_PER_BEFORE_READ_STATE = "Please read Synth TX values prioer to set operation state";
 
         // RX (Up) synthesizer
         public static string MSG_SYNTH_OK_RX_FREQ_SENT                  = "Host: RX Freqancy send to unit";
         public static string MSG_SYNTH_ERR_RX_INPUT_F_RF_WRONG_RANGE    = "Please insert RX synthesizer F-IF between {0} and {1}";
         public static string MSG_SYNTH_ERR_RX_INPUT_F_IF_WRONG_RANGE    = "Please insert RX synthesizer F-IF between {0} and {1}";
-        public static string MSG_SYNTH_ERR_RX_INPUT_WRONG_FORMAT        = "Please insert RX synthesizer F-IF between {0} and {1}";
+        public static string MSG_SYNTH_ERR_RX_INPUT_WRONG_FORMAT        = "Please insert correct values to RX synthesizer F-IF and F_RF";
         public static string MSG_SYNTH_ERR_RX_SET_PER_BEFORE_READ_STATE = "Please read Synth RX values prioer to set operation state";
 
+        // Common synthesizers messages
+        public static string MSG_SYNTH_ERR_NOT_CHOOSE_VALID_CP_VALUE    = "Please choose valid senthesizer CP value";
         // Common messages
         public static string MSG_SYNTH_OK_READ_STATUS_OK                = "MCU: Read synthesizer value ok"; 
         #endregion
@@ -172,10 +189,17 @@ namespace KUSC
         public static string MSG_DAC_ERR_DAC_C_INPUT_WRONG_FORMAT       = "Please insert dac C value [{0} digits]";
         public static string MSG_DAC_ERR_DAC_D_INPUT_WRONG_FORMAT       = "Please insert dac D value [{0} digits]";
         public static string MSG_DAC_ERR_WRONG_INPUT_INDEX              = "Getting wrong dac index, please check serial communication";
+        #endregion
 
+        #region FLASH messages
 
+        internal static string MSG_FLASH_ERR_DONT_VALID_NUM_SAMPLES_REQUEST = "Please insert valid samples number (higher then 0)";
+        #endregion
 
+        #region System logs
 
+        internal static string MSG_LOG_ERR_CANT_OPEN_LOG    = "System: can`t open this log, check if you request valid log index";
+        internal static string MSG_LOG_OK_OPEN_LOG          = "System: open log ok, Load in the log viewer";
         #endregion
 
         #endregion
