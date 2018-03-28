@@ -33,7 +33,7 @@ namespace KUSC
                 regsiterVal |= chars[byteIdx] * (Int16)Math.Pow(2, 8 * byteIdx);
             }
 
-            dacVal = (regsiterVal >> 2) & 0xFF;
+            dacVal = ((regsiterVal & 0x0ffc) >> 2) + 1;     // Add 1 for resolution
             dacIndex = regsiterVal >> 14;
             AnalogVal = ((KuscCommon.DAC_VSOURCEPLUS_MILI * dacVal)/ (Math.Pow(2, KuscCommon.DAC_BITS) - 1));
 

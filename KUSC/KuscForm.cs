@@ -49,7 +49,8 @@ namespace KUSC
             rdbDacA.Checked = true;
 
             // Set UI Vref
-            lblAdcVrefUi.Text = string.Format("Vref= {0} [mVdc]", KuscCommon.DAC_VSOURCEPLUS_MILI.ToString());
+            lblAdcVreTechUi.Text = string.Format("Vref= {0} [mVdc]", KuscCommon.DAC_VSOURCEPLUS_MILI.ToString());
+            lblAdcVreUserUi.Text = string.Format("Vref= {0} [mVdc]", KuscCommon.DAC_VSOURCEPLUS_MILI.ToString());
             _KuscUtil.UpdateStatusObject(this);
             _kuscLogs.StoreFormArguments(rtbLogRunWindow, sfdLogFileSaver, fbdLoggerSearcherOpen, dgvLogsFilesList, rtbLogViewer);
 
@@ -403,6 +404,7 @@ namespace KUSC
                     break;
             }
             WriteStatusOk(string.Format("MCU: read DAC {0} OK", dacIndex + 1));
+            _kuscLogs.WriteLogMsgOk(string.Format("DAC {0} read value: {1} [mVdc]", dacIndex, AnalogVal.ToString("#.00")));
         }
         #endregion
 
@@ -511,48 +513,85 @@ namespace KUSC
 
         internal void ReadSynthUp(string data)
         {
-            tbxSynthRxReadRf.Text = (2 * _kuscSynth.calcFreqFromUartData(data)).ToString("#.00");
-            if (true == _kuscSynth.GetCeCondition(data))
+            double fVcoCalc = (2 * _kuscSynth.calcFreqFromUartData(data));
+            if(fVcoCalc > 0)
             {
-                tbxSynthRxReadCe.Text = KuscCommon.SYNTH_STATE_ON;
-                btnOperSyntUp.Text = KuscCommon.SYNTH_STATE_OFF;
+                double fRfCalc = _kuscSynth.calcFrfFromUartData(data);
+                tbxSynthRxReadRf.Text = fRfCalc.ToString("#.00");
+                tbxSynthRxReadVco.Text = fVcoCalc.ToString("#.00");
+                tbxSynthRxReadIf.Text = (fRfCalc - fVcoCalc).ToString("#.00");
+
+                if (true == _kuscSynth.GetCeCondition(data))
+                {
+                    tbxSynthRxReadCe.Text = KuscCommon.SYNTH_STATE_ON;
+                    btnOperSyntUp.Text = KuscCommon.SYNTH_STATE_OFF;
+                }
+                else
+                {
+                    tbxSynthRxReadCe.Text = KuscCommon.SYNTH_STATE_OFF;
+                    btnOperSyntUp.Text = KuscCommon.SYNTH_STATE_ON;
+                }
+                tbxSynthRxReadCp.Text = cbxSynthRxSetCp.Items[_kuscSynth.GetCpIndxFromStream(data)].ToString();
+
+                // Store info at system log
+                _kuscLogs.WriteLogMsgOk("System: get Synthesizer RX [Up] data");
+                _kuscLogs.WriteLogMsgOk(string.Format("Freq: {0} [MHz] \t CP: {1} [mA] \t CE STATE: {2}", tbxSynthRxReadRf.Text, tbxSynthRxReadCp.Text, tbxSynthRxReadCe.Text));
+
+                // Write status ok to screen
+                WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
             }
             else
             {
-                tbxSynthRxReadCe.Text = KuscCommon.SYNTH_STATE_OFF;
-                btnOperSyntUp.Text = KuscCommon.SYNTH_STATE_ON;
+                WriteStatusFail("MCU: Error in read synthesizer up (RX) please chech that this isn`t the first time program running");
+                tbxSynthRxReadRf.Text = "ERR";
+                tbxSynthRxReadVco.Text = "ERR";
+                tbxSynthRxReadIf.Text = "ERR";
+                tbxSynthRxReadCe.Text = "ERR";
+                tbxSynthRxReadCp.Text = "ERR";
             }
-            tbxSynthRxReadCp.Text = cbxSynthRxSetCp.Items[_kuscSynth.GetCpIndxFromStream(data)].ToString();
 
-            // Store info at system log
-            _kuscLogs.WriteLogMsgOk("System: get Synthesizer RX [Up] data");
-            _kuscLogs.WriteLogMsgOk(string.Format("Freq: {0} [MHz] \t CP: {1} [mA] \t CE STATE: {2}", tbxSynthRxReadRf.Text, tbxSynthRxReadCp.Text, tbxSynthRxReadCe.Text));
-
-            // Write status ok to screen
-            WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
         }
 
         internal void ReadSynthDown(string data)
         {
-            tbxSynthTxReadRf.Text = (2 * _kuscSynth.calcFreqFromUartData(data)).ToString("#.00");
-            if (true == _kuscSynth.GetCeCondition(data))
+            double fVcoCalc = (2 * _kuscSynth.calcFreqFromUartData(data));
+            if (fVcoCalc > 0)
             {
-                tbxSynthTxReadCe.Text = KuscCommon.SYNTH_STATE_ON;
-                btnOperSyntDown.Text = KuscCommon.SYNTH_STATE_OFF;
+                double fRfCalc = _kuscSynth.calcFrfFromUartData(data);
+
+                tbxSynthTxReadRf.Text = fRfCalc.ToString("#.00");
+                tbxSynthTxReadVco.Text = fVcoCalc.ToString("#.00");
+                tbxSynthTxReadIf.Text = (fRfCalc - fVcoCalc).ToString("#.00");
+
+                if (true == _kuscSynth.GetCeCondition(data))
+                {
+                    tbxSynthTxReadCe.Text = KuscCommon.SYNTH_STATE_ON;
+                    btnOperSyntDown.Text = KuscCommon.SYNTH_STATE_OFF;
+                }
+                else
+                {
+                    tbxSynthTxReadCe.Text = KuscCommon.SYNTH_STATE_OFF;
+                    btnOperSyntDown.Text = KuscCommon.SYNTH_STATE_ON;
+                }
+                tbxSynthTxReadCp.Text = cbxSynthTxSetCp.Items[_kuscSynth.GetCpIndxFromStream(data)].ToString();
+
+                // Store info at system log
+                _kuscLogs.WriteLogMsgOk("System: get Synthesizer TX [down] data");
+                _kuscLogs.WriteLogMsgOk(string.Format("Freq: {0} [MHz] \t CP: {1} [mA] \t CE STATE: {2}", tbxSynthTxReadRf.Text, tbxSynthTxReadCp.Text, tbxSynthTxReadCe.Text));
+
+                // Write status ok to screen
+                WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
             }
             else
             {
-                tbxSynthTxReadCe.Text = KuscCommon.SYNTH_STATE_OFF;
-                btnOperSyntDown.Text = KuscCommon.SYNTH_STATE_ON;
+                WriteStatusFail("MCU: Error in read synthesizer down (TX) please chech that this isn`t the first time program running");
+                tbxSynthTxReadRf.Text = "ERR";
+                tbxSynthTxReadVco.Text = "ERR";
+                tbxSynthTxReadIf.Text = "ERR";
+                tbxSynthTxReadCe.Text = "ERR";
+                tbxSynthTxReadCp.Text = "ERR";
             }
-            tbxSynthTxReadCp.Text = cbxSynthTxSetCp.Items[_kuscSynth.GetCpIndxFromStream(data)].ToString();
-
-            // Store info at system log
-            _kuscLogs.WriteLogMsgOk("System: get Synthesizer TX [down] data");
-            _kuscLogs.WriteLogMsgOk(string.Format("Freq: {0} [MHz] \t CP: {1} [mA] \t CE STATE: {2}", tbxSynthTxReadRf.Text, tbxSynthTxReadCp.Text, tbxSynthTxReadCe.Text));
-
-            // Write status ok to screen
-            WriteStatusOk(KuscCommon.MSG_SYNTH_OK_READ_STATUS_OK);
+           
         }
 
         internal void UpdateSynthDownOper()
@@ -689,7 +728,7 @@ namespace KUSC
 
                         // Add info to system log
                         _kuscLogs.WriteLogMsgOk("MCU set synthesizer down (TX) vales");
-                        _kuscLogs.WriteLogMsgOk(string.Format("F_IF: {0} [MHz] \tF_RF: {1} [MHz] \tCP {2} [mA]", fRf, fIf, cbxSynthTxSetCp.Items[cpVal]));
+                        //_kuscLogs.WriteLogMsgOk(string.Format("F_IF: {0} [MHz] \tF_RF: {1} [MHz] \tCP {2} [mA]", fRf, fIf, cbxSynthTxSetCp.Items[cpVal]));
 
                         dataList = _kuscSynth.GetDataRegisters(KuscCommon.SYNTH_TYPE.SYNTH_TX, fRf, fIf);
                         SendSynthRegisters(KuscCommon.SYNTH_TYPE.SYNTH_TX);
@@ -718,6 +757,7 @@ namespace KUSC
                 double fIf = KuscUtil.ParseDoubleFromString(tbxSynthRxIf.Text);
                 tbxSynthVcoOutRxPre.Text = Math.Abs(fRf - fIf).ToString();
                 tbxSynthVcoOutTRxAfter.Text = (Math.Abs(fRf - fIf) / 2).ToString("F2");
+
                 WriteStatusOk(KuscCommon.MSG_SYNTH_OK_RX_FREQ_SENT);
                 if (fRf >= KuscCommon.SYNTH_RX_FRF_MIN_VALUE_MHZ && fRf <= KuscCommon.SYNTH_RX_FRF_MAX_VALUE_MHZ)
                 {
@@ -728,7 +768,7 @@ namespace KUSC
 
                         // Add info to system log
                         _kuscLogs.WriteLogMsgOk("MCU set synthesizer up (RX) vales");
-                        _kuscLogs.WriteLogMsgOk(string.Format("F_IF: {0} [MHz] \tF_RF: {1} [MHz] \tCP {2} [mA]", fRf, fIf, cbxSynthRxSetCp.Items[cpVal]));
+                        if(cpVal > 0) _kuscLogs.WriteLogMsgOk(string.Format("F_IF: {0} [MHz] \tF_RF: {1} [MHz] \tCP {2} [mA]", fRf, fIf, cbxSynthRxSetCp.Items[cpVal]));
 
                         
                         dataList = _kuscSynth.GetDataRegisters(KuscCommon.SYNTH_TYPE.SYNTH_RX, fRf, fIf);
@@ -817,46 +857,20 @@ namespace KUSC
 
         #region MCU DAC
 
-        private void btnSetDac_Click(object sender, EventArgs e)
+        private void btnSetDacTech_Click(object sender, EventArgs e)
         {
             int dacIndex = 0;
             int dacVal = 0;
 
-            if (rdbDacA.Checked == false && rdbDacB.Checked == false && rdbDacC.Checked == false && rdbDacD.Checked == false)
+            if (rdbDacC.Checked == false && rdbDacD.Checked == false)
             {
                 WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
                 return;
             }
             else
             {
-                if(rdbDacA.Checked)
-                {
-                    if(tbxDacValA.Text == string.Empty || tbxDacValA.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
-                    {
-                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_A_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
-                        return;
-                    }
-                    else
-                    {
-                        dacIndex = 0;
-                        dacVal = Convert.ToInt32(tbxDacValA.Text);
-                    }
-                    
-                }
-                else if (rdbDacB.Checked)
-                {
-                    if (tbxDacValB.Text == string.Empty || tbxDacValB.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
-                    {
-                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_B_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
-                        return;
-                    }
-                    else
-                    {
-                        dacIndex = 1;
-                        dacVal = Convert.ToInt32(tbxDacValB.Text);
-                    }
-                }
-                else if (rdbDacC.Checked)
+                
+                if (rdbDacC.Checked)
                 {
                     if (tbxDacValC.Text == string.Empty || tbxDacValC.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
                     {
@@ -894,13 +908,92 @@ namespace KUSC
 
             // Send data to MCU:
             _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, data);
+            _kuscLogs.WriteLogMsgOk(string.Format("DAC {0} set value {1} [mVdc]", dacIndex, dacVal));
 
         }
 
-        private void btnReadDac_Click(object sender, EventArgs e)
+        private void btnSetDacUser_Click(object sender, EventArgs e)
+        {
+            int dacIndex = 0;
+            int dacVal = 0;
+
+            if (rdbDacA.Checked == false && rdbDacB.Checked == false)
+            {
+                WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
+                return;
+            }
+            else
+            {
+                if (rdbDacA.Checked)
+                {
+                    if (tbxDacValA.Text == string.Empty || tbxDacValA.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_A_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 0;
+                        dacVal = Convert.ToInt32(tbxDacValA.Text);
+                    }
+
+                }
+                else if (rdbDacB.Checked)
+                {
+                    if (tbxDacValB.Text == string.Empty || tbxDacValB.Text.Length != KuscCommon.DAC_MAX_UI_DIGITS)
+                    {
+                        WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_DAC_B_INPUT_WRONG_FORMAT, KuscCommon.DAC_MAX_UI_DIGITS));
+                        return;
+                    }
+                    else
+                    {
+                        dacIndex = 1;
+                        dacVal = Convert.ToInt32(tbxDacValB.Text);
+                    }
+                }
+
+                if ((dacVal > KuscCommon.DAC_VSOURCEPLUS_MILI) || (dacVal < KuscCommon.DAC_VSOURCEMINUS_MILI))
+                {
+                    WriteStatusFail(string.Format(KuscCommon.MSG_DAC_ERR_VALUE_NOT_IN_RANGE, KuscCommon.DAC_VSOURCEMINUS_MILI, KuscCommon.DAC_VSOURCEPLUS_MILI));
+                    return;
+                }
+            }
+
+            // Prepere configuration word:
+            var data = _kuscExtDac.GetDacData(dacIndex, dacVal);
+
+            // Send data to MCU:
+            _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_SET_VALUE, data);
+            _kuscLogs.WriteLogMsgOk(string.Format("DAC {0} set value {1} [mVdc]", dacIndex, dacVal));
+        }
+
+        private void btnReadDacTech_Click(object sender, EventArgs e)
         {
             byte dacIndex = 0;
-            if (rdbDacA.Checked == false && rdbDacB.Checked == false && rdbDacC.Checked == false && rdbDacD.Checked == false)
+            if (rdbDacC.Checked == false && rdbDacD.Checked == false)
+            {
+                WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
+                return;
+            }
+            else
+            {
+                if (rdbDacC.Checked)
+                {
+                    dacIndex = 2;
+                }
+                else if (rdbDacD.Checked)
+                {
+                    dacIndex = 3;
+                }
+                // Send data to MCU:
+                _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_READ_VALUE, dacIndex.ToString());
+            }
+        }
+
+        private void btnReadDacUser_Click(object sender, EventArgs e)
+        {
+            byte dacIndex = 0;
+            if (rdbDacA.Checked == false && rdbDacB.Checked == false)
             {
                 WriteStatusFail(KuscCommon.MSG_DAC_ERR_DAC_NOT_SELECTED);
                 return;
@@ -915,14 +1008,7 @@ namespace KUSC
                 {
                     dacIndex = 1;
                 }
-                else if (rdbDacC.Checked)
-                {
-                    dacIndex = 2;
-                }
-                else if (rdbDacD.Checked)
-                {
-                    dacIndex = 3;
-                }
+ 
                 // Send data to MCU:
                 _kuscSerial.SerialWriteMessage(KuscMessageParams.MESSAGE_GROUP.DAC, KuscMessageParams.MESSAGE_REQUEST.DAC_READ_VALUE, dacIndex.ToString());
             }
@@ -950,5 +1036,6 @@ namespace KUSC
             //}
         }
         #endregion
+
     }
 }

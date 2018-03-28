@@ -63,8 +63,8 @@ namespace KUSC
         public static Int16 RX_SYNTH_ID                             = 0x1;
 
         public static Int16 SYNTH_NUM_UPDATE_REGISTERS              = 0x3;
-        public static Int16 SYNTH_NUM_CYCLE_IN_UPDATE_REGISTERS     = 0x7;
-        public static Int16 SYNTH_NUM_BYTE_UPDATE_REGISTER          = 0x4;
+        public static Int16 SYNTH_NUM_CYCLE_IN_UPDATE_REGISTERS     = 0x9;
+        public static Int16 SYNTH_NUM_BYTE_UPDATE_REGISTER          = 0x5;
 
         public enum SYNTH_TYPE : int
         {

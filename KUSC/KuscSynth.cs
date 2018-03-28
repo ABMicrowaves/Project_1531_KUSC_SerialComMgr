@@ -44,6 +44,10 @@ namespace KUSC
             regList.Add(KuscCommon.SYNTH_REG04.ToString() + '@' + 0x4.ToString() + '#');     // R4
             regList.Add(CalcReg00().ToString() + '@' + 0x0.ToString() + '#');                // R0
 
+            // Now send the F_RF frequancy to read latter time:
+            Int32 fRfToSend = Convert.ToInt32(fRF * 100);
+            //regList.Add(fRfToSend.ToString() + '@' + 0xb.ToString() + '#');
+
             return regList;
         }
 
@@ -159,6 +163,10 @@ namespace KUSC
                 }
             }
 
+            if(regArr[0] == 0x0)
+            {
+                return 0;
+            }
 
             // Calculate synthesizer params
             regData.INT = (((regArr[0] >> 4) << 21) >> 21);
@@ -177,7 +185,7 @@ namespace KUSC
         internal bool GetCeCondition(string data)
         {
             var chars = data.Replace("\x2C", string.Empty).ToCharArray();
-            bool condition = chars[16] == 0x1 ? true : false;
+            bool condition = chars[23] == 0x1 ? true : false;
             return condition;
         }
 
@@ -186,6 +194,12 @@ namespace KUSC
             var chars = data.Replace("\x2C", string.Empty).ToCharArray();
             var returnVal = (Convert.ToInt32(chars[13]) & 0x3C) >> 2;
             return returnVal;
+        }
+
+        internal double calcFrfFromUartData(string data)
+        {
+            var chars = data.Replace("\x2C", string.Empty).ToCharArray();
+            return (((chars[22] << 16) | chars[21] << 8 | chars[20]) / 100.00);
         }
         #endregion
 

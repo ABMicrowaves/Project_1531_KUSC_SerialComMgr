@@ -42,6 +42,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.lblAdcVreUserUi = new System.Windows.Forms.Label();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.rdbDacB = new System.Windows.Forms.RadioButton();
+            this.rdbDacA = new System.Windows.Forms.RadioButton();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.btnReadDacUser = new System.Windows.Forms.Button();
+            this.tbxDacReadValB = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.tbxDacReadValA = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btnSetDacUser = new System.Windows.Forms.Button();
+            this.tbxDacValB = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.tbxDacValA = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
@@ -107,8 +124,17 @@
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox36 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.cbxSynthRxSetCp = new System.Windows.Forms.ComboBox();
-            this.label52 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.tbxSynthRxReadVco = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.tbxSynthRxReadIf = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.tbxSynthRxReadCe = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.tbxSynthRxReadCp = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.tbxSynthRxReadRf = new System.Windows.Forms.TextBox();
             this.tbxSynthVcoOutRxPre = new System.Windows.Forms.TextBox();
             this.tbxSynthVcoOutTRxAfter = new System.Windows.Forms.TextBox();
             this.label72 = new System.Windows.Forms.Label();
@@ -126,9 +152,18 @@
             this.btnSetSyntUp = new System.Windows.Forms.Button();
             this.tbxSynthRxRf = new System.Windows.Forms.TextBox();
             this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.tbxSynthTxReadVco = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.tbxSynthTxReadIf = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.tbxSynthTxReadCe = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.tbxSynthTxReadCp = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.cbxSynthTxSetCp = new System.Windows.Forms.ComboBox();
-            this.label51 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
             this.tbxSynthTxReadRf = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
@@ -148,6 +183,15 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gbxTechMode = new System.Windows.Forms.GroupBox();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.cbxSynthRxSetCp = new System.Windows.Forms.ComboBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.cbxSynthTxSetCp = new System.Windows.Forms.ComboBox();
+            this.label51 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label68 = new System.Windows.Forms.Label();
             this.btnBootFileSize = new System.Windows.Forms.TextBox();
@@ -176,31 +220,22 @@
             this.rdbAdcCircMode = new System.Windows.Forms.RadioButton();
             this.rdbAdcSingleMode = new System.Windows.Forms.RadioButton();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.rdbDacC = new System.Windows.Forms.RadioButton();
+            this.rdbDacD = new System.Windows.Forms.RadioButton();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.btnReadDac = new System.Windows.Forms.Button();
-            this.tbxDacReadValA = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbxDacReadValB = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
+            this.btnReadDacTech = new System.Windows.Forms.Button();
             this.tbxDacReadValC = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.tbxDacReadValD = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.tbxDacValA = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.tbxDacValB = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
             this.tbxDacValC = new System.Windows.Forms.TextBox();
-            this.btnSetDac = new System.Windows.Forms.Button();
+            this.btnSetDacTech = new System.Windows.Forms.Button();
             this.label63 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.tbxDacValD = new System.Windows.Forms.TextBox();
-            this.lblAdcVrefUi = new System.Windows.Forms.Label();
-            this.rdbDacD = new System.Windows.Forms.RadioButton();
-            this.rdbDacC = new System.Windows.Forms.RadioButton();
-            this.rdbDacB = new System.Windows.Forms.RadioButton();
-            this.rdbDacA = new System.Windows.Forms.RadioButton();
+            this.lblAdcVreTechUi = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnTechLogin = new System.Windows.Forms.Button();
             this.tbxTechPass = new System.Windows.Forms.TextBox();
@@ -240,28 +275,16 @@
             this.sfdLogFileSaver = new System.Windows.Forms.SaveFileDialog();
             this.sfdSaveSamplesFile = new System.Windows.Forms.SaveFileDialog();
             this.fbdLoggerSearcherOpen = new System.Windows.Forms.FolderBrowserDialog();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.tbxSynthTxReadCp = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.tbxSynthRxReadCp = new System.Windows.Forms.TextBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.tbxSynthRxReadRf = new System.Windows.Forms.TextBox();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.tbxSynthTxReadCe = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
-            this.tbxSynthRxReadCe = new System.Windows.Forms.TextBox();
+            this.label85 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox21.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox19.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -275,12 +298,16 @@
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbxTechMode.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox30.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.btnAdcChannelMode.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.groupBox22.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -431,6 +458,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.groupBox18);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox35);
             this.groupBox2.Controls.Add(this.groupBox13);
@@ -444,6 +472,173 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "User settings";
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.lblAdcVreUserUi);
+            this.groupBox18.Controls.Add(this.groupBox21);
+            this.groupBox18.Controls.Add(this.groupBox20);
+            this.groupBox18.Controls.Add(this.groupBox19);
+            this.groupBox18.Location = new System.Drawing.Point(788, 23);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(322, 219);
+            this.groupBox18.TabIndex = 21;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "DAC user controller";
+            // 
+            // lblAdcVreUserUi
+            // 
+            this.lblAdcVreUserUi.AutoSize = true;
+            this.lblAdcVreUserUi.Location = new System.Drawing.Point(2, 186);
+            this.lblAdcVreUserUi.Name = "lblAdcVreUserUi";
+            this.lblAdcVreUserUi.Size = new System.Drawing.Size(38, 13);
+            this.lblAdcVreUserUi.TabIndex = 31;
+            this.lblAdcVreUserUi.Text = "Vref = ";
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.Controls.Add(this.rdbDacB);
+            this.groupBox21.Controls.Add(this.rdbDacA);
+            this.groupBox21.Location = new System.Drawing.Point(5, 30);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(69, 146);
+            this.groupBox21.TabIndex = 2;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "Dac number";
+            // 
+            // rdbDacB
+            // 
+            this.rdbDacB.AutoSize = true;
+            this.rdbDacB.Location = new System.Drawing.Point(8, 72);
+            this.rdbDacB.Name = "rdbDacB";
+            this.rdbDacB.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacB.TabIndex = 29;
+            this.rdbDacB.TabStop = true;
+            this.rdbDacB.Text = "DAC_B";
+            this.rdbDacB.UseVisualStyleBackColor = true;
+            // 
+            // rdbDacA
+            // 
+            this.rdbDacA.AutoSize = true;
+            this.rdbDacA.Location = new System.Drawing.Point(8, 28);
+            this.rdbDacA.Name = "rdbDacA";
+            this.rdbDacA.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacA.TabIndex = 28;
+            this.rdbDacA.TabStop = true;
+            this.rdbDacA.Text = "DAC_A";
+            this.rdbDacA.UseVisualStyleBackColor = true;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.btnReadDacUser);
+            this.groupBox20.Controls.Add(this.tbxDacReadValB);
+            this.groupBox20.Controls.Add(this.label35);
+            this.groupBox20.Controls.Add(this.tbxDacReadValA);
+            this.groupBox20.Controls.Add(this.label18);
+            this.groupBox20.Location = new System.Drawing.Point(197, 33);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(122, 143);
+            this.groupBox20.TabIndex = 1;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "DAC read value";
+            // 
+            // btnReadDacUser
+            // 
+            this.btnReadDacUser.Location = new System.Drawing.Point(34, 105);
+            this.btnReadDacUser.Name = "btnReadDacUser";
+            this.btnReadDacUser.Size = new System.Drawing.Size(49, 25);
+            this.btnReadDacUser.TabIndex = 23;
+            this.btnReadDacUser.Text = "Read";
+            this.btnReadDacUser.UseVisualStyleBackColor = true;
+            this.btnReadDacUser.Click += new System.EventHandler(this.btnReadDacUser_Click);
+            // 
+            // tbxDacReadValB
+            // 
+            this.tbxDacReadValB.Location = new System.Drawing.Point(6, 66);
+            this.tbxDacReadValB.Name = "tbxDacReadValB";
+            this.tbxDacReadValB.Size = new System.Drawing.Size(59, 20);
+            this.tbxDacReadValB.TabIndex = 19;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(72, 71);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(43, 13);
+            this.label35.TabIndex = 20;
+            this.label35.Text = "[mVDC]";
+            // 
+            // tbxDacReadValA
+            // 
+            this.tbxDacReadValA.Location = new System.Drawing.Point(6, 27);
+            this.tbxDacReadValA.Name = "tbxDacReadValA";
+            this.tbxDacReadValA.Size = new System.Drawing.Size(59, 20);
+            this.tbxDacReadValA.TabIndex = 16;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(72, 31);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.TabIndex = 17;
+            this.label18.Text = "[mVDC]";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.btnSetDacUser);
+            this.groupBox19.Controls.Add(this.tbxDacValB);
+            this.groupBox19.Controls.Add(this.label61);
+            this.groupBox19.Controls.Add(this.tbxDacValA);
+            this.groupBox19.Controls.Add(this.label37);
+            this.groupBox19.Location = new System.Drawing.Point(85, 30);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(102, 146);
+            this.groupBox19.TabIndex = 0;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "DAC set value";
+            // 
+            // btnSetDacUser
+            // 
+            this.btnSetDacUser.Location = new System.Drawing.Point(25, 111);
+            this.btnSetDacUser.Name = "btnSetDacUser";
+            this.btnSetDacUser.Size = new System.Drawing.Size(49, 25);
+            this.btnSetDacUser.TabIndex = 21;
+            this.btnSetDacUser.Text = "Set";
+            this.btnSetDacUser.UseVisualStyleBackColor = true;
+            this.btnSetDacUser.Click += new System.EventHandler(this.btnSetDacUser_Click);
+            // 
+            // tbxDacValB
+            // 
+            this.tbxDacValB.Location = new System.Drawing.Point(10, 70);
+            this.tbxDacValB.Name = "tbxDacValB";
+            this.tbxDacValB.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValB.TabIndex = 19;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(58, 74);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(43, 13);
+            this.label61.TabIndex = 20;
+            this.label61.Text = "[mVDC]";
+            // 
+            // tbxDacValA
+            // 
+            this.tbxDacValA.Location = new System.Drawing.Point(10, 28);
+            this.tbxDacValA.Name = "tbxDacValA";
+            this.tbxDacValA.Size = new System.Drawing.Size(42, 20);
+            this.tbxDacValA.TabIndex = 16;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(58, 32);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(43, 13);
+            this.label37.TabIndex = 17;
+            this.label37.Text = "[mVDC]";
             // 
             // groupBox5
             // 
@@ -460,9 +655,9 @@
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.btnEmptyFlash);
             this.groupBox5.Controls.Add(this.btnReadFlashStatus);
-            this.groupBox5.Location = new System.Drawing.Point(766, 23);
+            this.groupBox5.Location = new System.Drawing.Point(10, 303);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(250, 278);
+            this.groupBox5.Size = new System.Drawing.Size(189, 194);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Internal Flash";
@@ -470,7 +665,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(146, 104);
+            this.label46.Location = new System.Drawing.Point(146, 134);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(15, 13);
             this.label46.TabIndex = 21;
@@ -479,7 +674,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(8, 126);
+            this.label45.Location = new System.Drawing.Point(8, 156);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(55, 13);
             this.label45.TabIndex = 20;
@@ -487,7 +682,7 @@
             // 
             // tbxFlashCondNumPackets
             // 
-            this.tbxFlashCondNumPackets.Location = new System.Drawing.Point(98, 126);
+            this.tbxFlashCondNumPackets.Location = new System.Drawing.Point(98, 156);
             this.tbxFlashCondNumPackets.Margin = new System.Windows.Forms.Padding(2);
             this.tbxFlashCondNumPackets.Name = "tbxFlashCondNumPackets";
             this.tbxFlashCondNumPackets.ReadOnly = true;
@@ -497,7 +692,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(8, 104);
+            this.label44.Location = new System.Drawing.Point(8, 134);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(85, 13);
             this.label44.TabIndex = 18;
@@ -505,7 +700,7 @@
             // 
             // tbxFlashCondPrecentage
             // 
-            this.tbxFlashCondPrecentage.Location = new System.Drawing.Point(98, 104);
+            this.tbxFlashCondPrecentage.Location = new System.Drawing.Point(98, 134);
             this.tbxFlashCondPrecentage.Margin = new System.Windows.Forms.Padding(2);
             this.tbxFlashCondPrecentage.Name = "tbxFlashCondPrecentage";
             this.tbxFlashCondPrecentage.ReadOnly = true;
@@ -515,7 +710,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(202, 80);
+            this.label10.Location = new System.Drawing.Point(98, 104);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 16;
@@ -524,7 +719,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(97, 80);
+            this.label9.Location = new System.Drawing.Point(7, 104);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 15;
@@ -532,11 +727,11 @@
             // 
             // tbxFlashCondTotal
             // 
-            this.tbxFlashCondTotal.Location = new System.Drawing.Point(128, 77);
+            this.tbxFlashCondTotal.Location = new System.Drawing.Point(38, 101);
             this.tbxFlashCondTotal.Margin = new System.Windows.Forms.Padding(2);
             this.tbxFlashCondTotal.Name = "tbxFlashCondTotal";
             this.tbxFlashCondTotal.ReadOnly = true;
-            this.tbxFlashCondTotal.Size = new System.Drawing.Size(69, 20);
+            this.tbxFlashCondTotal.Size = new System.Drawing.Size(55, 20);
             this.tbxFlashCondTotal.TabIndex = 14;
             // 
             // label6
@@ -584,7 +779,7 @@
             // 
             this.btnReadFlashStatus.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFlashStatus.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadFlashStatus.Location = new System.Drawing.Point(201, 138);
+            this.btnReadFlashStatus.Location = new System.Drawing.Point(140, 26);
             this.btnReadFlashStatus.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadFlashStatus.Name = "btnReadFlashStatus";
             this.btnReadFlashStatus.Size = new System.Drawing.Size(44, 19);
@@ -677,7 +872,7 @@
             // 
             this.btnReadMcuTime.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadMcuTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadMcuTime.Location = new System.Drawing.Point(130, 122);
+            this.btnReadMcuTime.Location = new System.Drawing.Point(140, 119);
             this.btnReadMcuTime.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadMcuTime.Name = "btnReadMcuTime";
             this.btnReadMcuTime.Size = new System.Drawing.Size(44, 19);
@@ -731,11 +926,11 @@
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.btnControlLedTest);
-            this.groupBox13.Location = new System.Drawing.Point(10, 261);
+            this.groupBox13.Location = new System.Drawing.Point(10, 244);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox13.Size = new System.Drawing.Size(179, 57);
+            this.groupBox13.Size = new System.Drawing.Size(189, 57);
             this.groupBox13.TabIndex = 17;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "MCU Leds test";
@@ -1153,24 +1348,25 @@
             this.groupBox36.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox36.Name = "groupBox36";
             this.groupBox36.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox36.Size = new System.Drawing.Size(534, 278);
+            this.groupBox36.Size = new System.Drawing.Size(576, 278);
             this.groupBox36.TabIndex = 13;
             this.groupBox36.TabStop = false;
             this.groupBox36.Text = "Synthesizers Rx / Tx";
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.label85);
+            this.groupBox14.Controls.Add(this.label84);
+            this.groupBox14.Controls.Add(this.tbxSynthRxReadVco);
+            this.groupBox14.Controls.Add(this.label58);
+            this.groupBox14.Controls.Add(this.tbxSynthRxReadIf);
             this.groupBox14.Controls.Add(this.label81);
             this.groupBox14.Controls.Add(this.tbxSynthRxReadCe);
-            this.groupBox14.Controls.Add(this.label79);
             this.groupBox14.Controls.Add(this.label55);
             this.groupBox14.Controls.Add(this.label56);
             this.groupBox14.Controls.Add(this.tbxSynthRxReadCp);
             this.groupBox14.Controls.Add(this.label57);
-            this.groupBox14.Controls.Add(this.label58);
             this.groupBox14.Controls.Add(this.tbxSynthRxReadRf);
-            this.groupBox14.Controls.Add(this.cbxSynthRxSetCp);
-            this.groupBox14.Controls.Add(this.label52);
             this.groupBox14.Controls.Add(this.tbxSynthVcoOutRxPre);
             this.groupBox14.Controls.Add(this.tbxSynthVcoOutTRxAfter);
             this.groupBox14.Controls.Add(this.label72);
@@ -1187,48 +1383,108 @@
             this.groupBox14.Controls.Add(this.label31);
             this.groupBox14.Controls.Add(this.btnSetSyntUp);
             this.groupBox14.Controls.Add(this.tbxSynthRxRf);
-            this.groupBox14.Location = new System.Drawing.Point(264, 33);
+            this.groupBox14.Location = new System.Drawing.Point(295, 33);
             this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox14.Size = new System.Drawing.Size(237, 241);
+            this.groupBox14.Size = new System.Drawing.Size(281, 241);
             this.groupBox14.TabIndex = 12;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Frequancy RX";
             // 
-            // cbxSynthRxSetCp
+            // label84
             // 
-            this.cbxSynthRxSetCp.FormattingEnabled = true;
-            this.cbxSynthRxSetCp.Items.AddRange(new object[] {
-            "0.300",
-            "0.600",
-            "0.900",
-            "1.200",
-            "1.500",
-            "1.800",
-            "2.100",
-            "2.400",
-            "2.700",
-            "3.000",
-            "3.300",
-            "3.600",
-            "3.900",
-            "4.200",
-            "4.500",
-            "4.800"});
-            this.cbxSynthRxSetCp.Location = new System.Drawing.Point(123, 40);
-            this.cbxSynthRxSetCp.Name = "cbxSynthRxSetCp";
-            this.cbxSynthRxSetCp.Size = new System.Drawing.Size(78, 21);
-            this.cbxSynthRxSetCp.TabIndex = 26;
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(105, 169);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(41, 13);
+            this.label84.TabIndex = 44;
+            this.label84.Text = "F_VCO";
             // 
-            // label52
+            // tbxSynthRxReadVco
             // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(120, 27);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(57, 13);
-            this.label52.TabIndex = 25;
-            this.label52.Text = "CP current";
+            this.tbxSynthRxReadVco.Location = new System.Drawing.Point(148, 166);
+            this.tbxSynthRxReadVco.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxReadVco.Name = "tbxSynthRxReadVco";
+            this.tbxSynthRxReadVco.Size = new System.Drawing.Size(55, 20);
+            this.tbxSynthRxReadVco.TabIndex = 43;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(11, 195);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(28, 13);
+            this.label58.TabIndex = 42;
+            this.label58.Text = "F_IF";
+            // 
+            // tbxSynthRxReadIf
+            // 
+            this.tbxSynthRxReadIf.Location = new System.Drawing.Point(43, 191);
+            this.tbxSynthRxReadIf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxReadIf.Name = "tbxSynthRxReadIf";
+            this.tbxSynthRxReadIf.Size = new System.Drawing.Size(53, 20);
+            this.tbxSynthRxReadIf.TabIndex = 41;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(208, 168);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(21, 13);
+            this.label81.TabIndex = 40;
+            this.label81.Text = "CE";
+            // 
+            // tbxSynthRxReadCe
+            // 
+            this.tbxSynthRxReadCe.Location = new System.Drawing.Point(234, 165);
+            this.tbxSynthRxReadCe.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxReadCe.Name = "tbxSynthRxReadCe";
+            this.tbxSynthRxReadCe.Size = new System.Drawing.Size(34, 20);
+            this.tbxSynthRxReadCe.TabIndex = 39;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(122, 194);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(21, 13);
+            this.label55.TabIndex = 37;
+            this.label55.Text = "CP";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(203, 194);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(31, 13);
+            this.label56.TabIndex = 36;
+            this.label56.Text = "[mA] ";
+            // 
+            // tbxSynthRxReadCp
+            // 
+            this.tbxSynthRxReadCp.Location = new System.Drawing.Point(148, 190);
+            this.tbxSynthRxReadCp.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxReadCp.Name = "tbxSynthRxReadCp";
+            this.tbxSynthRxReadCp.Size = new System.Drawing.Size(54, 20);
+            this.tbxSynthRxReadCp.TabIndex = 35;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(9, 168);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(33, 13);
+            this.label57.TabIndex = 34;
+            this.label57.Text = "F_RF";
+            // 
+            // tbxSynthRxReadRf
+            // 
+            this.tbxSynthRxReadRf.Location = new System.Drawing.Point(43, 165);
+            this.tbxSynthRxReadRf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthRxReadRf.Name = "tbxSynthRxReadRf";
+            this.tbxSynthRxReadRf.Size = new System.Drawing.Size(54, 20);
+            this.tbxSynthRxReadRf.TabIndex = 32;
             // 
             // tbxSynthVcoOutRxPre
             // 
@@ -1280,7 +1536,7 @@
             // 
             this.btnOperSyntUp.BackColor = System.Drawing.SystemColors.Control;
             this.btnOperSyntUp.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOperSyntUp.Location = new System.Drawing.Point(180, 81);
+            this.btnOperSyntUp.Location = new System.Drawing.Point(172, 16);
             this.btnOperSyntUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnOperSyntUp.Name = "btnOperSyntUp";
             this.btnOperSyntUp.Size = new System.Drawing.Size(55, 19);
@@ -1293,7 +1549,7 @@
             // 
             this.btnReadSyntUp.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadSyntUp.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadSyntUp.Location = new System.Drawing.Point(180, 147);
+            this.btnReadSyntUp.Location = new System.Drawing.Point(213, 135);
             this.btnReadSyntUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadSyntUp.Name = "btnReadSyntUp";
             this.btnReadSyntUp.Size = new System.Drawing.Size(55, 19);
@@ -1368,7 +1624,7 @@
             // 
             this.btnSetSyntUp.BackColor = System.Drawing.SystemColors.Control;
             this.btnSetSyntUp.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSetSyntUp.Location = new System.Drawing.Point(121, 82);
+            this.btnSetSyntUp.Location = new System.Drawing.Point(113, 17);
             this.btnSetSyntUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetSyntUp.Name = "btnSetSyntUp";
             this.btnSetSyntUp.Size = new System.Drawing.Size(55, 19);
@@ -1387,17 +1643,18 @@
             // 
             // groupBox38
             // 
+            this.groupBox38.Controls.Add(this.label83);
+            this.groupBox38.Controls.Add(this.tbxSynthTxReadVco);
+            this.groupBox38.Controls.Add(this.label82);
+            this.groupBox38.Controls.Add(this.tbxSynthTxReadIf);
             this.groupBox38.Controls.Add(this.label80);
             this.groupBox38.Controls.Add(this.tbxSynthTxReadCe);
-            this.groupBox38.Controls.Add(this.label74);
             this.groupBox38.Controls.Add(this.label19);
             this.groupBox38.Controls.Add(this.label26);
             this.groupBox38.Controls.Add(this.label53);
             this.groupBox38.Controls.Add(this.label54);
             this.groupBox38.Controls.Add(this.tbxSynthTxReadCp);
             this.groupBox38.Controls.Add(this.label50);
-            this.groupBox38.Controls.Add(this.cbxSynthTxSetCp);
-            this.groupBox38.Controls.Add(this.label51);
             this.groupBox38.Controls.Add(this.label73);
             this.groupBox38.Controls.Add(this.tbxSynthTxReadRf);
             this.groupBox38.Controls.Add(this.label71);
@@ -1418,69 +1675,130 @@
             this.groupBox38.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox38.Name = "groupBox38";
             this.groupBox38.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox38.Size = new System.Drawing.Size(243, 241);
+            this.groupBox38.Size = new System.Drawing.Size(281, 241);
             this.groupBox38.TabIndex = 8;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Frequancy TX";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(96, 168);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(41, 13);
+            this.label83.TabIndex = 40;
+            this.label83.Text = "F_VCO";
+            // 
+            // tbxSynthTxReadVco
+            // 
+            this.tbxSynthTxReadVco.Location = new System.Drawing.Point(139, 165);
+            this.tbxSynthTxReadVco.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxReadVco.Name = "tbxSynthTxReadVco";
+            this.tbxSynthTxReadVco.Size = new System.Drawing.Size(55, 20);
+            this.tbxSynthTxReadVco.TabIndex = 39;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(4, 194);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(28, 13);
+            this.label82.TabIndex = 38;
+            this.label82.Text = "F_IF";
+            // 
+            // tbxSynthTxReadIf
+            // 
+            this.tbxSynthTxReadIf.Location = new System.Drawing.Point(36, 190);
+            this.tbxSynthTxReadIf.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxReadIf.Name = "tbxSynthTxReadIf";
+            this.tbxSynthTxReadIf.Size = new System.Drawing.Size(53, 20);
+            this.tbxSynthTxReadIf.TabIndex = 37;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(207, 168);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(21, 13);
+            this.label80.TabIndex = 36;
+            this.label80.Text = "CE";
+            // 
+            // tbxSynthTxReadCe
+            // 
+            this.tbxSynthTxReadCe.Location = new System.Drawing.Point(236, 165);
+            this.tbxSynthTxReadCe.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxReadCe.Name = "tbxSynthTxReadCe";
+            this.tbxSynthTxReadCe.Size = new System.Drawing.Size(34, 20);
+            this.tbxSynthTxReadCe.TabIndex = 35;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(82, 84);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(38, 13);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "[MHz] ";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(82, 44);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(38, 13);
+            this.label26.TabIndex = 32;
+            this.label26.Text = "[MHz] ";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(113, 194);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(21, 13);
+            this.label53.TabIndex = 31;
+            this.label53.Text = "CP";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(198, 194);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(31, 13);
+            this.label54.TabIndex = 30;
+            this.label54.Text = "[mA] ";
+            // 
+            // tbxSynthTxReadCp
+            // 
+            this.tbxSynthTxReadCp.Location = new System.Drawing.Point(139, 191);
+            this.tbxSynthTxReadCp.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSynthTxReadCp.Name = "tbxSynthTxReadCp";
+            this.tbxSynthTxReadCp.Size = new System.Drawing.Size(55, 20);
+            this.tbxSynthTxReadCp.TabIndex = 29;
             // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.Location = new System.Drawing.Point(2, 168);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(57, 13);
+            this.label50.Size = new System.Drawing.Size(33, 13);
             this.label50.TabIndex = 25;
-            this.label50.Text = "Frequency";
-            // 
-            // cbxSynthTxSetCp
-            // 
-            this.cbxSynthTxSetCp.FormattingEnabled = true;
-            this.cbxSynthTxSetCp.Items.AddRange(new object[] {
-            "0.300",
-            "0.600",
-            "0.900",
-            "1.200",
-            "1.500",
-            "1.800",
-            "2.100",
-            "2.400",
-            "2.700",
-            "3.000",
-            "3.300",
-            "3.600",
-            "3.900",
-            "4.200",
-            "4.500",
-            "4.800"});
-            this.cbxSynthTxSetCp.Location = new System.Drawing.Point(127, 40);
-            this.cbxSynthTxSetCp.Name = "cbxSynthTxSetCp";
-            this.cbxSynthTxSetCp.Size = new System.Drawing.Size(78, 21);
-            this.cbxSynthTxSetCp.TabIndex = 24;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(124, 27);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(57, 13);
-            this.label51.TabIndex = 23;
-            this.label51.Text = "CP current";
+            this.label50.Text = "F_RF";
             // 
             // label73
             // 
             this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(121, 168);
+            this.label73.Location = new System.Drawing.Point(186, 226);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(38, 13);
+            this.label73.Size = new System.Drawing.Size(90, 13);
             this.label73.TabIndex = 22;
-            this.label73.Text = "[MHz] ";
+            this.label73.Text = "Read freq in MHz";
             // 
             // tbxSynthTxReadRf
             // 
-            this.tbxSynthTxReadRf.Location = new System.Drawing.Point(63, 166);
+            this.tbxSynthTxReadRf.Location = new System.Drawing.Point(36, 166);
             this.tbxSynthTxReadRf.Margin = new System.Windows.Forms.Padding(2);
             this.tbxSynthTxReadRf.Name = "tbxSynthTxReadRf";
-            this.tbxSynthTxReadRf.Size = new System.Drawing.Size(54, 20);
+            this.tbxSynthTxReadRf.Size = new System.Drawing.Size(52, 20);
             this.tbxSynthTxReadRf.TabIndex = 21;
             // 
             // label71
@@ -1524,7 +1842,7 @@
             // 
             this.btnOperSyntDown.BackColor = System.Drawing.SystemColors.Control;
             this.btnOperSyntDown.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnOperSyntDown.Location = new System.Drawing.Point(186, 82);
+            this.btnOperSyntDown.Location = new System.Drawing.Point(183, 17);
             this.btnOperSyntDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnOperSyntDown.Name = "btnOperSyntDown";
             this.btnOperSyntDown.Size = new System.Drawing.Size(55, 19);
@@ -1537,7 +1855,7 @@
             // 
             this.btnReadSyntDown.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadSyntDown.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReadSyntDown.Location = new System.Drawing.Point(186, 147);
+            this.btnReadSyntDown.Location = new System.Drawing.Point(187, 135);
             this.btnReadSyntDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnReadSyntDown.Name = "btnReadSyntDown";
             this.btnReadSyntDown.Size = new System.Drawing.Size(55, 19);
@@ -1550,7 +1868,7 @@
             // 
             this.btnSetSyntDown.BackColor = System.Drawing.SystemColors.Control;
             this.btnSetSyntDown.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSetSyntDown.Location = new System.Drawing.Point(127, 82);
+            this.btnSetSyntDown.Location = new System.Drawing.Point(124, 17);
             this.btnSetSyntDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetSyntDown.Name = "btnSetSyntDown";
             this.btnSetSyntDown.Size = new System.Drawing.Size(55, 19);
@@ -1647,6 +1965,7 @@
             // 
             // gbxTechMode
             // 
+            this.gbxTechMode.Controls.Add(this.groupBox23);
             this.gbxTechMode.Controls.Add(this.groupBox4);
             this.gbxTechMode.Controls.Add(this.groupBox30);
             this.gbxTechMode.Controls.Add(this.btnAdcChannelMode);
@@ -1656,6 +1975,128 @@
             this.gbxTechMode.Size = new System.Drawing.Size(1015, 428);
             this.gbxTechMode.TabIndex = 11;
             this.gbxTechMode.TabStop = false;
+            this.gbxTechMode.Visible = false;
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.groupBox25);
+            this.groupBox23.Controls.Add(this.groupBox24);
+            this.groupBox23.Location = new System.Drawing.Point(492, 19);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(328, 202);
+            this.groupBox23.TabIndex = 22;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Synthesizers CP";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.label79);
+            this.groupBox25.Controls.Add(this.cbxSynthRxSetCp);
+            this.groupBox25.Controls.Add(this.label52);
+            this.groupBox25.Location = new System.Drawing.Point(172, 24);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(132, 100);
+            this.groupBox25.TabIndex = 23;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Synthesizer RX";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(94, 49);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(31, 13);
+            this.label79.TabIndex = 41;
+            this.label79.Text = "[mA] ";
+            // 
+            // cbxSynthRxSetCp
+            // 
+            this.cbxSynthRxSetCp.FormattingEnabled = true;
+            this.cbxSynthRxSetCp.Items.AddRange(new object[] {
+            "0.300",
+            "0.600",
+            "0.900",
+            "1.200",
+            "1.500",
+            "1.800",
+            "2.100",
+            "2.400",
+            "2.700",
+            "3.000",
+            "3.300",
+            "3.600",
+            "3.900",
+            "4.200",
+            "4.500",
+            "4.800"});
+            this.cbxSynthRxSetCp.Location = new System.Drawing.Point(10, 46);
+            this.cbxSynthRxSetCp.Name = "cbxSynthRxSetCp";
+            this.cbxSynthRxSetCp.Size = new System.Drawing.Size(78, 21);
+            this.cbxSynthRxSetCp.TabIndex = 40;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(7, 33);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(57, 13);
+            this.label52.TabIndex = 39;
+            this.label52.Text = "CP current";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.label74);
+            this.groupBox24.Controls.Add(this.cbxSynthTxSetCp);
+            this.groupBox24.Controls.Add(this.label51);
+            this.groupBox24.Location = new System.Drawing.Point(12, 24);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(132, 100);
+            this.groupBox24.TabIndex = 0;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Synthesizer TX";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(94, 50);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(31, 13);
+            this.label74.TabIndex = 37;
+            this.label74.Text = "[mA] ";
+            // 
+            // cbxSynthTxSetCp
+            // 
+            this.cbxSynthTxSetCp.FormattingEnabled = true;
+            this.cbxSynthTxSetCp.Items.AddRange(new object[] {
+            "0.300",
+            "0.600",
+            "0.900",
+            "1.200",
+            "1.500",
+            "1.800",
+            "2.100",
+            "2.400",
+            "2.700",
+            "3.000",
+            "3.300",
+            "3.600",
+            "3.900",
+            "4.200",
+            "4.500",
+            "4.800"});
+            this.cbxSynthTxSetCp.Location = new System.Drawing.Point(10, 46);
+            this.cbxSynthTxSetCp.Name = "cbxSynthTxSetCp";
+            this.cbxSynthTxSetCp.Size = new System.Drawing.Size(78, 21);
+            this.cbxSynthTxSetCp.TabIndex = 36;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(7, 33);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(57, 13);
+            this.label51.TabIndex = 35;
+            this.label51.Text = "CP current";
             // 
             // groupBox4
             // 
@@ -1667,11 +2108,11 @@
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.label49);
             this.groupBox4.Controls.Add(this.btnBootFileSelect);
-            this.groupBox4.Location = new System.Drawing.Point(406, 19);
+            this.groupBox4.Location = new System.Drawing.Point(492, 247);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(282, 207);
+            this.groupBox4.Size = new System.Drawing.Size(328, 129);
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Firmware boadlader";
@@ -1995,85 +2436,79 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.groupBox22);
             this.groupBox15.Controls.Add(this.groupBox12);
             this.groupBox15.Controls.Add(this.groupBox11);
-            this.groupBox15.Controls.Add(this.lblAdcVrefUi);
-            this.groupBox15.Controls.Add(this.rdbDacD);
-            this.groupBox15.Controls.Add(this.rdbDacC);
-            this.groupBox15.Controls.Add(this.rdbDacB);
-            this.groupBox15.Controls.Add(this.rdbDacA);
+            this.groupBox15.Controls.Add(this.lblAdcVreTechUi);
             this.groupBox15.Location = new System.Drawing.Point(16, 19);
             this.groupBox15.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox15.Size = new System.Drawing.Size(386, 207);
+            this.groupBox15.Size = new System.Drawing.Size(455, 207);
             this.groupBox15.TabIndex = 11;
             this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "DAC Operation";
+            this.groupBox15.Text = "DAC technician controller";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.rdbDacC);
+            this.groupBox22.Controls.Add(this.rdbDacD);
+            this.groupBox22.Location = new System.Drawing.Point(8, 24);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(91, 159);
+            this.groupBox22.TabIndex = 33;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Dac number";
+            // 
+            // rdbDacC
+            // 
+            this.rdbDacC.AutoSize = true;
+            this.rdbDacC.Location = new System.Drawing.Point(14, 30);
+            this.rdbDacC.Name = "rdbDacC";
+            this.rdbDacC.Size = new System.Drawing.Size(60, 17);
+            this.rdbDacC.TabIndex = 28;
+            this.rdbDacC.TabStop = true;
+            this.rdbDacC.Text = "DAC_C";
+            this.rdbDacC.UseVisualStyleBackColor = true;
+            // 
+            // rdbDacD
+            // 
+            this.rdbDacD.AutoSize = true;
+            this.rdbDacD.Location = new System.Drawing.Point(14, 80);
+            this.rdbDacD.Name = "rdbDacD";
+            this.rdbDacD.Size = new System.Drawing.Size(61, 17);
+            this.rdbDacD.TabIndex = 29;
+            this.rdbDacD.TabStop = true;
+            this.rdbDacD.Text = "DAC_D";
+            this.rdbDacD.UseVisualStyleBackColor = true;
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.btnReadDac);
-            this.groupBox12.Controls.Add(this.tbxDacReadValA);
-            this.groupBox12.Controls.Add(this.label18);
-            this.groupBox12.Controls.Add(this.tbxDacReadValB);
-            this.groupBox12.Controls.Add(this.label35);
+            this.groupBox12.Controls.Add(this.btnReadDacTech);
             this.groupBox12.Controls.Add(this.tbxDacReadValC);
             this.groupBox12.Controls.Add(this.label36);
             this.groupBox12.Controls.Add(this.label39);
             this.groupBox12.Controls.Add(this.tbxDacReadValD);
-            this.groupBox12.Location = new System.Drawing.Point(217, 23);
+            this.groupBox12.Location = new System.Drawing.Point(275, 23);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(155, 160);
             this.groupBox12.TabIndex = 32;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "DAC read value";
             // 
-            // btnReadDac
+            // btnReadDacTech
             // 
-            this.btnReadDac.Location = new System.Drawing.Point(51, 128);
-            this.btnReadDac.Name = "btnReadDac";
-            this.btnReadDac.Size = new System.Drawing.Size(49, 25);
-            this.btnReadDac.TabIndex = 22;
-            this.btnReadDac.Text = "Read";
-            this.btnReadDac.UseVisualStyleBackColor = true;
-            this.btnReadDac.Click += new System.EventHandler(this.btnReadDac_Click);
-            // 
-            // tbxDacReadValA
-            // 
-            this.tbxDacReadValA.Location = new System.Drawing.Point(10, 24);
-            this.tbxDacReadValA.Name = "tbxDacReadValA";
-            this.tbxDacReadValA.Size = new System.Drawing.Size(59, 20);
-            this.tbxDacReadValA.TabIndex = 5;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(91, 28);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "[mVDC]";
-            // 
-            // tbxDacReadValB
-            // 
-            this.tbxDacReadValB.Location = new System.Drawing.Point(10, 50);
-            this.tbxDacReadValB.Name = "tbxDacReadValB";
-            this.tbxDacReadValB.Size = new System.Drawing.Size(59, 20);
-            this.tbxDacReadValB.TabIndex = 17;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(91, 54);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(43, 13);
-            this.label35.TabIndex = 18;
-            this.label35.Text = "[mVDC]";
+            this.btnReadDacTech.Location = new System.Drawing.Point(51, 128);
+            this.btnReadDacTech.Name = "btnReadDacTech";
+            this.btnReadDacTech.Size = new System.Drawing.Size(49, 25);
+            this.btnReadDacTech.TabIndex = 22;
+            this.btnReadDacTech.Text = "Read";
+            this.btnReadDacTech.UseVisualStyleBackColor = true;
+            this.btnReadDacTech.Click += new System.EventHandler(this.btnReadDacTech_Click);
             // 
             // tbxDacReadValC
             // 
-            this.tbxDacReadValC.Location = new System.Drawing.Point(10, 76);
+            this.tbxDacReadValC.Location = new System.Drawing.Point(10, 28);
             this.tbxDacReadValC.Name = "tbxDacReadValC";
             this.tbxDacReadValC.Size = new System.Drawing.Size(59, 20);
             this.tbxDacReadValC.TabIndex = 20;
@@ -2081,7 +2516,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(91, 80);
+            this.label36.Location = new System.Drawing.Point(78, 31);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(43, 13);
             this.label36.TabIndex = 21;
@@ -2090,7 +2525,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(91, 106);
+            this.label39.Location = new System.Drawing.Point(78, 81);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(43, 13);
             this.label39.TabIndex = 24;
@@ -2098,82 +2533,46 @@
             // 
             // tbxDacReadValD
             // 
-            this.tbxDacReadValD.Location = new System.Drawing.Point(10, 102);
+            this.tbxDacReadValD.Location = new System.Drawing.Point(10, 78);
             this.tbxDacReadValD.Name = "tbxDacReadValD";
             this.tbxDacReadValD.Size = new System.Drawing.Size(59, 20);
             this.tbxDacReadValD.TabIndex = 23;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.tbxDacValA);
-            this.groupBox11.Controls.Add(this.label37);
-            this.groupBox11.Controls.Add(this.tbxDacValB);
-            this.groupBox11.Controls.Add(this.label61);
             this.groupBox11.Controls.Add(this.tbxDacValC);
-            this.groupBox11.Controls.Add(this.btnSetDac);
+            this.groupBox11.Controls.Add(this.btnSetDacTech);
             this.groupBox11.Controls.Add(this.label63);
             this.groupBox11.Controls.Add(this.label65);
             this.groupBox11.Controls.Add(this.tbxDacValD);
-            this.groupBox11.Location = new System.Drawing.Point(75, 23);
+            this.groupBox11.Location = new System.Drawing.Point(127, 24);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(123, 160);
             this.groupBox11.TabIndex = 31;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "DAC set value";
             // 
-            // tbxDacValA
-            // 
-            this.tbxDacValA.Location = new System.Drawing.Point(10, 24);
-            this.tbxDacValA.Name = "tbxDacValA";
-            this.tbxDacValA.Size = new System.Drawing.Size(42, 20);
-            this.tbxDacValA.TabIndex = 5;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(58, 28);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(43, 13);
-            this.label37.TabIndex = 15;
-            this.label37.Text = "[mVDC]";
-            // 
-            // tbxDacValB
-            // 
-            this.tbxDacValB.Location = new System.Drawing.Point(10, 50);
-            this.tbxDacValB.Name = "tbxDacValB";
-            this.tbxDacValB.Size = new System.Drawing.Size(42, 20);
-            this.tbxDacValB.TabIndex = 17;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(58, 54);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(43, 13);
-            this.label61.TabIndex = 18;
-            this.label61.Text = "[mVDC]";
-            // 
             // tbxDacValC
             // 
-            this.tbxDacValC.Location = new System.Drawing.Point(10, 76);
+            this.tbxDacValC.Location = new System.Drawing.Point(12, 30);
             this.tbxDacValC.Name = "tbxDacValC";
             this.tbxDacValC.Size = new System.Drawing.Size(42, 20);
             this.tbxDacValC.TabIndex = 20;
             // 
-            // btnSetDac
+            // btnSetDacTech
             // 
-            this.btnSetDac.Location = new System.Drawing.Point(25, 128);
-            this.btnSetDac.Name = "btnSetDac";
-            this.btnSetDac.Size = new System.Drawing.Size(49, 25);
-            this.btnSetDac.TabIndex = 14;
-            this.btnSetDac.Text = "Set";
-            this.btnSetDac.UseVisualStyleBackColor = true;
-            this.btnSetDac.Click += new System.EventHandler(this.btnSetDac_Click);
+            this.btnSetDacTech.Location = new System.Drawing.Point(25, 128);
+            this.btnSetDacTech.Name = "btnSetDacTech";
+            this.btnSetDacTech.Size = new System.Drawing.Size(49, 25);
+            this.btnSetDacTech.TabIndex = 14;
+            this.btnSetDacTech.Text = "Set";
+            this.btnSetDacTech.UseVisualStyleBackColor = true;
+            this.btnSetDacTech.Click += new System.EventHandler(this.btnSetDacTech_Click);
             // 
             // label63
             // 
             this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(58, 80);
+            this.label63.Location = new System.Drawing.Point(58, 34);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(43, 13);
             this.label63.TabIndex = 21;
@@ -2182,7 +2581,7 @@
             // label65
             // 
             this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(58, 106);
+            this.label65.Location = new System.Drawing.Point(58, 84);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(43, 13);
             this.label65.TabIndex = 24;
@@ -2190,63 +2589,19 @@
             // 
             // tbxDacValD
             // 
-            this.tbxDacValD.Location = new System.Drawing.Point(10, 102);
+            this.tbxDacValD.Location = new System.Drawing.Point(12, 79);
             this.tbxDacValD.Name = "tbxDacValD";
             this.tbxDacValD.Size = new System.Drawing.Size(42, 20);
             this.tbxDacValD.TabIndex = 23;
             // 
-            // lblAdcVrefUi
+            // lblAdcVreTechUi
             // 
-            this.lblAdcVrefUi.AutoSize = true;
-            this.lblAdcVrefUi.Location = new System.Drawing.Point(5, 189);
-            this.lblAdcVrefUi.Name = "lblAdcVrefUi";
-            this.lblAdcVrefUi.Size = new System.Drawing.Size(38, 13);
-            this.lblAdcVrefUi.TabIndex = 30;
-            this.lblAdcVrefUi.Text = "Vref = ";
-            // 
-            // rdbDacD
-            // 
-            this.rdbDacD.AutoSize = true;
-            this.rdbDacD.Location = new System.Drawing.Point(8, 130);
-            this.rdbDacD.Name = "rdbDacD";
-            this.rdbDacD.Size = new System.Drawing.Size(61, 17);
-            this.rdbDacD.TabIndex = 29;
-            this.rdbDacD.TabStop = true;
-            this.rdbDacD.Text = "DAC_D";
-            this.rdbDacD.UseVisualStyleBackColor = true;
-            // 
-            // rdbDacC
-            // 
-            this.rdbDacC.AutoSize = true;
-            this.rdbDacC.Location = new System.Drawing.Point(8, 104);
-            this.rdbDacC.Name = "rdbDacC";
-            this.rdbDacC.Size = new System.Drawing.Size(60, 17);
-            this.rdbDacC.TabIndex = 28;
-            this.rdbDacC.TabStop = true;
-            this.rdbDacC.Text = "DAC_C";
-            this.rdbDacC.UseVisualStyleBackColor = true;
-            // 
-            // rdbDacB
-            // 
-            this.rdbDacB.AutoSize = true;
-            this.rdbDacB.Location = new System.Drawing.Point(8, 78);
-            this.rdbDacB.Name = "rdbDacB";
-            this.rdbDacB.Size = new System.Drawing.Size(60, 17);
-            this.rdbDacB.TabIndex = 27;
-            this.rdbDacB.TabStop = true;
-            this.rdbDacB.Text = "DAC_B";
-            this.rdbDacB.UseVisualStyleBackColor = true;
-            // 
-            // rdbDacA
-            // 
-            this.rdbDacA.AutoSize = true;
-            this.rdbDacA.Location = new System.Drawing.Point(8, 52);
-            this.rdbDacA.Name = "rdbDacA";
-            this.rdbDacA.Size = new System.Drawing.Size(60, 17);
-            this.rdbDacA.TabIndex = 26;
-            this.rdbDacA.TabStop = true;
-            this.rdbDacA.Text = "DAC_A";
-            this.rdbDacA.UseVisualStyleBackColor = true;
+            this.lblAdcVreTechUi.AutoSize = true;
+            this.lblAdcVreTechUi.Location = new System.Drawing.Point(5, 189);
+            this.lblAdcVreTechUi.Name = "lblAdcVreTechUi";
+            this.lblAdcVreTechUi.Size = new System.Drawing.Size(38, 13);
+            this.lblAdcVreTechUi.TabIndex = 30;
+            this.lblAdcVreTechUi.Text = "Vref = ";
             // 
             // groupBox6
             // 
@@ -2415,7 +2770,7 @@
             // 
             // rtbLogViewer
             // 
-            this.rtbLogViewer.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.rtbLogViewer.BackColor = System.Drawing.SystemColors.Control;
             this.rtbLogViewer.Location = new System.Drawing.Point(6, 19);
             this.rtbLogViewer.Name = "rtbLogViewer";
             this.rtbLogViewer.ReadOnly = true;
@@ -2587,7 +2942,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 15);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Version: 1.02";
+            this.label14.Text = "Version: 1.03";
             // 
             // label13
             // 
@@ -2610,153 +2965,14 @@
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = ".";
             // 
-            // label53
+            // label85
             // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(2, 193);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(21, 13);
-            this.label53.TabIndex = 31;
-            this.label53.Text = "CP";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(121, 193);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(31, 13);
-            this.label54.TabIndex = 30;
-            this.label54.Text = "[mA] ";
-            // 
-            // tbxSynthTxReadCp
-            // 
-            this.tbxSynthTxReadCp.Location = new System.Drawing.Point(62, 190);
-            this.tbxSynthTxReadCp.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSynthTxReadCp.Name = "tbxSynthTxReadCp";
-            this.tbxSynthTxReadCp.Size = new System.Drawing.Size(55, 20);
-            this.tbxSynthTxReadCp.TabIndex = 29;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(82, 44);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(38, 13);
-            this.label26.TabIndex = 32;
-            this.label26.Text = "[MHz] ";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(82, 84);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 13);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "[MHz] ";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(5, 193);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(21, 13);
-            this.label55.TabIndex = 37;
-            this.label55.Text = "CP";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(119, 194);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(31, 13);
-            this.label56.TabIndex = 36;
-            this.label56.Text = "[mA] ";
-            // 
-            // tbxSynthRxReadCp
-            // 
-            this.tbxSynthRxReadCp.Location = new System.Drawing.Point(64, 190);
-            this.tbxSynthRxReadCp.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSynthRxReadCp.Name = "tbxSynthRxReadCp";
-            this.tbxSynthRxReadCp.Size = new System.Drawing.Size(54, 20);
-            this.tbxSynthRxReadCp.TabIndex = 35;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(5, 168);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(57, 13);
-            this.label57.TabIndex = 34;
-            this.label57.Text = "Frequency";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(120, 169);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(38, 13);
-            this.label58.TabIndex = 33;
-            this.label58.Text = "[MHz] ";
-            // 
-            // tbxSynthRxReadRf
-            // 
-            this.tbxSynthRxReadRf.Location = new System.Drawing.Point(64, 165);
-            this.tbxSynthRxReadRf.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSynthRxReadRf.Name = "tbxSynthRxReadRf";
-            this.tbxSynthRxReadRf.Size = new System.Drawing.Size(54, 20);
-            this.tbxSynthRxReadRf.TabIndex = 32;
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(211, 44);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(31, 13);
-            this.label74.TabIndex = 34;
-            this.label74.Text = "[mA] ";
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(207, 43);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(31, 13);
-            this.label79.TabIndex = 38;
-            this.label79.Text = "[mA] ";
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(179, 193);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(21, 13);
-            this.label80.TabIndex = 36;
-            this.label80.Text = "CE";
-            // 
-            // tbxSynthTxReadCe
-            // 
-            this.tbxSynthTxReadCe.Location = new System.Drawing.Point(208, 190);
-            this.tbxSynthTxReadCe.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSynthTxReadCe.Name = "tbxSynthTxReadCe";
-            this.tbxSynthTxReadCe.Size = new System.Drawing.Size(34, 20);
-            this.tbxSynthTxReadCe.TabIndex = 35;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(175, 193);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(21, 13);
-            this.label81.TabIndex = 40;
-            this.label81.Text = "CE";
-            // 
-            // tbxSynthRxReadCe
-            // 
-            this.tbxSynthRxReadCe.Location = new System.Drawing.Point(201, 190);
-            this.tbxSynthRxReadCe.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSynthRxReadCe.Name = "tbxSynthRxReadCe";
-            this.tbxSynthRxReadCe.Size = new System.Drawing.Size(34, 20);
-            this.tbxSynthRxReadCe.TabIndex = 39;
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(186, 226);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(90, 13);
+            this.label85.TabIndex = 45;
+            this.label85.Text = "Read freq in MHz";
             // 
             // KuscForm
             // 
@@ -2779,6 +2995,14 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox35.ResumeLayout(false);
@@ -2798,6 +3022,11 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.gbxTechMode.ResumeLayout(false);
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox30.ResumeLayout(false);
@@ -2809,6 +3038,8 @@
             this.btnAdcChannelMode.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -2966,18 +3197,12 @@
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.RadioButton rdbDacD;
         private System.Windows.Forms.RadioButton rdbDacC;
-        private System.Windows.Forms.RadioButton rdbDacB;
-        private System.Windows.Forms.RadioButton rdbDacA;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.TextBox tbxDacValD;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.TextBox tbxDacValC;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.TextBox tbxDacValB;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Button btnSetDac;
-        private System.Windows.Forms.TextBox tbxDacValA;
-        private System.Windows.Forms.Label lblAdcVrefUi;
+        private System.Windows.Forms.Button btnSetDacTech;
+        private System.Windows.Forms.Label lblAdcVreTechUi;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label66;
@@ -3007,11 +3232,7 @@
         private System.Windows.Forms.TextBox tbxSynthTxReadRf;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Button btnReadDac;
-        private System.Windows.Forms.TextBox tbxDacReadValA;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tbxDacReadValB;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button btnReadDacTech;
         private System.Windows.Forms.TextBox tbxDacReadValC;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label39;
@@ -3025,10 +3246,6 @@
         private System.Windows.Forms.RichTextBox rtbAdc_LD_SYNTH_RX;
         private System.Windows.Forms.RichTextBox rtbAdc_LD_SYNTH_TX;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.ComboBox cbxSynthTxSetCp;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.ComboBox cbxSynthRxSetCp;
-        private System.Windows.Forms.Label label52;
         private System.Windows.Forms.SaveFileDialog sfdSaveSamplesFile;
         private System.Windows.Forms.Button btnAdcUpdateLogger;
         private System.Windows.Forms.Button btnRunTimeLoggerClear;
@@ -3044,14 +3261,11 @@
         private System.Windows.Forms.TextBox tbxLoggerSearcherLogReqIndex;
         private System.Windows.Forms.Button btnLogViewerClear;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox tbxSynthRxReadCp;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label58;
         private System.Windows.Forms.TextBox tbxSynthRxReadRf;
-        private System.Windows.Forms.Label label74;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label53;
@@ -3061,6 +3275,42 @@
         private System.Windows.Forms.TextBox tbxSynthRxReadCe;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TextBox tbxSynthTxReadCe;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.RadioButton rdbDacB;
+        private System.Windows.Forms.RadioButton rdbDacA;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.Button btnReadDacUser;
+        private System.Windows.Forms.TextBox tbxDacReadValB;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox tbxDacReadValA;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Button btnSetDacUser;
+        private System.Windows.Forms.TextBox tbxDacValB;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox tbxDacValA;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Label lblAdcVreUserUi;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.GroupBox groupBox25;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.ComboBox cbxSynthRxSetCp;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.ComboBox cbxSynthTxSetCp;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.TextBox tbxSynthTxReadVco;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox tbxSynthTxReadIf;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox tbxSynthRxReadVco;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox tbxSynthRxReadIf;
+        private System.Windows.Forms.Label label85;
     }
 }
 
