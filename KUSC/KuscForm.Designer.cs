@@ -124,6 +124,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox36 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label85 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.tbxSynthRxReadVco = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
@@ -161,7 +162,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
             this.tbxSynthTxReadCp = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
@@ -275,7 +275,6 @@
             this.sfdLogFileSaver = new System.Windows.Forms.SaveFileDialog();
             this.sfdSaveSamplesFile = new System.Windows.Forms.SaveFileDialog();
             this.fbdLoggerSearcherOpen = new System.Windows.Forms.FolderBrowserDialog();
-            this.label85 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1392,6 +1391,15 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Frequancy RX";
             // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(186, 226);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(90, 13);
+            this.label85.TabIndex = 45;
+            this.label85.Text = "Read freq in MHz";
+            // 
             // label84
             // 
             this.label84.AutoSize = true;
@@ -1652,7 +1660,6 @@
             this.groupBox38.Controls.Add(this.label19);
             this.groupBox38.Controls.Add(this.label26);
             this.groupBox38.Controls.Add(this.label53);
-            this.groupBox38.Controls.Add(this.label54);
             this.groupBox38.Controls.Add(this.tbxSynthTxReadCp);
             this.groupBox38.Controls.Add(this.label50);
             this.groupBox38.Controls.Add(this.label73);
@@ -1757,15 +1764,6 @@
             this.label53.Size = new System.Drawing.Size(21, 13);
             this.label53.TabIndex = 31;
             this.label53.Text = "CP";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(198, 194);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(31, 13);
-            this.label54.TabIndex = 30;
-            this.label54.Text = "[mA] ";
             // 
             // tbxSynthTxReadCp
             // 
@@ -2965,15 +2963,6 @@
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = ".";
             // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(186, 226);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(90, 13);
-            this.label85.TabIndex = 45;
-            this.label85.Text = "Read freq in MHz";
-            // 
             // KuscForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3269,7 +3258,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox tbxSynthTxReadCp;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.TextBox tbxSynthRxReadCe;

@@ -46,7 +46,7 @@ namespace KUSC
 
             // Now send the F_RF frequancy to read latter time:
             Int32 fRfToSend = Convert.ToInt32(fRF * 100);
-            //regList.Add(fRfToSend.ToString() + '@' + 0xb.ToString() + '#');
+            regList.Add(fRfToSend.ToString() + '@' + 0xb.ToString() + '#');
 
             return regList;
         }
